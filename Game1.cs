@@ -11,6 +11,7 @@ namespace Lights_Out
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D test;
 
         public Game1()
         {

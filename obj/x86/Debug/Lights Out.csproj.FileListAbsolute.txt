@@ -1,0 +1,25 @@
+C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.csprojResolveAssemblyReference.cache
+C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.csproj.CoreCompileInputs.cache
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.exe.config
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.exe
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.pdb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.exe
+C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.pdb
