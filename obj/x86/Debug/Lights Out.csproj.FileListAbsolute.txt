@@ -23,3 +23,6 @@ C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XInput.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.exe
 C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.pdb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Lights Out.exe.config
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.exe
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.pdb
