@@ -15,6 +15,17 @@ namespace Lights_Out
         SpriteBatch spriteBatch;
         SpriteFont spriteFont;
 
+        ContentManager contentManager;
+        GameManager gameManager;
+
+        enum GameState
+        {
+            MainMenu,
+            MainGame,
+            GameOver
+        }
+        GameState currentState;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -23,12 +34,24 @@ namespace Lights_Out
 
         protected override void Initialize()
         {
+            IsMouseVisible = true;
+
+            Constants.LoadContent();
+
+            graphics.PreferredBackBufferWidth = Constants.WindowWidth;
+            graphics.PreferredBackBufferHeight = Constants.WindowHeight;
+            graphics.ApplyChanges();
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            contentManager = new ContentManager(this);
+
+            gameManager = new GameManager();
+            currentState = GameState.MainGame;
         }
 
         protected override void UnloadContent()
@@ -41,12 +64,42 @@ namespace Lights_Out
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            switch (currentState)
+            {
+                case GameState.MainMenu:
+                    break;
+
+                case GameState.MainGame:
+                    gameManager.Update();
+                    break;
+
+                case GameState.GameOver:
+
+                    break;
+            }
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin();
+            switch (currentState)
+            {
+                case GameState.MainMenu:
+                    break;
+
+                case GameState.MainGame:
+                    gameManager.Draw(spriteBatch);
+                    break;
+
+                case GameState.GameOver:
+
+                    break;
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

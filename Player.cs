@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myGame
+namespace Lights_Out
 {
     class Player : GameObject
     {
@@ -77,12 +77,16 @@ namespace myGame
                     tempDestination.Y += (int)movementSpeed;
             }
 
+            position.Y = tempDestination.Y;
+
+            /*
             bool collision = WallCollision(tempDestination);
 
             if (!collision)
             {
                 position.Y = tempDestination.Y;
             }
+            */
         }
 
         void PlayerMovementY()
@@ -104,15 +108,19 @@ namespace myGame
                     tempDestination.X += (int)movementSpeed;
             }
 
+            position.X = tempDestination.X;
+
+            /*
             bool collision = WallCollision(tempDestination);
 
             if (!collision)
             {
                 position.X = tempDestination.X;
             }
+            */
         }
 
-        bool WallCollision(Rectangle tempRectangle)
+        /*bool WallCollision(Rectangle tempRectangle)
         {
             bool collision = false;
 
@@ -137,6 +145,6 @@ namespace myGame
                 }
             }
             return collision;
-        }
+        }*/
     }
 }
