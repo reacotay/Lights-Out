@@ -13,19 +13,31 @@ namespace Lights_Out
     {
         Player player;
 
+        Camera camera;
+
         public GameManager()
         {
             player = new Player(new Vector2(100, 100));
+
+            Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
+            camera = new Camera(view);
         }
 
         public void Update()
         {
             player.Update();
+
+            camera.SetPosition(player.position);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
+
+            spriteBatch.Draw(ContentManager.Get<Texture2D>("Player"), Vector2.Zero, Color.Red);
             player.Draw(spriteBatch);
+
+            spriteBatch.End();
         }
     }
 }

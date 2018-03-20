@@ -48,6 +48,7 @@ namespace Lights_Out
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteFont = Content.Load<SpriteFont>("spriteFont");
             contentManager = new ContentManager(this);
 
             gameManager = new GameManager();
@@ -64,6 +65,8 @@ namespace Lights_Out
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            Constants.UpdateKeyMouseReader();
+
             switch (currentState)
             {
                 case GameState.MainMenu:
@@ -74,7 +77,6 @@ namespace Lights_Out
                     break;
 
                 case GameState.GameOver:
-
                     break;
             }
 
@@ -85,10 +87,13 @@ namespace Lights_Out
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            
             switch (currentState)
             {
                 case GameState.MainMenu:
+                    spriteBatch.Begin();
+
+                    spriteBatch.End();
                     break;
 
                 case GameState.MainGame:
@@ -96,10 +101,11 @@ namespace Lights_Out
                     break;
 
                 case GameState.GameOver:
+                    spriteBatch.Begin();
 
+                    spriteBatch.End();
                     break;
             }
-            spriteBatch.End();
 
             base.Draw(gameTime);
         }

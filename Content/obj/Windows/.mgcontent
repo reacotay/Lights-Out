@@ -5,5 +5,6 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/Player.png</File>
+    <File>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/spriteFont.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

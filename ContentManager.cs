@@ -18,13 +18,11 @@ namespace Lights_Out
             Game = game;
         }
 
-        // Used publicly to load content usually done in game1 to avoid sending ex. textures through constructors
         static public T Get<T>(string tag)
         {
             return (T)Game.Content.Load<T>(tag);
         }
 
-        // Same as the Get<> method but with the "GraphicsDevice" used for creating new textures
         static public GraphicsDevice TransferGraphicsDevice()
         {
             return Game.GraphicsDevice;

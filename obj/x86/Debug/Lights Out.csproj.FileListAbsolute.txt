@@ -52,3 +52,4 @@ C:\Users\Susanne\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.csproj.Cor
 C:\Users\Susanne\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.exe
 C:\Users\Susanne\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.pdb
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Player.xnb
+C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\spriteFont.xnb
