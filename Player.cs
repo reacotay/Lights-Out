@@ -14,7 +14,6 @@ namespace Lights_Out
         float movementSpeed;
         bool sprinting;
 
-        GameObject[,] gameObjectArray;
         KeyboardState keyboardState, previousKeyboardState;
 
         public Player(Vector2 position)
@@ -41,11 +40,6 @@ namespace Lights_Out
         }
 
         //----------------------------------------------------------------------------------------------------
-
-        public void TransferGameObjectArray(GameObject[,] gameObjectArray)
-        {
-            this.gameObjectArray = gameObjectArray;
-        }
 
         void PlayerMovement()
         {
@@ -78,15 +72,6 @@ namespace Lights_Out
             }
 
             position.Y = tempDestination.Y;
-
-            /*
-            bool collision = WallCollision(tempDestination);
-
-            if (!collision)
-            {
-                position.Y = tempDestination.Y;
-            }
-            */
         }
 
         void PlayerMovementY()
@@ -109,42 +94,6 @@ namespace Lights_Out
             }
 
             position.X = tempDestination.X;
-
-            /*
-            bool collision = WallCollision(tempDestination);
-
-            if (!collision)
-            {
-                position.X = tempDestination.X;
-            }
-            */
         }
-
-        /*bool WallCollision(Rectangle tempRectangle)
-        {
-            bool collision = false;
-
-            for (int Y = 0; Y < Constants.CellAmountY; Y++)
-            {
-                for (int X = 0; X < Constants.CellAmountX; X++)
-                {
-                    if (gameObjectArray[X, Y] is WallBlock WB)
-                    {
-                        if (WB.destinationRectangle.Intersects(tempRectangle))
-                        {
-                            collision = true;
-                        }
-                    }
-                    if (gameObjectArray[X, Y] is Box box)
-                    {
-                        if (box.destinationRectangle.Intersects(tempRectangle))
-                        {
-                            collision = true;
-                        }
-                    }
-                }
-            }
-            return collision;
-        }*/
     }
 }
