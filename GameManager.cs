@@ -17,7 +17,7 @@ namespace Lights_Out
 
         public GameManager()
         {
-            player = new Player(new Vector2(100, 100));
+            player = new Player(new Vector2(400, 400));
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);

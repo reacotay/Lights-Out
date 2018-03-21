@@ -48,10 +48,12 @@ namespace Lights_Out
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            spriteFont = Content.Load<SpriteFont>("spriteFont");
-            contentManager = new ContentManager(this);
 
+            spriteFont = Content.Load<SpriteFont>("spriteFont");
+
+            contentManager = new ContentManager(this);
             gameManager = new GameManager();
+
             currentState = GameState.MainGame;
         }
 
@@ -87,7 +89,6 @@ namespace Lights_Out
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            
             switch (currentState)
             {
                 case GameState.MainMenu:
