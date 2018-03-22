@@ -22,7 +22,9 @@ namespace Lights_Out
         public void SetPosition(Vector2 position)
         {
             this.position = position;
-            transform = Matrix.CreateTranslation(-position.X + view.Width / 2, -position.Y + view.Height / 2, 0);
+            transform = Matrix.CreateTranslation
+                (-position.X + view.Width / 2 - (Constants.mouseState.Position.X / 4) + 100,
+                -position.Y + view.Height / 2 - (Constants.mouseState.Position.Y / 4) + 100, 0);
         }
 
         public Vector2 GetPosition()
