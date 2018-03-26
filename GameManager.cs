@@ -11,13 +11,13 @@ namespace Lights_Out
 {
     class GameManager
     {
-        Player player;
+        public Player player;
 
         Camera camera;
 
         public GameManager()
         {
-            player = new Player(new Vector2(400, 400));
+            player = new Player(new Vector2(800, 800));
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
@@ -34,6 +34,7 @@ namespace Lights_Out
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
 
+            spriteBatch.Draw(ContentManager.Get<Texture2D>("Ground"), Vector2.Zero, Color.White);
             spriteBatch.Draw(ContentManager.Get<Texture2D>("Player"), Vector2.Zero, Color.Red);
             player.Draw(spriteBatch);
 

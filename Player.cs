@@ -14,7 +14,8 @@ namespace Lights_Out
         float movementSpeed;
         bool sprinting;
 
-        KeyboardState keyboardState, previousKeyboardState;
+        List<Bullet> bulletList;
+        List<Bullet> removeList;
 
         public Player(Vector2 position)
             : base (position)
@@ -22,28 +23,54 @@ namespace Lights_Out
             movementSpeed = 2f;
 
             texture = ContentManager.Get<Texture2D>("Player");
+            bulletList = new List<Bullet>();
+            removeList = new List<Bullet>();
         }
         
         public override void Update()
         {
-            previousKeyboardState = keyboardState;
-            keyboardState = Keyboard.GetState();
-
             PlayerMovement();
+            BulletManagment();
 
             base.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            foreach (Bullet tempBullet in bulletList)
+            {
+                tempBullet.Draw(spriteBatch);
+            }
+
             base.Draw(spriteBatch);
         }
 
         //----------------------------------------------------------------------------------------------------
 
+        void BulletManagment()
+        {
+            Vector2 worldMousePosition = new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Y) + new Vector2(
+                        Math.Max(position.X - (Constants.WindowWidth / 2), 0),
+                        Math.Max(position.Y - (Constants.WindowHeight / 2), 0));
+
+            Vector2 direction = worldMousePosition - position;
+            direction.Normalize();
+
+            if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+            {
+                Bullet tempBullet = new Bullet(position, direction);
+                bulletList.Add(tempBullet);
+            }
+
+            foreach (Bullet tempBullet in bulletList)
+            {
+                tempBullet.Update();
+            }
+        }
+
         void PlayerMovement()
         {
-            if (keyboardState.IsKeyDown(Keys.LeftShift))
+            if (Constants.keyState.IsKeyDown(Keys.LeftShift))
                 sprinting = true;
             else
                 sprinting = false;
@@ -56,14 +83,14 @@ namespace Lights_Out
         {
             Rectangle tempDestination = destinationRectangle;
 
-            if (keyboardState.IsKeyDown(Keys.W) && keyboardState.IsKeyUp(Keys.S))
+            if (Constants.keyState.IsKeyDown(Keys.W) && Constants.keyState.IsKeyUp(Keys.S))
             {
                 if (sprinting)
                     tempDestination.Y -= (int)(movementSpeed * 1.5f);
                 else
                     tempDestination.Y -= (int)movementSpeed;
             }
-            if (keyboardState.IsKeyDown(Keys.S) && keyboardState.IsKeyUp(Keys.W))
+            if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
             {
                 if (sprinting)
                     tempDestination.Y += (int)(movementSpeed * 1.5f);
@@ -78,14 +105,14 @@ namespace Lights_Out
         {
             Rectangle tempDestination = destinationRectangle;
 
-            if (keyboardState.IsKeyDown(Keys.A) && keyboardState.IsKeyUp(Keys.D))
+            if (Constants.keyState.IsKeyDown(Keys.A) && Constants.keyState.IsKeyUp(Keys.D))
             {
                 if (sprinting)
                     tempDestination.X -= (int)(movementSpeed * 1.5f);
                 else
                     tempDestination.X -= (int)movementSpeed;
             }
-            if (keyboardState.IsKeyDown(Keys.D) && keyboardState.IsKeyUp(Keys.A))
+            if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
             {
                 if (sprinting)
                     tempDestination.X += (int)(movementSpeed * 1.5f);
