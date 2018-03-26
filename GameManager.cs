@@ -13,7 +13,7 @@ namespace Lights_Out
     {
         public Player player;
 
-        Camera camera;
+        public static Camera camera;
 
         public GameManager()
         {

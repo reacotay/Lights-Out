@@ -49,9 +49,9 @@ namespace Lights_Out
 
         void BulletManagment()
         {
-            Vector2 worldMousePosition = new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Y) + new Vector2(
-                        Math.Max(position.X - (Constants.WindowWidth / 2), 0),
-                        Math.Max(position.Y - (Constants.WindowHeight / 2), 0));
+            Vector2 worldMousePosition = Constants.mouseState.Position.ToVector2() + new Vector2(
+                GameManager.camera.GetPosition().X - (Constants.WindowWidth / 2),
+                GameManager.camera.GetPosition().Y - (Constants.WindowHeight / 2));
 
             Vector2 direction = worldMousePosition - position;
             direction.Normalize();
