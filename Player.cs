@@ -13,6 +13,8 @@ namespace Lights_Out
     {
         float movementSpeed;
         bool sprinting;
+        Vector2 direction;
+        float angle;
 
         List<Bullet> bulletList;
         List<Bullet> removeList;
@@ -42,7 +44,11 @@ namespace Lights_Out
                 tempBullet.Draw(spriteBatch);
             }
 
-            base.Draw(spriteBatch);
+            //base.Draw(spriteBatch);
+            spriteBatch.Draw(texture, destinationRectangle, new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width/2, texture.Height/2), SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, Constants.mouseState.Position.ToVector2() + new Vector2(
+                GameManager.camera.GetPosition().X - (Constants.WindowWidth / 2)-25,
+                GameManager.camera.GetPosition().Y - (Constants.WindowHeight / 2)-25),Color.White);
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -53,7 +59,7 @@ namespace Lights_Out
                 GameManager.camera.GetPosition().X - (Constants.WindowWidth / 2),
                 GameManager.camera.GetPosition().Y - (Constants.WindowHeight / 2));
 
-            Vector2 direction = worldMousePosition - position;
+            direction = worldMousePosition - position;
             direction.Normalize();
 
             if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
@@ -77,6 +83,7 @@ namespace Lights_Out
 
             PlayerMovementX();
             PlayerMovementY();
+            PlayerAngle();
         }
 
         void PlayerMovementX()
@@ -121,6 +128,11 @@ namespace Lights_Out
             }
 
             position.X = tempDestination.X;
+        }
+
+        void PlayerAngle()
+        {
+            angle = Convert.ToSingle(Math.Atan2(direction.X, -direction.Y));
         }
     }
 }

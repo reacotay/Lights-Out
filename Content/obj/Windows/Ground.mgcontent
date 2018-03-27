@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/Ground.png</SourceFile>
-  <SourceTime>2018-03-26T10:34:07.9522254+02:00</SourceTime>
-  <DestFile>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/bin/Windows/Ground.xnb</DestFile>
-  <DestTime>2018-03-26T10:39:56.4477266+02:00</DestTime>
+  <SourceFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/Ground.png</SourceFile>
+  <SourceTime>2018-03-27T09:18:35.6777157+02:00</SourceTime>
+  <DestFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bin/Windows/Ground.xnb</DestFile>
+  <DestTime>2018-03-27T09:23:26.6881837+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -54,3 +54,6 @@ C:\Users\Susanne\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.pdb
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Player.xnb
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\spriteFont.xnb
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Ground.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Ground.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Player.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\spriteFont.xnb
