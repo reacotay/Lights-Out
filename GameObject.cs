@@ -25,7 +25,7 @@ namespace Lights_Out
         public virtual void Update()
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, Constants.CellSize, Constants.CellSize);
-            centerPosition = new Vector2(position.X+Constants.CellSize, position.Y+Constants.CellSize);
+            centerPosition = new Vector2(position.X+Constants.CellSize / 2, position.Y+Constants.CellSize / 2);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

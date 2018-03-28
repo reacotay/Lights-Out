@@ -24,7 +24,7 @@ namespace Lights_Out
         {
             movementSpeed = 2f;
 
-            texture = ContentManager.Get<Texture2D>("Player");
+            texture = ContentManager.Get<Texture2D>("playerTex");
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
         }
@@ -44,15 +44,15 @@ namespace Lights_Out
                 tempBullet.Draw(spriteBatch);
             }
 
-            //base.Draw(spriteBatch);
-            spriteBatch.Draw(texture, new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.1f, SpriteEffects.None, 0f);
         }
 
         //----------------------------------------------------------------------------------------------------
 
         void BulletManagment()
         {
-            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X-25, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
             direction = worldMousePosition - position;
             direction.Normalize();

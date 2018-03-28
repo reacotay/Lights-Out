@@ -30,10 +30,5 @@ namespace Lights_Out
 
             base.Update();
         }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), Color.White);
-        }
     }
 }
