@@ -31,6 +31,7 @@ namespace Lights_Out
         
         public override void Update()
         {
+            
             PlayerMovement();
             BulletManagment();
 
@@ -62,7 +63,15 @@ namespace Lights_Out
                 Bullet tempBullet = new Bullet(position, direction);
                 bulletList.Add(tempBullet);
             }
-
+            if (Constants.gamePadState.IsConnected)
+            {
+                
+                if (Constants.gamePadState.Triggers.Right >= 0.7f)
+                {
+                    Bullet tempBullet = new Bullet(position, direction);
+                    bulletList.Add(tempBullet);
+                }
+            }
             foreach (Bullet tempBullet in bulletList)
             {
                 tempBullet.Update();
@@ -73,6 +82,12 @@ namespace Lights_Out
         {
             if (Constants.keyState.IsKeyDown(Keys.LeftShift))
                 sprinting = true;
+
+            else if (Constants.gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
+            {
+                sprinting = true;
+            }
+            
             else
                 sprinting = false;
 
@@ -81,7 +96,7 @@ namespace Lights_Out
             PlayerAngle();
         }
 
-        void PlayerMovementX()
+        void PlayerMovementY()
         {
             Rectangle tempDestination = destinationRectangle;
 
@@ -100,10 +115,12 @@ namespace Lights_Out
                     tempDestination.Y += (int)movementSpeed;
             }
 
+            //if ()
+            tempDestination.Y -= (int)(movementSpeed * 5 * Constants.gamePadState.ThumbSticks.Left.Y);
             position.Y = tempDestination.Y;
         }
 
-        void PlayerMovementY()
+        void PlayerMovementX()
         {
             Rectangle tempDestination = destinationRectangle;
 
@@ -121,7 +138,7 @@ namespace Lights_Out
                 else
                     tempDestination.X += (int)movementSpeed;
             }
-
+            tempDestination.X += (int)(movementSpeed * 5 * Constants.gamePadState.ThumbSticks.Left.X);
             position.X = tempDestination.X;
         }
 
