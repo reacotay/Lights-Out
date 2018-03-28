@@ -88,9 +88,10 @@ namespace Lights_Out
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            Vector2 worldMousePosition = Constants.mouseState.Position.ToVector2() + new Vector2(
-                GameManager.camera.GetPosition().X - (Constants.WindowWidth / 2),
-                GameManager.camera.GetPosition().Y - (Constants.WindowHeight / 2));
+
+            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+
+
             Window.Title = "" + worldMousePosition;
             switch (currentState)
             {

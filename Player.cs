@@ -45,19 +45,14 @@ namespace Lights_Out
             }
 
             //base.Draw(spriteBatch);
-            spriteBatch.Draw(texture, destinationRectangle, new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width/2, texture.Height/2), SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, Constants.mouseState.Position.ToVector2() + new Vector2(
-                GameManager.camera.GetPosition().X - (Constants.WindowWidth / 2)-25,
-                GameManager.camera.GetPosition().Y - (Constants.WindowHeight / 2)-25),Color.White);
+            spriteBatch.Draw(texture, new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
         }
 
         //----------------------------------------------------------------------------------------------------
 
         void BulletManagment()
         {
-            Vector2 worldMousePosition = Constants.mouseState.Position.ToVector2() + new Vector2(
-                GameManager.camera.GetPosition().X - (Constants.WindowWidth / 2),
-                GameManager.camera.GetPosition().Y - (Constants.WindowHeight / 2));
+            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X-25, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
             direction = worldMousePosition - position;
             direction.Normalize();

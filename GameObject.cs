@@ -14,6 +14,7 @@ namespace Lights_Out
         public Texture2D texture;
         public Vector2 position;
         public Rectangle destinationRectangle;
+        public Vector2 centerPosition;
 
         public GameObject(Vector2 position)
         {
@@ -24,6 +25,7 @@ namespace Lights_Out
         public virtual void Update()
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, Constants.CellSize, Constants.CellSize);
+            centerPosition = new Vector2(position.X+Constants.CellSize, position.Y+Constants.CellSize);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
