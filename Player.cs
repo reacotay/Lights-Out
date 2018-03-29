@@ -53,25 +53,40 @@ namespace Lights_Out
 
         void BulletManagment()
         {
-            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
-            direction = worldMousePosition - position;
-            direction.Normalize();
 
-            if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
-            {
-                Bullet tempBullet = new Bullet(position, direction);
-                bulletList.Add(tempBullet);
-            }
             if (Constants.gamePadState.IsConnected)
             {
-                
+
+
+                if (Constants.tempDirection != Vector2.Zero)
+                {
+                    direction = Constants.tempDirection;
+                    direction.Normalize();
+                }
+
+
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
                     Bullet tempBullet = new Bullet(position, direction);
                     bulletList.Add(tempBullet);
                 }
             }
+
+            else
+            {
+                Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+
+                direction = worldMousePosition - position;
+                direction.Normalize();
+                if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+                {
+                    Bullet tempBullet = new Bullet(position, direction);
+                    bulletList.Add(tempBullet);
+                }
+            }
+
+
             foreach (Bullet tempBullet in bulletList)
             {
                 tempBullet.Update();
