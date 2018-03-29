@@ -24,7 +24,7 @@ namespace Lights_Out
         public static KeyboardState keyState, oldKeyState = Keyboard.GetState();
         public static MouseState mouseState, oldMouseState = Mouse.GetState();
 
-        public static GamePadState gamePadState, oldGamePadState = GamePad.GetState(PlayerIndex.One);
+        public static GamePadState gamePadState, oldGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
         public static void LoadContent()
         {
             WindowWidth = 800;
@@ -41,7 +41,7 @@ namespace Lights_Out
         public static void UpdateKeyMouseReader()
         {
             oldGamePadState = gamePadState;
-            gamePadState = GamePad.GetState(PlayerIndex.One);
+            gamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
 
             oldKeyState = keyState;
             keyState = Keyboard.GetState();
