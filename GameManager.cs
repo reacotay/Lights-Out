@@ -23,9 +23,9 @@ namespace Lights_Out
             camera = new Camera(view);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            player.Update();
+            player.Update(gameTime);
 
             camera.SetPosition(player.position);
         }

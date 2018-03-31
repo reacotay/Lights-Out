@@ -24,8 +24,10 @@ namespace Lights_Out
         public static Vector2 tempDirection;
         public static KeyboardState keyState, oldKeyState = Keyboard.GetState();
         public static MouseState mouseState, oldMouseState = Mouse.GetState();
-
         public static GamePadState gamePadState, oldGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
+
+
+
         public static void LoadContent()
         {
             WindowWidth = 800;

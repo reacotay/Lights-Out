@@ -11,6 +11,8 @@ namespace Lights_Out
 {
     class Player : GameObject
     {
+        private static readonly TimeSpan BulletInterval = TimeSpan.FromSeconds(1);
+        TimeSpan? lastBulletShot;
         float movementSpeed;
         bool sprinting;
         Vector2 direction;
@@ -29,13 +31,13 @@ namespace Lights_Out
             removeList = new List<Bullet>();
         }
         
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             
             PlayerMovement();
-            BulletManagment();
+            BulletManagment(gameTime);
 
-            base.Update();
+            base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -51,7 +53,7 @@ namespace Lights_Out
 
         //----------------------------------------------------------------------------------------------------
 
-        void BulletManagment()
+        void BulletManagment(GameTime gameTime)
         {
 
 
@@ -68,11 +70,15 @@ namespace Lights_Out
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
-                    Bullet tempBullet = new Bullet(position, direction);
-                    bulletList.Add(tempBullet);
+                    if (lastBulletShot == null || gameTime.ElapsedGameTime - (TimeSpan)lastBulletShot >= BulletInterval)
+                    {
+                        Bullet tempBullet = new Bullet(position, direction);
+                        bulletList.Add(tempBullet);
+                        
+                    }
                 }
             }
-
+            
             else
             {
                 Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
@@ -89,7 +95,7 @@ namespace Lights_Out
 
             foreach (Bullet tempBullet in bulletList)
             {
-                tempBullet.Update();
+                tempBullet.Update(gameTime);
             }
         }
 
