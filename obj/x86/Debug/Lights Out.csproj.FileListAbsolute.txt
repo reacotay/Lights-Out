@@ -1,9 +1,14 @@
-C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.csprojResolveAssemblyReference.cache
-C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.csproj.CoreCompileInputs.cache
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\bulletTex.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\chaserTex.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Ground.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Player.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\playerTex.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\spriteFont.xnb
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.exe.config
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.exe
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.pdb
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Penumbra.dll
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.MediaFoundation.dll
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.dll
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XAudio2.dll
@@ -13,6 +18,7 @@ C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct2D1.
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XInput.dll
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D9.dll
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Penumbra.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.MediaFoundation.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XAudio2.xml
@@ -21,11 +27,14 @@ C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D11
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct2D1.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.XInput.xml
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.csproj.CoreCompileInputs.cache
 C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.exe
 C:\Users\Patrik\Documents\GitHub\Lights-Out\obj\x86\Debug\Lights Out.pdb
-C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Lights Out.exe.config
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.csprojResolveAssemblyReference.cache
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.csproj.CoreCompileInputs.cache
 C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.exe
 C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.pdb
+<<<<<<< HEAD
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.exe.config
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.exe
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Lights Out.pdb
@@ -67,3 +76,35 @@ C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\chaserTex
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\playerTex.xnb
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Penumbra.dll
 C:\Users\Susanne\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Penumbra.xml
+=======
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Content\bulletTex.xnb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Content\chaserTex.xnb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Content\Ground.xnb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Content\Player.xnb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Content\playerTex.xnb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Content\spriteFont.xnb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Lights Out.exe.config
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Lights Out.exe
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\Lights Out.pdb
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\MonoGame.Penumbra.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\MonoGame.Penumbra.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Reacotay\Documents\Visual Studio 2015\Projects\Lights Out\Lights Out\obj\x86\Debug\Lights Out.csproj.CopyComplete
+>>>>>>> Controller-Branch

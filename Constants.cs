@@ -24,9 +24,11 @@ namespace Lights_Out
         public static Rectangle GameWindow { get; private set; }
         public static Random Randomizer { get; private set; }
 
+        public static Vector2 tempDirection;
         public static KeyboardState keyState, oldKeyState = Keyboard.GetState();
         public static MouseState mouseState, oldMouseState = Mouse.GetState();
 
+        public static GamePadState gamePadState, oldGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
         public static void LoadContent()
         {
             WindowWidth = 800;
@@ -45,6 +47,11 @@ namespace Lights_Out
 
         public static void UpdateKeyMouseReader()
         {
+            ControllerAngle();
+
+            oldGamePadState = gamePadState;
+            gamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
+
             oldKeyState = keyState;
             keyState = Keyboard.GetState();
             oldMouseState = mouseState;
@@ -66,6 +73,12 @@ namespace Lights_Out
         public static bool RightClick()
         {
             return mouseState.RightButton == ButtonState.Pressed && oldMouseState.RightButton == ButtonState.Released;
+        }
+
+        public static void ControllerAngle()
+        {
+            tempDirection.X = gamePadState.ThumbSticks.Right.X;
+            tempDirection.Y = -gamePadState.ThumbSticks.Right.Y;
         }
     }
 }

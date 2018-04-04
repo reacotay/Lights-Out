@@ -25,10 +25,10 @@ namespace Lights_Out
         public Light view;
 
         public Player(Vector2 position)
-            : base (position)
+            : base(position)
         {
             movementSpeed = 2f;
-            
+            direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
 
             bulletList = new List<Bullet>();
@@ -40,9 +40,10 @@ namespace Lights_Out
             view.Scale = new Vector2(1600, 1600);
             view.Intensity = 2f;
         }
-        
+
         public override void Update()
         {
+
             PlayerMovement();
             BulletManagment();
 
@@ -68,16 +69,37 @@ namespace Lights_Out
 
         void BulletManagment()
         {
-            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
-            direction = worldMousePosition - position;
-            direction.Normalize();
 
-            if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+            if (Constants.gamePadState.IsConnected)
             {
-                Bullet tempBullet = new Bullet(position, direction);
-                bulletList.Add(tempBullet);
+
+                if (Constants.tempDirection != Vector2.Zero)
+                {
+                    direction = Constants.tempDirection;
+                    direction.Normalize();
+                }
+
+                if (Constants.gamePadState.Triggers.Right >= 0.7f)
+                {
+                    Bullet tempBullet = new Bullet(position, direction);
+                    bulletList.Add(tempBullet);
+                }
             }
+
+            else
+            {
+                Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+
+                direction = worldMousePosition - position;
+                direction.Normalize();
+                if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+                {
+                    Bullet tempBullet = new Bullet(position, direction);
+                    bulletList.Add(tempBullet);
+                }
+            }
+
 
             foreach (Bullet tempBullet in bulletList)
             {
@@ -102,45 +124,60 @@ namespace Lights_Out
             PlayerAngle();
         }
 
-        void PlayerMovementX()
-        {
-            Rectangle tempDestination = destinationRectangle;
-
-            if (Constants.keyState.IsKeyDown(Keys.W) && Constants.keyState.IsKeyUp(Keys.S))
-            {
-                if (sprinting)
-                    tempDestination.Y -= (int)(movementSpeed * 1.5f);
-                else
-                    tempDestination.Y -= (int)movementSpeed;
-            }
-            if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
-            {
-                if (sprinting)
-                    tempDestination.Y += (int)(movementSpeed * 1.5f);
-                else
-                    tempDestination.Y += (int)movementSpeed;
-            }
-
-            position.Y = tempDestination.Y;
-        }
-
         void PlayerMovementY()
         {
             Rectangle tempDestination = destinationRectangle;
 
-            if (Constants.keyState.IsKeyDown(Keys.A) && Constants.keyState.IsKeyUp(Keys.D))
+            if (Constants.gamePadState.IsConnected)
             {
-                if (sprinting)
-                    tempDestination.X -= (int)(movementSpeed * 1.5f);
-                else
-                    tempDestination.X -= (int)movementSpeed;
+                tempDestination.Y -= (int)(Constants.gamePadState.ThumbSticks.Left.Y * movementSpeed);
             }
-            if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
+            else
             {
-                if (sprinting)
-                    tempDestination.X += (int)(movementSpeed * 1.5f);
-                else
-                    tempDestination.X += (int)movementSpeed;
+                if (Constants.keyState.IsKeyDown(Keys.W) && Constants.keyState.IsKeyUp(Keys.S))
+                {
+                    if (sprinting)
+                        tempDestination.Y -= (int)(movementSpeed * 1.5f);
+                    else
+                        tempDestination.Y -= (int)movementSpeed;
+                }
+                if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
+                {
+                    if (sprinting)
+                        tempDestination.Y += (int)(movementSpeed * 1.5f);
+                    else
+                        tempDestination.Y += (int)movementSpeed;
+                }
+            }
+
+
+            position.Y = tempDestination.Y;
+        }
+
+        void PlayerMovementX()
+        {
+            Rectangle tempDestination = destinationRectangle;
+
+            if (Constants.gamePadState.IsConnected)
+            {
+                tempDestination.X += (int)(Constants.gamePadState.ThumbSticks.Left.X * movementSpeed);
+            }
+            else
+            {
+                if (Constants.keyState.IsKeyDown(Keys.A) && Constants.keyState.IsKeyUp(Keys.D))
+                {
+                    if (sprinting)
+                        tempDestination.X -= (int)(movementSpeed * 1.5f);
+                    else
+                        tempDestination.X -= (int)movementSpeed;
+                }
+                if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
+                {
+                    if (sprinting)
+                        tempDestination.X += (int)(movementSpeed * 1.5f);
+                    else
+                        tempDestination.X += (int)movementSpeed;
+                }
             }
 
             position.X = tempDestination.X;
