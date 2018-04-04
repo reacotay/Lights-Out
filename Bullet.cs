@@ -30,7 +30,10 @@ namespace Lights_Out
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> parent of 415eadf... Fire-rate v01
+=======
+>>>>>>> master
             base.Update();
         }
     }

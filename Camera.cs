@@ -23,22 +23,9 @@ namespace Lights_Out
         {
             this.position = position;
 
-
-
-            if (Constants.gamePadState.IsConnected)
-            {
-                transform = Matrix.CreateTranslation(-position.X + view.Width / 2 - Constants.tempDirection.X * 200,
-                    -position.Y + view.Width / 2 - Constants.tempDirection.Y * 150, 0);
-            }
-            else
-            {
-                transform = Matrix.CreateTranslation
-                    (-position.X + view.Width / 2 - (Constants.mouseState.Position.X / 2) + 200,
-                    -position.Y + view.Height / 2 - (Constants.mouseState.Position.Y / 2) + 200, 0);
-            }
-
-
-            
+            transform = Matrix.CreateTranslation
+                (-position.X + view.Width / 2 - (Constants.mouseState.Position.X / 2) + 200,
+                -position.Y + view.Height / 2 - (Constants.mouseState.Position.Y / 2) + 200, 0);
         }
 
         public Vector2 GetPosition()

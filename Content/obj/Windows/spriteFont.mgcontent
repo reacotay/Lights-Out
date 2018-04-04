@@ -3,7 +3,11 @@
   <SourceFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/spriteFont.spritefont</SourceFile>
   <SourceTime>2018-03-21T13:07:24.0835678+01:00</SourceTime>
   <DestFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bin/Windows/spriteFont.xnb</DestFile>
+<<<<<<< HEAD
   <DestTime>2018-04-04T09:56:36.1612819+02:00</DestTime>
+=======
+  <DestTime>2018-03-27T09:23:26.2506612+02:00</DestTime>
+>>>>>>> master
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
