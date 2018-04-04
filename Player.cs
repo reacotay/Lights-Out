@@ -40,10 +40,14 @@ namespace Lights_Out
             
             PlayerMovement();
             BulletManagment();
+<<<<<<< HEAD
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
             BulletManagment();
+=======
+
+>>>>>>> parent of 415eadf... Fire-rate v01
             base.Update();
         }
 
@@ -80,6 +84,22 @@ namespace Lights_Out
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
+<<<<<<< HEAD
+=======
+                    Bullet tempBullet = new Bullet(position, direction);
+                    bulletList.Add(tempBullet);
+                }
+            }
+
+            else
+            {
+                Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+
+                direction = worldMousePosition - position;
+                direction.Normalize();
+                if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+                {
+>>>>>>> parent of 415eadf... Fire-rate v01
                     Bullet tempBullet = new Bullet(position, direction);
                     bulletList.Add(tempBullet);
                 }
