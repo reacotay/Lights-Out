@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/bulletTex.png</SourceFile>
-  <SourceTime>2018-04-04T09:09:42.691185+02:00</SourceTime>
-  <DestFile>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/bin/Windows/bulletTex.xnb</DestFile>
-  <DestTime>2018-04-04T09:28:16.0317222+02:00</DestTime>
+  <SourceFile>C:/Users/Reacotay/Documents/GitHub/Lights-Out/Content/bulletTex.png</SourceFile>
+  <SourceTime>2018-04-04T16:03:39.3376518+02:00</SourceTime>
+  <DestFile>C:/Users/Reacotay/Documents/GitHub/Lights-Out/Content/bin/Windows/bulletTex.xnb</DestFile>
+  <DestTime>2018-04-04T16:04:49.6998186+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
