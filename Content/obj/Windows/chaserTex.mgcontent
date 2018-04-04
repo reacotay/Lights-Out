@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/chaserTex.png</SourceFile>
-  <SourceTime>2018-03-28T10:53:29.6974004+02:00</SourceTime>
-  <DestFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bin/Windows/chaserTex.xnb</DestFile>
-  <DestTime>2018-03-28T14:04:22.5154303+02:00</DestTime>
+  <SourceFile>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/chaserTex.png</SourceFile>
+  <SourceTime>2018-04-04T10:55:24.638813+02:00</SourceTime>
+  <DestFile>C:/Users/Susanne/Documents/GitHub/Lights-Out/Content/bin/Windows/chaserTex.xnb</DestFile>
+  <DestTime>2018-04-04T10:55:43.0294812+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

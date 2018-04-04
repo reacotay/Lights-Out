@@ -12,36 +12,44 @@ namespace Lights_Out
 {
     class Player : GameObject
     {
+        float angle;
         float movementSpeed;
         bool sprinting;
+
         Vector2 direction;
-        float angle;
+
+        public List<Bullet> bulletList;
+        public List<Bullet> removeList;
+
         public Light viscinity;
         public Light view;
-
-        List<Bullet> bulletList;
-        List<Bullet> removeList;
 
         public Player(Vector2 position)
             : base (position)
         {
             movementSpeed = 2f;
-            viscinity = new PointLight();
-            view = new Spotlight();
-            viscinity.Scale = new Vector2(400,400);
-            view.Scale = new Vector2(700, 800);
+            
             texture = ContentManager.Get<Texture2D>("playerTex");
+
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
+
+            viscinity = new PointLight();
+            view = new Spotlight();
+            viscinity.Scale = new Vector2(800, 800);
+            view.Scale = new Vector2(1600, 1600);
+            view.Intensity = 2f;
         }
         
         public override void Update()
         {
             PlayerMovement();
             BulletManagment();
+
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
+
             base.Update();
         }
 
@@ -74,6 +82,11 @@ namespace Lights_Out
             foreach (Bullet tempBullet in bulletList)
             {
                 tempBullet.Update();
+            }
+
+            foreach (Bullet tempBullet in removeList)
+            {
+                bulletList.Remove(tempBullet);
             }
         }
 

@@ -14,6 +14,9 @@ namespace Lights_Out
         public static int WindowWidth { get; private set; }
         public static int WindowHeight { get; private set; }
 
+        public static int PlatfromWidth { get; private set; }
+        public static int PlatformHeight { get; private set; }
+
         public static int CellAmountX { get; private set; }
         public static int CellAmountY { get; private set; }
         public static int CellSize { get; private set; }
@@ -28,6 +31,9 @@ namespace Lights_Out
         {
             WindowWidth = 800;
             WindowHeight = 800;
+
+            PlatfromWidth = 1600;
+            PlatformHeight = 1600;
 
             CellAmountX = 16;
             CellAmountY = 16;

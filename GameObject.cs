@@ -13,8 +13,8 @@ namespace Lights_Out
     {
         public Texture2D texture;
         public Vector2 position;
-        public Rectangle destinationRectangle;
         public Vector2 centerPosition;
+        public Rectangle destinationRectangle;
 
         public GameObject(Vector2 position)
         {

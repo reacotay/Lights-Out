@@ -50,17 +50,17 @@ namespace Lights_Out
         }
 
         protected override void LoadContent()
-        {
-            penumbra = new PenumbraComponent(this);
-            
+        {   
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             spriteFont = Content.Load<SpriteFont>("spriteFont");
 
             contentManager = new ContentManager(this);
+            penumbra = new PenumbraComponent(this);
+
             gameManager = new GameManager();
 
-            currentState = GameState.MainGame;
+            currentState = GameState.MainMenu;
         }
 
         protected override void UnloadContent()
@@ -78,6 +78,10 @@ namespace Lights_Out
             switch (currentState)
             {
                 case GameState.MainMenu:
+                    if (Constants.keyState.IsKeyDown(Keys.Enter))
+                    {
+                        currentState = GameState.MainGame;
+                    }
                     break;
 
                 case GameState.MainGame:
@@ -95,15 +99,14 @@ namespace Lights_Out
         {
             GraphicsDevice.Clear(Color.Black);
 
-            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
-
-            Window.Title = "" + worldMousePosition;
+            //Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+            //Window.Title = "" + worldMousePosition;
 
             switch (currentState)
             {
                 case GameState.MainMenu:
                     spriteBatch.Begin();
-
+                    spriteBatch.DrawString(spriteFont, "Press Enter to start the game!", Vector2.Zero, Color.White);
                     spriteBatch.End();
                     break;
 
