@@ -58,3 +58,7 @@ C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Ground.xnb
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\Player.xnb
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\spriteFont.xnb
 C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\playerTex.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Penumbra.dll
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\MonoGame.Penumbra.xml
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\bulletTex.xnb
+C:\Users\Patrik\Documents\GitHub\Lights-Out\bin\Windows\Debug\Content\chaserTex.xnb

@@ -20,7 +20,7 @@ namespace Lights_Out
         {
             bulletSpeed = 5;
 
-            texture = ContentManager.Get<Texture2D>("Player");
+            texture = ContentManager.Get<Texture2D>("bulletTex");
             this.direction = direction;
         }
 

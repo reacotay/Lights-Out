@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Penumbra;
 
 namespace Lights_Out
 {
@@ -17,6 +18,8 @@ namespace Lights_Out
 
         ContentManager contentManager;
         GameManager gameManager;
+
+        static public PenumbraComponent penumbra;
 
         enum GameState
         {
@@ -30,6 +33,7 @@ namespace Lights_Out
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
         }
 
         protected override void Initialize()
@@ -47,6 +51,8 @@ namespace Lights_Out
 
         protected override void LoadContent()
         {
+            penumbra = new PenumbraComponent(this);
+            
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             spriteFont = Content.Load<SpriteFont>("spriteFont");
@@ -91,8 +97,8 @@ namespace Lights_Out
 
             Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
-
             Window.Title = "" + worldMousePosition;
+
             switch (currentState)
             {
                 case GameState.MainMenu:
@@ -102,7 +108,7 @@ namespace Lights_Out
                     break;
 
                 case GameState.MainGame:
-                    gameManager.Draw(spriteBatch);
+                    gameManager.Draw(spriteBatch, gameTime);
                     break;
 
                 case GameState.GameOver:

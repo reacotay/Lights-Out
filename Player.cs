@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Penumbra;
 
 namespace Lights_Out
 {
@@ -15,6 +16,8 @@ namespace Lights_Out
         bool sprinting;
         Vector2 direction;
         float angle;
+        public Light viscinity;
+        public Light view;
 
         List<Bullet> bulletList;
         List<Bullet> removeList;
@@ -23,7 +26,10 @@ namespace Lights_Out
             : base (position)
         {
             movementSpeed = 2f;
-
+            viscinity = new PointLight();
+            view = new Spotlight();
+            viscinity.Scale = new Vector2(400,400);
+            view.Scale = new Vector2(700, 800);
             texture = ContentManager.Get<Texture2D>("playerTex");
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
@@ -33,7 +39,9 @@ namespace Lights_Out
         {
             PlayerMovement();
             BulletManagment();
-
+            viscinity.Position = position;
+            view.Position = position;
+            view.Rotation = angle - MathHelper.ToRadians(90f);
             base.Update();
         }
 
