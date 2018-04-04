@@ -40,6 +40,7 @@ namespace Lights_Out
             
             PlayerMovement();
 <<<<<<< HEAD
+<<<<<<< HEAD
             BulletManagment();
             viscinity.Position = position;
             view.Position = position;
@@ -49,6 +50,11 @@ namespace Lights_Out
 
             base.Update(gameTime);
 >>>>>>> 415eadf46990c34b9d0c21422ce078da66824c46
+=======
+            BulletManagment();
+
+            base.Update();
+>>>>>>> parent of 415eadf... Fire-rate v01
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -71,7 +77,29 @@ namespace Lights_Out
             direction = worldMousePosition - position;
             direction.Normalize();
 
+<<<<<<< HEAD
             if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+=======
+            if (Constants.gamePadState.IsConnected)
+            {
+
+
+                if (Constants.tempDirection != Vector2.Zero)
+                {
+                    direction = Constants.tempDirection;
+                    direction.Normalize();
+                }
+
+
+                if (Constants.gamePadState.Triggers.Right >= 0.7f)
+                {
+                    Bullet tempBullet = new Bullet(position, direction);
+                    bulletList.Add(tempBullet);
+                }
+            }
+
+            else
+>>>>>>> parent of 415eadf... Fire-rate v01
             {
                 Bullet tempBullet = new Bullet(position, direction);
                 bulletList.Add(tempBullet);

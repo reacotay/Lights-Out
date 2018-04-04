@@ -24,9 +24,17 @@ namespace Lights_Out
             this.direction = direction;
         }
 
+<<<<<<< HEAD
         {
             position += direction * bulletSpeed;
 
+=======
+        public override void Update()
+        {
+            position += direction * bulletSpeed;
+
+            base.Update();
+>>>>>>> parent of 415eadf... Fire-rate v01
         }
     }
 }
