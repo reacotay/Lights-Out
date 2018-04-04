@@ -81,7 +81,7 @@ namespace Lights_Out
                     break;
 
                 case GameState.MainGame:
-                    gameManager.Update(gameTime);
+                    gameManager.Update();
                     break;
 
                 case GameState.GameOver:

@@ -32,9 +32,9 @@ namespace Lights_Out
             Game1.penumbra.Initialize();
         }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
-            player.Update(gameTime);
+            player.Update();
 
             camera.SetPosition(player.position);
         }

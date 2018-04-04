@@ -12,8 +12,6 @@ namespace Lights_Out
 {
     class Player : GameObject
     {
-        private static readonly TimeSpan BulletInterval = TimeSpan.FromSeconds(1);
-        TimeSpan? lastBulletShot;
         float movementSpeed;
         bool sprinting;
         Vector2 direction;
@@ -37,21 +35,14 @@ namespace Lights_Out
             removeList = new List<Bullet>();
         }
         
-        public override void Update(GameTime gameTime)
+        public override void Update()
         {
-            
             PlayerMovement();
-<<<<<<< HEAD
             BulletManagment();
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
             base.Update();
-=======
-            BulletManagment(gameTime);
-
-            base.Update(gameTime);
->>>>>>> Controller-Branch
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -67,49 +58,22 @@ namespace Lights_Out
 
         //----------------------------------------------------------------------------------------------------
 
-        void BulletManagment(GameTime gameTime)
+        void BulletManagment()
         {
+            Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
+            direction = worldMousePosition - position;
+            direction.Normalize();
 
-            if (Constants.gamePadState.IsConnected)
+            if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
             {
-
-
-                if (Constants.tempDirection != Vector2.Zero)
-                {
-                    direction = Constants.tempDirection;
-                    direction.Normalize();
-                }
-
-
-                if (Constants.gamePadState.Triggers.Right >= 0.7f)
-                {
-                    if (lastBulletShot == null || gameTime.ElapsedGameTime - (TimeSpan)lastBulletShot >= BulletInterval)
-                    {
-                        Bullet tempBullet = new Bullet(position, direction);
-                        bulletList.Add(tempBullet);
-                        
-                    }
-                }
+                Bullet tempBullet = new Bullet(position, direction);
+                bulletList.Add(tempBullet);
             }
-            
-            else
-            {
-                Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
-
-                direction = worldMousePosition - position;
-                direction.Normalize();
-                if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
-                {
-                    Bullet tempBullet = new Bullet(position, direction);
-                    bulletList.Add(tempBullet);
-                }
-            }
-
 
             foreach (Bullet tempBullet in bulletList)
             {
-                tempBullet.Update(gameTime);
+                tempBullet.Update();
             }
         }
 
@@ -117,12 +81,6 @@ namespace Lights_Out
         {
             if (Constants.keyState.IsKeyDown(Keys.LeftShift))
                 sprinting = true;
-
-            else if (Constants.gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
-            {
-                sprinting = true;
-            }
-            
             else
                 sprinting = false;
 
@@ -131,7 +89,7 @@ namespace Lights_Out
             PlayerAngle();
         }
 
-        void PlayerMovementY()
+        void PlayerMovementX()
         {
             Rectangle tempDestination = destinationRectangle;
 
@@ -150,12 +108,10 @@ namespace Lights_Out
                     tempDestination.Y += (int)movementSpeed;
             }
 
-            //if ()
-            tempDestination.Y -= (int)(movementSpeed * 5 * Constants.gamePadState.ThumbSticks.Left.Y);
             position.Y = tempDestination.Y;
         }
 
-        void PlayerMovementX()
+        void PlayerMovementY()
         {
             Rectangle tempDestination = destinationRectangle;
 
@@ -173,7 +129,7 @@ namespace Lights_Out
                 else
                     tempDestination.X += (int)movementSpeed;
             }
-            tempDestination.X += (int)(movementSpeed * 5 * Constants.gamePadState.ThumbSticks.Left.X);
+
             position.X = tempDestination.X;
         }
 

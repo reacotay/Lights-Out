@@ -22,7 +22,7 @@ namespace Lights_Out
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, Constants.CellSize, Constants.CellSize);
         }
 
-        public virtual void Update(GameTime gameTime)
+        public virtual void Update()
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, Constants.CellSize, Constants.CellSize);
             centerPosition = new Vector2(position.X+Constants.CellSize / 2, position.Y+Constants.CellSize / 2);
