@@ -37,12 +37,18 @@ namespace Lights_Out
         
         public override void Update()
         {
+            
             PlayerMovement();
+<<<<<<< HEAD
             BulletManagment();
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
             base.Update();
+=======
+
+            base.Update(gameTime);
+>>>>>>> 415eadf46990c34b9d0c21422ce078da66824c46
         }
 
         public override void Draw(SpriteBatch spriteBatch)

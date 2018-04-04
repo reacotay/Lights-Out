@@ -24,11 +24,9 @@ namespace Lights_Out
             this.direction = direction;
         }
 
-        public override void Update()
         {
             position += direction * bulletSpeed;
 
-            base.Update();
         }
     }
 }

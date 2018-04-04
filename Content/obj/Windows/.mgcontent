@@ -4,11 +4,14 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+<<<<<<< HEAD
     <File>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/Player.png</File>
     <File>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/spriteFont.spritefont</File>
     <File>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/Ground.png</File>
     <File>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/playerTex.png</File>
     <File>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bulletTex.png</File>
     <File>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/chaserTex.png</File>
+=======
+>>>>>>> 415eadf46990c34b9d0c21422ce078da66824c46
   </SourceFiles>
 </SourceFileCollection>
