@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Reacotay/Documents/Visual Studio 2015/Projects/Lights Out/Lights Out/Content/spriteFont.spritefont</SourceFile>
-  <SourceTime>2018-03-28T12:29:00.181611+02:00</SourceTime>
-  <DestFile>C:/Users/Reacotay/Documents/Visual Studio 2015/Projects/Lights Out/Lights Out/Content/bin/Windows/spriteFont.xnb</DestFile>
-  <DestTime>2018-03-28T12:31:54.9903083+02:00</DestTime>
+  <SourceFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/spriteFont.spritefont</SourceFile>
+  <SourceTime>2018-03-21T13:07:24.0835678+01:00</SourceTime>
+  <DestFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bin/Windows/spriteFont.xnb</DestFile>
+  <DestTime>2018-04-04T09:56:36.1612819+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
