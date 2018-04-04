@@ -3,11 +3,7 @@
   <SourceFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/Player.png</SourceFile>
   <SourceTime>2018-03-27T18:19:25.2598181+02:00</SourceTime>
   <DestFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bin/Windows/Player.xnb</DestFile>
-<<<<<<< HEAD
   <DestTime>2018-04-04T09:56:35.8552033+02:00</DestTime>
-=======
-  <DestTime>2018-03-27T18:19:33.9076965+02:00</DestTime>
->>>>>>> master
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -3,11 +3,7 @@
   <SourceFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/Ground.png</SourceFile>
   <SourceTime>2018-03-28T10:39:50.7202002+02:00</SourceTime>
   <DestFile>C:/Users/Patrik/Documents/GitHub/Lights-Out/Content/bin/Windows/Ground.xnb</DestFile>
-<<<<<<< HEAD
   <DestTime>2018-04-04T09:56:36.5452868+02:00</DestTime>
-=======
-  <DestTime>2018-03-28T10:39:51.7653481+02:00</DestTime>
->>>>>>> master
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

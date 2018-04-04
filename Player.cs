@@ -37,9 +37,9 @@ namespace Lights_Out
         
         public override void Update()
         {
+            
             PlayerMovement();
             BulletManagment();
-<<<<<<< HEAD
 <<<<<<< HEAD
             viscinity.Position = position;
             view.Position = position;
@@ -48,11 +48,6 @@ namespace Lights_Out
 =======
 
 >>>>>>> parent of 415eadf... Fire-rate v01
-=======
-            viscinity.Position = position;
-            view.Position = position;
-            view.Rotation = angle - MathHelper.ToRadians(90f);
->>>>>>> master
             base.Update();
         }
 
@@ -76,7 +71,6 @@ namespace Lights_Out
             direction = worldMousePosition - position;
             direction.Normalize();
 
-<<<<<<< HEAD
             if (Constants.gamePadState.IsConnected)
             {
 
@@ -117,14 +111,6 @@ namespace Lights_Out
                 bulletList.Add(tempBullet);
             }
 
-=======
-            if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
-            {
-                Bullet tempBullet = new Bullet(position, direction);
-                bulletList.Add(tempBullet);
-            }
-
->>>>>>> master
             foreach (Bullet tempBullet in bulletList)
             {
                 tempBullet.Update();
