@@ -20,7 +20,7 @@ namespace LightsOut2
         public static int CellAmountX { get; private set; }
         public static int CellAmountY { get; private set; }
         public static int CellSize { get; private set; }
-
+        public static int overheat { get; set; }
         public static Rectangle GameWindow { get; private set; }
         public static Random Randomizer { get; private set; }
 
