@@ -81,7 +81,7 @@ namespace LightsOut2
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
-                    if (fireRate == 0)
+                    if (fireRate <= 0)
                     {
                         Bullet tempBullet = new Bullet(position, direction);
                         bulletList.Add(tempBullet);
@@ -90,7 +90,7 @@ namespace LightsOut2
                 }
             }
 
-            else if (!Constants.gamePadState.IsConnected)
+            else
             {
                 Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
@@ -98,7 +98,7 @@ namespace LightsOut2
                 direction.Normalize();
                 if (Constants.mouseState.LeftButton == ButtonState.Pressed)
                 {
-                    if (fireRate == 0)
+                    if (fireRate <= 0)
                     {
                         Bullet tempBullet = new Bullet(position, direction);
                         bulletList.Add(tempBullet);
