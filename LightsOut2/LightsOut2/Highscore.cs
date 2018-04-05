@@ -14,8 +14,10 @@ namespace LightsOut2
     static class Highscore
     {
         static string[,] Scores { get; set; } = new string[2, 9];
+        public static int Index { get; private set; }
         //static string file;
         static StreamReader sr;
+        static StreamWriter sw;
 
         static void GetScore()
         {
@@ -37,9 +39,14 @@ namespace LightsOut2
         }
         static void Record()
         {
-            //Write Scores to file. ezpz
+            sw = new StreamWriter("Content/Highscore.txt");
+            for (int y = 1; y < 8; y++)
+            {
+                sw.WriteLine(Scores[0, y]+" "+ Scores[1, y]);
+            }
+            sr.Close();
         }
-        static void CheckScore(int newScore)
+        public static bool CheckScore(int newScore)
         {
             GetScore();
             for(int y = 1; y < 8; y++)
@@ -47,17 +54,11 @@ namespace LightsOut2
                 if(Convert.ToInt32(Scores[1,y]) < newScore)
                 {
                     Scores[1, y] = newScore.ToString();
-                    string name = NameEntry();
-                    Scores[0, y] = name;
-                    Record();
+                    Index = y;
+                    return true;
                 }
             }
-        }
-        static string NameEntry()
-        {
-            string name = "";
-
-            return name;
+            return false;
         }
         public static void Draw(SpriteBatch spriteBatch)
         {
