@@ -15,7 +15,7 @@ namespace LightsOut2
         float angle;
         float movementSpeed;
         bool sprinting;
-
+        int shotDelay;
         Vector2 direction;
 
         public List<Bullet> bulletList;
@@ -27,8 +27,9 @@ namespace LightsOut2
         public Player(Vector2 position)
             : base(position)
         {
-            movementSpeed = 2f;
+            movementSpeed = 7f;
             direction = new Vector2(1, 0);
+            shotDelay = 0;
             texture = ContentManager.Get<Texture2D>("playerTex");
 
             bulletList = new List<Bullet>();
@@ -82,8 +83,14 @@ namespace LightsOut2
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
-                    Bullet tempBullet = new Bullet(position, direction);
-                    bulletList.Add(tempBullet);
+                    if (shotDelay >= 10)
+                    {
+                        Bullet tempBullet = new Bullet(position, direction);
+                        bulletList.Add(tempBullet);
+                        shotDelay = 0;
+                        
+                    }
+                    
                 }
             }
 
@@ -93,13 +100,17 @@ namespace LightsOut2
 
                 direction = worldMousePosition - position;
                 direction.Normalize();
-                if (Constants.mouseState.LeftButton == ButtonState.Pressed && Constants.oldMouseState.LeftButton == ButtonState.Released)
+                if (Constants.mouseState.LeftButton == ButtonState.Pressed)
                 {
-                    Bullet tempBullet = new Bullet(position, direction);
-                    bulletList.Add(tempBullet);
+                    if (shotDelay >= 10)
+                    {
+                        Bullet tempBullet = new Bullet(position, direction);
+                        bulletList.Add(tempBullet);
+                        shotDelay = 0;
+                    }
                 }
             }
-
+            shotDelay++;
 
             foreach (Bullet tempBullet in bulletList)
             {

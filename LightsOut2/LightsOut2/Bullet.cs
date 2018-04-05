@@ -18,7 +18,7 @@ namespace LightsOut2
         public Bullet(Vector2 position, Vector2 direction)
             : base(position)
         {
-            bulletSpeed = 5;
+            bulletSpeed = 8;
 
             texture = ContentManager.Get<Texture2D>("bulletTex");
             this.direction = direction;
