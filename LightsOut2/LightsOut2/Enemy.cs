@@ -12,35 +12,18 @@ namespace LightsOut2
     class Enemy : GameObject
     {
         float angle;
-        float movementSpeed;
-        string AI;
+        protected float movementSpeed;
 
-        Vector2 direction;
+        protected Vector2 direction;
 
-        public Enemy(Vector2 position, string AI)
+        public Enemy(Vector2 position)
             : base (position)
         {
-            this.AI = AI;
 
-            switch (this.AI)
-            {
-                case "Chaser":
-                    movementSpeed = 3f;
-                    break;
-            }
-
-            texture = ContentManager.Get<Texture2D>("chaserTex");
         }
 
         public override void Update()
         {
-            switch (AI)
-            {
-                case "Chaser":
-                    position += direction * movementSpeed;
-                    break;
-            }
-
             EnemyAngle();
 
             base.Update();

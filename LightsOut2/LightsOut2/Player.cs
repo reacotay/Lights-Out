@@ -15,7 +15,7 @@ namespace LightsOut2
         float angle;
         float movementSpeed;
         bool sprinting;
-        int shotDelay;
+        int fireRate;
         Vector2 direction;
 
         public List<Bullet> bulletList;
@@ -28,8 +28,9 @@ namespace LightsOut2
             : base(position)
         {
             movementSpeed = 7f;
+            fireRate = 10;
+
             direction = new Vector2(1, 0);
-            shotDelay = 0;
             texture = ContentManager.Get<Texture2D>("playerTex");
 
             bulletList = new List<Bullet>();
@@ -70,11 +71,8 @@ namespace LightsOut2
 
         void BulletManagment()
         {
-
-
             if (Constants.gamePadState.IsConnected)
             {
-
                 if (Constants.tempDirection != Vector2.Zero)
                 {
                     direction = Constants.tempDirection;
@@ -83,18 +81,16 @@ namespace LightsOut2
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
-                    if (shotDelay >= 10)
+                    if (fireRate == 0)
                     {
                         Bullet tempBullet = new Bullet(position, direction);
                         bulletList.Add(tempBullet);
-                        shotDelay = 0;
-                        
-                    }
-                    
+                        fireRate = 10;
+                    }                    
                 }
             }
 
-            else
+            else if (!Constants.gamePadState.IsConnected)
             {
                 Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
 
@@ -102,25 +98,26 @@ namespace LightsOut2
                 direction.Normalize();
                 if (Constants.mouseState.LeftButton == ButtonState.Pressed)
                 {
-                    if (shotDelay >= 10)
+                    if (fireRate == 0)
                     {
                         Bullet tempBullet = new Bullet(position, direction);
                         bulletList.Add(tempBullet);
-                        shotDelay = 0;
+                        fireRate = 10;
                     }
                 }
             }
-            shotDelay++;
-
+            
             foreach (Bullet tempBullet in bulletList)
             {
                 tempBullet.Update();
             }
-
             foreach (Bullet tempBullet in removeList)
             {
                 bulletList.Remove(tempBullet);
             }
+
+            fireRate--;
+
         }
 
         void PlayerMovement()
@@ -160,7 +157,6 @@ namespace LightsOut2
                         tempDestination.Y += (int)movementSpeed;
                 }
             }
-
 
             position.Y = tempDestination.Y;
         }

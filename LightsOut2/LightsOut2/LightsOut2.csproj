@@ -44,6 +44,7 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Chaser.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ContentManager.cs" />
     <Compile Include="Enemy.cs" />
