@@ -31,7 +31,7 @@ namespace LightsOut2
         {
             if (timePassed >= spawnRate)
             {
-                tempEnemy = new Chaser(GeneratePosition());
+                tempEnemy = new Chaser(GeneratePosition(), Constants.CellSize);
                 enemyList.Add(tempEnemy);
                 timePassed = 0;
             }

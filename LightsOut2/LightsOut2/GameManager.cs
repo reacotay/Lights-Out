@@ -20,7 +20,7 @@ namespace LightsOut2
 
         public GameManager()
         {
-            player = new Player(new Vector2(800, 800));
+            player = new Player(new Vector2(800, 800), Constants.CellSize);
             enemyManager = new EnemyManager();
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;

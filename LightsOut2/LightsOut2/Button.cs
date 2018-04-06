@@ -13,8 +13,8 @@ namespace LightsOut2
     {
         string text;
 
-        public Button(Vector2 position, string text)
-            : base(position)
+        public Button(Vector2 position, int size, string text)
+            : base(position, size)
         {
             texture = ContentManager.Get<Texture2D>(text);
         }

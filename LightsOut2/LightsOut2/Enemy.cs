@@ -16,8 +16,8 @@ namespace LightsOut2
 
         protected Vector2 direction;
 
-        public Enemy(Vector2 position)
-            : base (position)
+        public Enemy(Vector2 position, int size)
+            : base (position, size)
         {
 
         }
