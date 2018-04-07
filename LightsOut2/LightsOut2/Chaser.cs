@@ -11,8 +11,8 @@ namespace LightsOut2
 {
     class Chaser : Enemy
     {
-        public Chaser(Vector2 position)
-            : base (position)
+        public Chaser(Vector2 position, int size)
+            : base (position, size)
         {
             movementSpeed = 3f;
 

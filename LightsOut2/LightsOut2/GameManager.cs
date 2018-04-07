@@ -12,6 +12,7 @@ namespace LightsOut2
     class GameManager
     {
         public Player player;
+        HeatBar heatBar;
 
         EnemyManager enemyManager;
 
@@ -20,7 +21,8 @@ namespace LightsOut2
 
         public GameManager()
         {
-            player = new Player(new Vector2(800, 800));
+            player = new Player(new Vector2(800, 800), Constants.CellSize);
+            heatBar = new HeatBar(new Vector2(800, 600));
             enemyManager = new EnemyManager();
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
@@ -54,7 +56,7 @@ namespace LightsOut2
 
             player.Draw(spriteBatch);
             enemyManager.Draw(spriteBatch);
-
+            heatBar.Draw(spriteBatch);
             spriteBatch.End();
             Game1.penumbra.Draw(gameTime);
         }

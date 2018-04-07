@@ -24,8 +24,8 @@ namespace LightsOut2
         public Light viscinity;
         public Light view;
 
-        public Player(Vector2 position)
-            : base(position)
+        public Player(Vector2 position, int size)
+            : base(position, size)
         {
             movementSpeed = 7f;
             fireRate = 10;
@@ -83,7 +83,7 @@ namespace LightsOut2
                 {
                     if (fireRate <= 0)
                     {
-                        Bullet tempBullet = new Bullet(position, direction);
+                        Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
                         bulletList.Add(tempBullet);
                         fireRate = 10;
                     }                    
@@ -100,7 +100,7 @@ namespace LightsOut2
                 {
                     if (fireRate <= 0)
                     {
-                        Bullet tempBullet = new Bullet(position, direction);
+                        Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
                         bulletList.Add(tempBullet);
                         fireRate = 10;
                     }

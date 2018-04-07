@@ -52,6 +52,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="HeatBar.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="NameEntry.cs" />
@@ -70,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\barTex.png" />
     <Content Include="Content\bulletTex.png" />
     <Content Include="Content\chaserTex.png" />
     <Content Include="Content\Ground.png" />
