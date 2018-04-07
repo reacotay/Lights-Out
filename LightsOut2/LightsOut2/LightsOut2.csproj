@@ -54,6 +54,8 @@
     <Compile Include="GameObject.cs" />
     <Compile Include="HeatBar.cs" />
     <Compile Include="Highscore.cs" />
+    <Compile Include="Lamp.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="NameEntry.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -78,9 +80,14 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <MonoGameContentReference Include="Content\Content.mgcb">
+      <SubType>Designer</SubType>
+    </MonoGameContentReference>
     <None Include="app.manifest" />
     <None Include="Content\spriteFont.spritefont" />
+    <None Include="Content\titleFont.spritefont">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,6 +18,7 @@ namespace LightsOut2
 
         ContentManager contentManager;
         GameManager gameManager;
+        MainMenu mainMenu;
 
         static public PenumbraComponent penumbra;
 
@@ -57,8 +58,11 @@ namespace LightsOut2
 
             contentManager = new ContentManager(this);
             penumbra = new PenumbraComponent(this);
+            penumbra.AmbientColor = Color.Black;
 
             gameManager = new GameManager();
+            mainMenu = new MainMenu();
+            mainMenu.Initialize();
 
             currentState = GameState.MainMenu;
         }
@@ -78,8 +82,10 @@ namespace LightsOut2
             switch (currentState)
             {
                 case GameState.MainMenu:
+                    mainMenu.Update();
                     if (Constants.keyState.IsKeyDown(Keys.Enter))
                     {
+                        gameManager.Initialize();
                         currentState = GameState.MainGame;
                     }
                     break;
@@ -100,14 +106,13 @@ namespace LightsOut2
             GraphicsDevice.Clear(Color.Black);
 
             //Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+            //Vector2 worldMousePosition = new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y);
             //Window.Title = "" + worldMousePosition;
 
             switch (currentState)
             {
                 case GameState.MainMenu:
-                    spriteBatch.Begin();
-                    spriteBatch.DrawString(spriteFont, "Press Enter to start the game!", Vector2.Zero, Color.White);
-                    spriteBatch.End();
+                    mainMenu.Draw(spriteBatch, gameTime);
                     break;
 
                 case GameState.MainGame:
