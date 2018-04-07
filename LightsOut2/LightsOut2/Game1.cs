@@ -18,6 +18,7 @@ namespace LightsOut2
 
         ContentManager contentManager;
         GameManager gameManager;
+        MainMenu mainMenu;
 
         static public PenumbraComponent penumbra;
 
@@ -59,6 +60,7 @@ namespace LightsOut2
             penumbra = new PenumbraComponent(this);
 
             gameManager = new GameManager();
+            mainMenu = new MainMenu();
 
             currentState = GameState.MainMenu;
         }
@@ -105,9 +107,7 @@ namespace LightsOut2
             switch (currentState)
             {
                 case GameState.MainMenu:
-                    spriteBatch.Begin();
-                    spriteBatch.DrawString(spriteFont, "Press Enter to start the game!", Vector2.Zero, Color.White);
-                    spriteBatch.End();
+                    mainMenu.Draw(spriteBatch, gameTime);
                     break;
 
                 case GameState.MainGame:

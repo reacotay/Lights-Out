@@ -53,6 +53,7 @@
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Highscore.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="NameEntry.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -79,6 +80,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
     <None Include="Content\spriteFont.spritefont" />
+    <None Include="Content\titleFont.spritefont" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
