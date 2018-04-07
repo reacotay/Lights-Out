@@ -21,12 +21,12 @@ namespace LightsOut2
 
         public GameManager()
         {
-            player = new Player(new Vector2(800, 800), Constants.CellSize);
-            heatBar = new HeatBar(new Vector2(800, 600));
-            enemyManager = new EnemyManager();
-
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
+
+            player = new Player(new Vector2(800, 800), Constants.CellSize);
+            heatBar = new HeatBar(camera.GetPosition());
+            enemyManager = new EnemyManager();
 
             Game1.penumbra.AmbientColor = Color.Black;
             //Game1.penumbra.Enabled = true;
@@ -39,6 +39,7 @@ namespace LightsOut2
         public void Update()
         {
             player.Update();
+            
             enemyManager.Update(player.position);
             CheckCollision();
 

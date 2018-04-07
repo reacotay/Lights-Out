@@ -11,7 +11,7 @@ namespace LightsOut2
     class Camera
     {
         private Matrix transform;
-        private Vector2 position;
+        public Vector2 position;
         private Viewport view;
 
         public Camera(Viewport view)
