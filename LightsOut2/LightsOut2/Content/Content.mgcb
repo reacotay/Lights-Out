@@ -68,14 +68,13 @@
 /processorParam:TextureFormat=Compressed
 /build:spriteFont.spritefont
 
-<<<<<<< HEAD
 #begin titleFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:titleFont.spritefont
-=======
+
 #begin barTex.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -87,5 +86,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:barTex.png
->>>>>>> 1adb578a57029ce5cfc4784643c3dc02cb797594
 

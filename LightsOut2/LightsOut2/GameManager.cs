@@ -28,9 +28,13 @@ namespace LightsOut2
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
 
-            Game1.penumbra.AmbientColor = Color.Black;
             //Game1.penumbra.Enabled = true;
             //Game1.penumbra.Visible = true;
+        }
+
+        public void Initialize()
+        {
+            Game1.penumbra.Lights.Clear();
             Game1.penumbra.Lights.Add(player.viscinity);
             Game1.penumbra.Lights.Add(player.view);
             Game1.penumbra.Initialize();

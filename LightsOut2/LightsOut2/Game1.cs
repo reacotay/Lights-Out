@@ -58,9 +58,11 @@ namespace LightsOut2
 
             contentManager = new ContentManager(this);
             penumbra = new PenumbraComponent(this);
+            penumbra.AmbientColor = Color.Black;
 
             gameManager = new GameManager();
             mainMenu = new MainMenu();
+            mainMenu.Initialize();
 
             currentState = GameState.MainMenu;
         }
@@ -80,8 +82,10 @@ namespace LightsOut2
             switch (currentState)
             {
                 case GameState.MainMenu:
+                    mainMenu.Update();
                     if (Constants.keyState.IsKeyDown(Keys.Enter))
                     {
+                        gameManager.Initialize();
                         currentState = GameState.MainGame;
                     }
                     break;
@@ -102,6 +106,7 @@ namespace LightsOut2
             GraphicsDevice.Clear(Color.Black);
 
             //Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+            //Vector2 worldMousePosition = new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y);
             //Window.Title = "" + worldMousePosition;
 
             switch (currentState)
