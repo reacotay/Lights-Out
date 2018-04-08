@@ -22,7 +22,7 @@ namespace LightsOut2
         public static int CellSize { get; private set; }
         public static int BulletSize { get; private set; }
 
-        public static int overheat { get; set; }
+        public static float heatValue { get; set; }
 
         public static Rectangle GameWindow { get; private set; }
         public static Random Randomizer { get; private set; }

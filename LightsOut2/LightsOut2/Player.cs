@@ -15,6 +15,7 @@ namespace LightsOut2
         float angle;
         float movementSpeed;
         bool sprinting;
+        bool overheated;
         int fireRate;
         Vector2 direction;
 
@@ -29,7 +30,7 @@ namespace LightsOut2
         {
             movementSpeed = 7f;
             fireRate = 10;
-
+            
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
 
@@ -48,6 +49,11 @@ namespace LightsOut2
 
             PlayerMovement();
             BulletManagment();
+
+            if (Constants.heatValue >= 100)
+                overheated = true;
+            else if (Constants.heatValue <= 0)
+                overheated = false;
 
             viscinity.Position = position;
             view.Position = position;
@@ -81,11 +87,12 @@ namespace LightsOut2
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
-                    if (fireRate <= 0)
+                    if (fireRate <= 0 && overheated == false)
                     {
                         Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
                         bulletList.Add(tempBullet);
                         fireRate = 10;
+                        Constants.heatValue += 0.4f;
                     }                    
                 }
             }
@@ -96,13 +103,15 @@ namespace LightsOut2
 
                 direction = worldMousePosition - position;
                 direction.Normalize();
-                if (Constants.mouseState.LeftButton == ButtonState.Pressed)
+                if (Constants.mouseState.LeftButton == ButtonState.Pressed && overheated == false)
                 {
+                    Constants.heatValue += 0.6f;
                     if (fireRate <= 0)
                     {
                         Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
                         bulletList.Add(tempBullet);
                         fireRate = 10;
+
                     }
                 }
             }
@@ -115,18 +124,25 @@ namespace LightsOut2
             {
                 bulletList.Remove(tempBullet);
             }
-
             fireRate--;
-
         }
 
         void PlayerMovement()
         {
-            if (Constants.keyState.IsKeyDown(Keys.LeftShift))
-                sprinting = true;
+            if (Constants.gamePadState.IsConnected)
+            {
+                if (Constants.gamePadState.IsButtonDown(Buttons.LeftShoulder))
+                    sprinting = true;
+                else
+                    sprinting = false;
+            }
             else
-                sprinting = false;
-
+            {
+                if (Constants.keyState.IsKeyDown(Keys.LeftShift))
+                    sprinting = true;
+                else
+                    sprinting = false;
+            }
             PlayerMovementX();
             PlayerMovementY();
             PlayerAngle();

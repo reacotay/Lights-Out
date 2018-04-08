@@ -42,7 +42,7 @@ namespace LightsOut2
         public void Update()
         {
             player.Update();
-            
+            heatBar.Update();
             enemyManager.Update(player.position);
             CheckCollision();
 
@@ -51,8 +51,12 @@ namespace LightsOut2
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+
+            // Ritar ut objekt som skall följa med kameran/skärmen.
+
             Game1.penumbra.BeginDraw();
             Game1.penumbra.Transform = camera.GetTransform();
+
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
 
@@ -60,9 +64,14 @@ namespace LightsOut2
 
             player.Draw(spriteBatch);
             enemyManager.Draw(spriteBatch);
+
+            spriteBatch.End();
+
+            Game1.penumbra.Draw(gameTime);
+
+            spriteBatch.Begin();
             heatBar.Draw(spriteBatch);
             spriteBatch.End();
-            Game1.penumbra.Draw(gameTime);
         }
 
         //----------------------------------------------------------------------------------------------------
