@@ -28,6 +28,9 @@ namespace LightsOut2
 
         public void Initialize()
         {
+            Matrix screen = Matrix.CreateTranslation(0, 0, 0);
+            Game1.penumbra.Transform = screen;
+            Game1.penumbra.Lights.Clear();
             Game1.penumbra.Lights.Add(lamp.bulb);
             Game1.penumbra.Initialize();
         }

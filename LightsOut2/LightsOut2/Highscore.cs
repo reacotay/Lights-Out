@@ -18,6 +18,7 @@ namespace LightsOut2
         //static string file;
         static StreamReader sr;
         static StreamWriter sw;
+        static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
 
         static void GetScore()
         {
@@ -37,8 +38,9 @@ namespace LightsOut2
                 }
             }
         }
-        static void Record()
+        public static void Record(string name)
         {
+            Scores[0, Index] = name;
             sw = new StreamWriter("Content/Highscore.txt");
             for (int y = 1; y < 8; y++)
             {
@@ -67,7 +69,7 @@ namespace LightsOut2
             {
                 for (int x = 0; x < 2; x++)
                 {
-                    spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), Scores[x, y], new Vector2(x * 50, y * 20), Color.White);
+                    spriteBatch.DrawString(spriteFont, Scores[x, y], new Vector2(200 + x * 200, y * 80), Color.White);
                 }
             }
             spriteBatch.End();

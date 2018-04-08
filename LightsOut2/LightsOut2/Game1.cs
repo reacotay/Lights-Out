@@ -26,7 +26,9 @@ namespace LightsOut2
         {
             MainMenu,
             MainGame,
-            GameOver
+            GameOver,
+            NameEntry,
+            HighScore
         }
         GameState currentState;
 
@@ -83,7 +85,7 @@ namespace LightsOut2
             {
                 case GameState.MainMenu:
                     mainMenu.Update();
-                    if (Constants.keyState.IsKeyDown(Keys.Enter))
+                    if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
                     {
                         gameManager.Initialize();
                         currentState = GameState.MainGame;
@@ -92,9 +94,27 @@ namespace LightsOut2
 
                 case GameState.MainGame:
                     gameManager.Update();
+                    if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
+                        currentState = GameState.GameOver;
                     break;
 
                 case GameState.GameOver:
+                    if (Highscore.CheckScore(100))
+                        currentState = GameState.NameEntry;
+                    else
+                        currentState = GameState.HighScore;
+                    break;
+
+                case GameState.HighScore:
+                    if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
+                    {
+                        mainMenu.Initialize();
+                        currentState = GameState.MainMenu;
+                    }
+                    break;
+
+                case GameState.NameEntry:
+                    NameEntry.Entry();
                     break;
             }
 
@@ -123,6 +143,14 @@ namespace LightsOut2
                     spriteBatch.Begin();
 
                     spriteBatch.End();
+                    break;
+
+                case GameState.HighScore:
+                    Highscore.Draw(spriteBatch);
+                    break;
+
+                case GameState.NameEntry:
+                    NameEntry.Draw(spriteBatch);
                     break;
             }
 
