@@ -20,7 +20,7 @@ namespace LightsOut2
             maxSize = 1600;
             remove = false;
 
-            texture = ContentManager.Get<Texture2D>("bulletTex");
+            texture = ContentManager.Get<Texture2D>("ScreenClear");
         }
 
         public override void Update()
