@@ -15,7 +15,6 @@ namespace LightsOut2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont spriteFont;
-
         ContentManager contentManager;
         GameManager gameManager;
         MainMenu mainMenu;
@@ -55,13 +54,10 @@ namespace LightsOut2
         protected override void LoadContent()
         {   
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             spriteFont = Content.Load<SpriteFont>("spriteFont");
-
             contentManager = new ContentManager(this);
             penumbra = new PenumbraComponent(this);
             penumbra.AmbientColor = Color.Black;
-
             gameManager = new GameManager();
             mainMenu = new MainMenu();
             mainMenu.Initialize();
@@ -124,10 +120,6 @@ namespace LightsOut2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            //Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
-            //Vector2 worldMousePosition = new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y);
-            //Window.Title = "" + worldMousePosition;
 
             switch (currentState)
             {

@@ -18,12 +18,11 @@ namespace LightsOut2
         bool sprinting;
         bool overheated;
         int fireRate;
+
         Vector2 direction;
         public ScreenClear screenClear;
-
         public List<Bullet> bulletList;
         public List<Bullet> removeList;
-
         public Light viscinity;
         public Light view;
 
@@ -37,10 +36,8 @@ namespace LightsOut2
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
             screenClear = null;
-
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
-
             viscinity = new PointLight();
             view = new Spotlight();
             viscinity.Scale = new Vector2(800, 800);
@@ -53,9 +50,9 @@ namespace LightsOut2
             PlayerMovement();
             BulletManagment();
 
-            if (Constants.heatValue >= 100)
+            if (Constants.HeatValue >= 100)
                 overheated = true;
-            else if (Constants.heatValue <= 0)
+            else if (Constants.HeatValue <= 0)
                 overheated = false;
 
             if (screenClear != null)
@@ -80,13 +77,12 @@ namespace LightsOut2
                 tempBullet.Draw(spriteBatch);
             }
 
-            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.1f, SpriteEffects.None, 0f);
-
             if (screenClear != null)
             {
                 screenClear.Draw(spriteBatch);
             }
+
+            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
         }
 
 
@@ -115,7 +111,6 @@ namespace LightsOut2
                     CreateBullet();
                 }
             }
-
             else
             {
                 Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
@@ -132,10 +127,12 @@ namespace LightsOut2
             {
                 tempBullet.Update();
             }
+
             foreach (Bullet tempBullet in removeList)
             {
                 bulletList.Remove(tempBullet);
             }
+
             fireRate--;
         }
 
@@ -155,6 +152,7 @@ namespace LightsOut2
                 else
                     sprinting = false;
             }
+
             PlayerMovementX();
             PlayerMovementY();
             PlayerAngle();
@@ -177,6 +175,7 @@ namespace LightsOut2
                     else
                         tempDestination.Y -= (int)movementSpeed;
                 }
+
                 if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
                 {
                     if (sprinting)
@@ -206,6 +205,7 @@ namespace LightsOut2
                     else
                         tempDestination.X -= (int)movementSpeed;
                 }
+
                 if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
                 {
                     if (sprinting)
@@ -225,13 +225,13 @@ namespace LightsOut2
 
         private void CreateBullet()
         {
-            Constants.heatValue += 0.6f;
+            Constants.HeatValue += 0.6f;
+
             if (fireRate <= 0)
             {
                 Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
                 bulletList.Add(tempBullet);
                 fireRate = 10;
-
             }
         }
     }

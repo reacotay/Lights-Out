@@ -16,6 +16,7 @@ namespace LightsOut2
         Texture2D groundTex;
         SpriteFont titleFont;
         SpriteFont spriteFont;
+
         public MainMenu()
         {
             lamp = new Lamp();
@@ -45,13 +46,14 @@ namespace LightsOut2
         {
             spriteBatch.Begin();
             Game1.penumbra.BeginDraw();
-            spriteBatch.Draw(groundTex, Vector2.Zero, Color.White);
-            spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(100,200), Color.Black, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                spriteBatch.Draw(groundTex, Vector2.Zero, Color.White);
+                spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(100,200), Color.Black, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             spriteBatch.End();
+
             Game1.penumbra.Draw(gameTime);
             spriteBatch.Begin();
-            spriteBatch.DrawString(spriteFont, "Press Enter to start the game!", Vector2.Zero, Color.White);
-            spriteBatch.Draw(groundTex, new Rectangle((int)lamp.bulb.Position.X, (int)lamp.bulb.Position.Y, 10, 10), Color.Red);
+                spriteBatch.DrawString(spriteFont, "Press Enter to start the game!", Vector2.Zero, Color.White);
+                spriteBatch.Draw(groundTex, new Rectangle((int)lamp.bulb.Position.X, (int)lamp.bulb.Position.Y, 10, 10), Color.Red);
             spriteBatch.End();
         }
     }

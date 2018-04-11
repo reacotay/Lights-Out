@@ -15,11 +15,8 @@ namespace LightsOut2
 
         public Player player;
         HeatBar heatBar;
-
         EnemyManager enemyManager;
-
         public static Camera camera;
-
 
         public GameManager()
         {
@@ -27,11 +24,9 @@ namespace LightsOut2
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
-
             player = new Player(new Vector2(800, 800), Constants.CellSize);
             heatBar = new HeatBar(camera.GetPosition());
             enemyManager = new EnemyManager();
-
             Game1.penumbra.AmbientColor = Color.Black;
         }
 
@@ -50,32 +45,27 @@ namespace LightsOut2
             heatBar.Update();
             enemyManager.Update(player.position);
             CheckCollision();
-
             camera.SetPosition(player.position);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
 
-            // Ritar ut objekt som skall följa med kameran/skärmen.
-
+            //Ritar ut objekt som skall följa med kameran/skärmen
             Game1.penumbra.BeginDraw();
             Game1.penumbra.Transform = camera.GetTransform();
 
-
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
-
-            spriteBatch.Draw(ContentManager.Get<Texture2D>("Ground"), Vector2.Zero, Color.White);
-
-            player.Draw(spriteBatch);
-            enemyManager.Draw(spriteBatch);
-
+                spriteBatch.Draw(ContentManager.Get<Texture2D>("Ground"), Vector2.Zero, Color.White);
+                player.Draw(spriteBatch);
+                enemyManager.Draw(spriteBatch);
             spriteBatch.End();
 
             Game1.penumbra.Draw(gameTime);
 
+            //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
-            heatBar.Draw(spriteBatch);
+                heatBar.Draw(spriteBatch);
             spriteBatch.End();
         }
 

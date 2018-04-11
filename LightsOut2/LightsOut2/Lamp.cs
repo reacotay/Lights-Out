@@ -13,13 +13,14 @@ namespace LightsOut2
 {
     class Lamp
     {
-        public Light bulb;
-        public Hull shade;
-        Vector2 originPosition = new Vector2(400,0);
         int radius = 100;
         float angle = 0f, x = 400, y = 0;
         double idfk = Math.PI / 4, acceleration, velocity = 0, dt = 0.15;
         int length = 500;
+
+        public Light bulb;
+        public Hull shade;
+        Vector2 originPosition = new Vector2(400, 0);
 
         public Lamp()
         {
@@ -28,8 +29,8 @@ namespace LightsOut2
                 Scale = new Vector2(600, 800),
                 Position = new Vector2(x, y),
                 ShadowType = ShadowType.Solid
-
             };
+
             shade = new Hull(new Vector2(-60, -10), new Vector2(60, -10), new Vector2(60, 30), new Vector2(20, 0), new Vector2(-20, 0), new Vector2(-60, 30))
             {
                 Position = new Vector2(bulb.Position.X,bulb.Position.Y+200),
