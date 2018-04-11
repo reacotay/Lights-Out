@@ -95,7 +95,7 @@ namespace LightsOut2
                     break;
 
                 case GameState.GameOver:
-                    if (Highscore.CheckScore(100))
+                    if (Highscore.CheckScore(gameManager.score))
                         currentState = GameState.NameEntry;
                     else
                         currentState = GameState.HighScore;

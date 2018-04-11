@@ -11,6 +11,7 @@ namespace LightsOut2
 {
     class GameManager
     {
+        public int score;
         public bool gameOver;
 
         public Player player;
@@ -20,6 +21,7 @@ namespace LightsOut2
 
         public GameManager()
         {
+            score = 0;
             gameOver = false;
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
@@ -66,6 +68,7 @@ namespace LightsOut2
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
                 heatBar.Draw(spriteBatch);
+                spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(50, 100), Color.White);
             spriteBatch.End();
         }
 
@@ -81,6 +84,7 @@ namespace LightsOut2
                     {
                         enemyManager.removeList.Add(tempEnemy);
                         player.removeList.Add(tempBullet);
+                        score += 100;
                     }
                 }
 
@@ -89,6 +93,7 @@ namespace LightsOut2
                     if (tempEnemy.destinationRectangle.Intersects(player.screenClear.destinationRectangle))
                     {
                         enemyManager.removeList.Add(tempEnemy);
+                        score += 100;
                     }
                 }
 

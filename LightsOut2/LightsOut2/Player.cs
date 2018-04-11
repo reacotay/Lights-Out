@@ -13,6 +13,7 @@ namespace LightsOut2
     class Player : GameObject
     {
         public int lives;
+        bool tempDead;
         float angle;
         float movementSpeed;
         bool sprinting;
@@ -30,7 +31,8 @@ namespace LightsOut2
             : base(position, size)
         {
             lives = 3;
-            movementSpeed = 7f;
+            tempDead = false;
+            movementSpeed = 3f;
             fireRate = 10;
             
             direction = new Vector2(1, 0);
@@ -47,8 +49,15 @@ namespace LightsOut2
 
         public override void Update()
         {
-            PlayerMovement();
-            BulletManagment();
+            if (!tempDead)
+            {
+                PlayerMovement();
+                BulletManagment();
+            }
+            else if (tempDead)
+            {
+                MoveToStartPosition();
+            }
 
             if (Constants.HeatValue >= 100)
                 overheated = true;
@@ -88,12 +97,23 @@ namespace LightsOut2
 
         //----------------------------------------------------------------------------------------------------
 
+        public void MoveToStartPosition()
+        {
+            Vector2 tempDirection = new Vector2(800, 800) - position; tempDirection.Normalize();
+            position += tempDirection * movementSpeed;
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
+
+            if (position.X >= 750 && position.X <= 850 && position.Y >= 750 && position.Y <= 850)
+            {
+                tempDead = false;
+            }
+        }
+
         public void TakeDamage()
         {
-            position = new Vector2(800, 800);
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
             screenClear = new ScreenClear(position, Constants.CellSize);
             lives--;
+            tempDead = true;
         }
 
         void BulletManagment()

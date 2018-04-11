@@ -17,7 +17,7 @@ namespace LightsOut2
         public ScreenClear(Vector2 position, int size)
             : base (position, size)
         {
-            maxSize = 1600;
+            maxSize = 3200;
             remove = false;
 
             texture = ContentManager.Get<Texture2D>("ScreenClear");
