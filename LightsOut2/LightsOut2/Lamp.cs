@@ -25,7 +25,7 @@ namespace LightsOut2
         {
             bulb = new PointLight()
             {
-                Scale = new Vector2(600, 800),
+                Scale = new Vector2(600, 1000),
                 Position = new Vector2(x, y),
                 ShadowType = ShadowType.Solid
 
