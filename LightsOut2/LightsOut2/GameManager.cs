@@ -11,6 +11,8 @@ namespace LightsOut2
 {
     class GameManager
     {
+        public bool gameOver;
+
         public Player player;
         HeatBar heatBar;
 
@@ -21,6 +23,8 @@ namespace LightsOut2
 
         public GameManager()
         {
+            gameOver = false;
+
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
 
@@ -34,6 +38,7 @@ namespace LightsOut2
         public void Initialize()
         {
             Game1.penumbra.Lights.Clear();
+            Game1.penumbra.Hulls.Clear();
             Game1.penumbra.Lights.Add(player.viscinity);
             Game1.penumbra.Lights.Add(player.view);
             Game1.penumbra.Initialize();
@@ -89,9 +94,23 @@ namespace LightsOut2
                     }
                 }
 
+                if (player.screenClear != null)
+                {
+                    if (tempEnemy.destinationRectangle.Intersects(player.screenClear.destinationRectangle))
+                    {
+                        enemyManager.removeList.Add(tempEnemy);
+                    }
+                }
+
                 if (tempEnemy.destinationRectangle.Intersects(player.destinationRectangle))
                 {
                     enemyManager.removeList.Add(tempEnemy);
+                    if (player.lives >= 0)
+                        player.TakeDamage();
+                    else
+                    {
+                        gameOver = true;
+                    }
                 }
             }
         }

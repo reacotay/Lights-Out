@@ -12,12 +12,14 @@ namespace LightsOut2
 {
     class Player : GameObject
     {
+        public int lives;
         float angle;
         float movementSpeed;
         bool sprinting;
         bool overheated;
         int fireRate;
         Vector2 direction;
+        public ScreenClear screenClear;
 
         public List<Bullet> bulletList;
         public List<Bullet> removeList;
@@ -28,11 +30,13 @@ namespace LightsOut2
         public Player(Vector2 position, int size)
             : base(position, size)
         {
+            lives = 3;
             movementSpeed = 7f;
             fireRate = 10;
             
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
+            screenClear = null;
 
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
@@ -46,7 +50,6 @@ namespace LightsOut2
 
         public override void Update()
         {
-
             PlayerMovement();
             BulletManagment();
 
@@ -54,6 +57,14 @@ namespace LightsOut2
                 overheated = true;
             else if (Constants.heatValue <= 0)
                 overheated = false;
+
+            if (screenClear != null)
+            {
+                if (!screenClear.remove)
+                    screenClear.Update();
+                else if (screenClear.remove)
+                    screenClear = null;
+            }
 
             viscinity.Position = position;
             view.Position = position;
@@ -71,9 +82,23 @@ namespace LightsOut2
 
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.1f, SpriteEffects.None, 0f);
+
+            if (screenClear != null)
+            {
+                screenClear.Draw(spriteBatch);
+            }
         }
 
+
         //----------------------------------------------------------------------------------------------------
+
+        public void TakeDamage()
+        {
+            position = new Vector2(800, 800);
+            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
+            screenClear = new ScreenClear(position, Constants.CellSize);
+            lives--;
+        }
 
         void BulletManagment()
         {

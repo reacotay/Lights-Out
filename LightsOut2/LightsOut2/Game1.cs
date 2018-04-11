@@ -94,7 +94,7 @@ namespace LightsOut2
 
                 case GameState.MainGame:
                     gameManager.Update();
-                    if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
+                    if (gameManager.gameOver)
                         currentState = GameState.GameOver;
                     break;
 
