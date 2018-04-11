@@ -112,13 +112,7 @@ namespace LightsOut2
 
                 if (Constants.gamePadState.Triggers.Right >= 0.7f)
                 {
-                    if (fireRate <= 0 && overheated == false)
-                    {
-                        Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
-                        bulletList.Add(tempBullet);
-                        fireRate = 10;
-                        Constants.heatValue += 0.4f;
-                    }                    
+                    CreateBullet();
                 }
             }
 
@@ -130,14 +124,7 @@ namespace LightsOut2
                 direction.Normalize();
                 if (Constants.mouseState.LeftButton == ButtonState.Pressed && overheated == false)
                 {
-                    Constants.heatValue += 0.6f;
-                    if (fireRate <= 0)
-                    {
-                        Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
-                        bulletList.Add(tempBullet);
-                        fireRate = 10;
-
-                    }
+                    CreateBullet();
                 }
             }
             
@@ -234,6 +221,18 @@ namespace LightsOut2
         void PlayerAngle()
         {
             angle = Convert.ToSingle(Math.Atan2(direction.X, -direction.Y));
+        }
+
+        private void CreateBullet()
+        {
+            Constants.heatValue += 0.6f;
+            if (fireRate <= 0)
+            {
+                Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
+                bulletList.Add(tempBullet);
+                fireRate = 10;
+
+            }
         }
     }
 }

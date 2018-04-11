@@ -84,7 +84,7 @@ namespace LightsOut2
             switch (currentState)
             {
                 case GameState.MainMenu:
-                    mainMenu.Update();
+                    mainMenu.Update(gameTime);
                     if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
                     {
                         gameManager.Initialize();

@@ -36,9 +36,9 @@ namespace LightsOut2
             Game1.penumbra.Initialize();
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            lamp.Update();
+            lamp.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
