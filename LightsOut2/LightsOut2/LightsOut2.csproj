@@ -60,6 +60,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenClear.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -77,6 +78,7 @@
     <Content Include="Content\chaserTex.png" />
     <Content Include="Content\Ground.png" />
     <Content Include="Content\playerTex.png" />
+    <Content Include="Content\ScreenClear.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

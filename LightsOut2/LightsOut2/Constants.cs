@@ -22,7 +22,7 @@ namespace LightsOut2
         public static int CellSize { get; private set; }
         public static int BulletSize { get; private set; }
 
-        public static float heatValue { get; set; }
+        public static float HeatValue { get; set; }
 
         public static Rectangle GameWindow { get; private set; }
         public static Random Randomizer { get; private set; }
@@ -32,6 +32,7 @@ namespace LightsOut2
         public static MouseState mouseState, oldMouseState = Mouse.GetState();
 
         public static GamePadState gamePadState, oldGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
+
         public static void LoadContent()
         {
             WindowWidth = 800;
