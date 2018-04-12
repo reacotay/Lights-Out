@@ -86,6 +86,7 @@
       <SubType>Designer</SubType>
     </MonoGameContentReference>
     <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\spriteFont.spritefont" />
     <None Include="Content\titleFont.spritefont">
       <SubType>Designer</SubType>
