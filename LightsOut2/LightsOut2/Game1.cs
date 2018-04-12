@@ -86,7 +86,12 @@ namespace LightsOut2
                         gameManager.Initialize();
                         currentState = GameState.MainGame;
                     }
-                    break;
+                    if (Constants.keyState.IsKeyDown(Keys.H) && Constants.oldKeyState.IsKeyUp(Keys.H))
+                    {
+                        Highscore.CheckScore(0);
+                        currentState = GameState.HighScore;
+                    }
+                        break;
 
                 case GameState.MainGame:
                     gameManager.Update();
@@ -110,7 +115,8 @@ namespace LightsOut2
                     break;
 
                 case GameState.NameEntry:
-                    NameEntry.Entry();
+                    if (NameEntry.Entry())
+                        currentState = GameState.HighScore;
                     break;
             }
 

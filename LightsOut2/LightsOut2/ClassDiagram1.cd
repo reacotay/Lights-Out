@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="LightsOut2.Bullet" Collapsed="true">
     <Position X="0.5" Y="1.75" Width="1.5" />
@@ -135,3 +136,6 @@
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
+=======
+<ClassDiagram /> 
+>>>>>>> f7125f4e37137318ec79217b3c5528e636c8ec25

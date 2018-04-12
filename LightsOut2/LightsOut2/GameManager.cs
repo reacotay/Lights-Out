@@ -27,7 +27,7 @@ namespace LightsOut2
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
             player = new Player(new Vector2(800, 800), Constants.CellSize);
-            heatBar = new HeatBar(camera.GetPosition());
+            heatBar = new HeatBar(camera.GetPosition(), 1);
             enemyManager = new EnemyManager();
             Game1.penumbra.AmbientColor = Color.Black;
         }
