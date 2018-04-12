@@ -13,11 +13,11 @@ namespace LightsOut2
 {
     class Lamp
     {
-        int radius = 100;
-        float angle = 0f, x = 400, y = 0;
-        double idfk = Math.PI / 4, acceleration, velocity = 0, dt = 0.15;
-        int length = 500;
-
+        int radius = 100, length = 500;
+        float x = 400, y = 0;
+        double angle = Math.PI / 5, acceleration, velocity = 0, dt = 0.15;
+        int flicks, flickerTimer = 0;
+        bool lightOut, ttFlicker;
         public Light bulb;
         public Hull shade;
         Vector2 originPosition = new Vector2(400, 0);
@@ -26,7 +26,7 @@ namespace LightsOut2
         {
             bulb = new PointLight()
             {
-                Scale = new Vector2(600, 1000),
+                Scale = new Vector2(400, 800),
                 Position = new Vector2(x, y),
                 ShadowType = ShadowType.Solid
             };
@@ -39,17 +39,54 @@ namespace LightsOut2
 
         public void Update(GameTime gameTime)
         {
-            angle = Convert.ToSingle(-idfk);
-            x = Convert.ToSingle(Math.Sin(angle)) * radius + originPosition.X;
-            y = Convert.ToSingle(Math.Cos(angle)) * radius + originPosition.Y;
+            x = Convert.ToSingle(Math.Sin(-angle)) * radius + originPosition.X;
+            y = Convert.ToSingle(Math.Cos(-angle)) * radius + originPosition.Y;
             bulb.Position = new Vector2(x, y);
-            bulb.Rotation = Convert.ToSingle(idfk);
-            shade.Rotation = Convert.ToSingle(idfk);
+            bulb.Rotation = Convert.ToSingle(angle);
+            shade.Rotation = Convert.ToSingle(angle);
             shade.Position = new Vector2(x, y - 15);
 
-            acceleration = -9.81 / length * Math.Sin(idfk);
+            acceleration = -9.81 / length * Math.Sin(angle);
             velocity += acceleration * dt;
-            idfk += velocity * dt;
+            angle += velocity * dt;
+            if(flickerTimer <= 0 && !ttFlicker)
+            {
+                if (flicks > 0)
+                {
+                    ttFlicker = true;
+                }
+                else
+                {
+                    flickerTimer = Constants.Randomizer.Next(0, 300);
+                    flicks = Constants.Randomizer.Next(1, 6);
+                }
+            }
+            else
+            {
+                flickerTimer--;
+            }
+            if(ttFlicker)
+            {
+                if (flicks > 0)
+                    Flicker();
+                else
+                    ttFlicker = false;
+            }
+        }
+
+        private void Flicker()
+        {
+            if (bulb.Intensity > 1E-05f && !lightOut)
+                bulb.Intensity -= 0.5f;
+            else if (bulb.Intensity < 1f && lightOut)
+                bulb.Intensity += 0.5f;
+            if (bulb.Intensity <= 1E-05f)
+                lightOut = true;
+            if (bulb.Intensity >= 1f)
+            {
+                lightOut = false;
+                flicks--;
+            }
         }
     }
 }
