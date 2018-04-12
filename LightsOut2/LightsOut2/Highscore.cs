@@ -14,9 +14,9 @@ namespace LightsOut2
     static class Highscore
     {
         static string[,] Scores { get; set; } = new string[2, 9];
+        static string[,] ResortList = new string[2, 9];
         public static int Index { get; private set; }
 
-        //static string file;
         static StreamReader sr;
         static StreamWriter sw;
         static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
@@ -44,13 +44,13 @@ namespace LightsOut2
         public static void Record(string name)
         {
             Scores[0, Index] = name;
-            sw = new StreamWriter("Content/Highscore.txt");
+            sw = new StreamWriter("Content\\Highscore.txt");
 
             for (int y = 1; y < 8; y++)
             {
                 sw.WriteLine(Scores[0, y]+" "+ Scores[1, y]);
             }
-            sr.Close();
+            sw.Close();
         }
 
         public static bool CheckScore(int newScore)
@@ -61,12 +61,31 @@ namespace LightsOut2
             {
                 if(Convert.ToInt32(Scores[1,y]) < newScore)
                 {
-                    Scores[1, y] = newScore.ToString();
+                    ResortScore(y,newScore);
                     Index = y;
                     return true;
                 }
             }
             return false;
+        }
+
+        public static void ResortScore(int i, int score)
+        {
+            for (int y = i; y < 8; y++)
+            {
+                for (int x = 0; x < 2; x++)
+                {
+                    ResortList[x, y] = Scores[x, y];
+                }
+            }
+            Scores[1, i] = score.ToString();
+            for (int y = i+1; y < 8; y++)
+            {
+                for (int x = 0; x < 2; x++)
+                {
+                    Scores[x, y] = ResortList[x, y-1];
+                }
+            }
         }
 
         public static void Draw(SpriteBatch spriteBatch)
