@@ -19,11 +19,14 @@ namespace LightsOut2
 
         static StreamReader sr;
         static StreamWriter sw;
+        static FileStream fs;
+        static string path = "Content/Highscore.txt";
         static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
 
         static void GetScore()
         {
-            sr = new StreamReader("Content/Highscore.txt");
+            CheckForFile();
+            sr = new StreamReader(path);
             string[] lines;
             lines = Regex.Split(sr.ReadToEnd(),"\r\n| ");
             sr.Close();
@@ -40,11 +43,25 @@ namespace LightsOut2
                 }
             }
         }
-
+        private static void CheckForFile()
+        {
+            if (!File.Exists(path))
+            { 
+                fs = new FileStream(path, FileMode.Create);
+                fs.Close();
+                string[] template = new string[] {"REC 10000", "REC 8000", "REC 5000", "REC 3000", "REC 2000", "REC 1000", "REC 500", "REC 100" };
+                sw = new StreamWriter(path);
+                for (int i = 0; i < 8; i++)
+                {
+                    sw.WriteLine(template[i]);
+                }
+                sw.Close();
+            }
+        }
         public static void Record(string name)
         {
             Scores[0, Index] = name;
-            sw = new StreamWriter("Content\\Highscore.txt");
+            sw = new StreamWriter(path);
 
             for (int y = 1; y < 8; y++)
             {
@@ -61,7 +78,7 @@ namespace LightsOut2
             {
                 if(Convert.ToInt32(Scores[1,y]) < newScore)
                 {
-                    ResortScore(y,newScore);
+                    ResortScore(y, newScore);
                     Index = y;
                     return true;
                 }

@@ -34,6 +34,9 @@ namespace LightsOut2
 
         public void Initialize()
         {
+            player.lives = 3;
+            enemyManager.enemyList.Clear();
+            enemyManager.removeList.Clear();
             Game1.penumbra.Lights.Clear();
             Game1.penumbra.Hulls.Clear();
             Game1.penumbra.Lights.Add(player.viscinity);
