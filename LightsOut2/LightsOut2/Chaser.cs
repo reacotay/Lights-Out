@@ -22,7 +22,7 @@ namespace LightsOut2
         public override void Update()
         {
             position += direction * movementSpeed;
-
+            EnemyAngle();
             base.Update();
         }
     }

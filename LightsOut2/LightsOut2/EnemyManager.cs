@@ -13,6 +13,7 @@ namespace LightsOut2
     {
         int timePassed;
         float spawnRate;
+        int number;
 
         Enemy tempEnemy;
         public List<Enemy> enemyList;
@@ -31,7 +32,16 @@ namespace LightsOut2
         {
             if (timePassed >= spawnRate)
             {
-                tempEnemy = new Chaser(GeneratePosition(), Constants.CellSize);
+                number = Constants.Randomizer.Next(1, 3);
+                switch (number)
+                {
+                    case 1:
+                        tempEnemy = new Chaser(GeneratePosition(), Constants.CellSize);
+                        break;
+                    case 2:
+                        tempEnemy = new Charger(GeneratePosition(), Constants.CellSize);
+                        break;
+                }
                 enemyList.Add(tempEnemy);
                 timePassed = 0;
             }

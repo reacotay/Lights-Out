@@ -24,7 +24,7 @@ namespace LightsOut2
 
         public override void Update()
         {
-            EnemyAngle();
+            
 
             base.Update();
         }
@@ -42,7 +42,7 @@ namespace LightsOut2
             direction.Normalize();
         }
 
-        void EnemyAngle()
+        protected void EnemyAngle()
         {
             angle = Convert.ToSingle(Math.Atan2(direction.X, -direction.Y));
         }

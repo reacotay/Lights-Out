@@ -48,6 +48,7 @@ namespace LightsOut2
             Game1.penumbra.BeginDraw();
                 spriteBatch.Draw(groundTex, Vector2.Zero, Color.White);
                 spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(100,200), Color.Black, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(103, 203), Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             spriteBatch.End();
             Game1.penumbra.Draw(gameTime);
 
