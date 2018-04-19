@@ -32,7 +32,7 @@ namespace LightsOut2
         {
             if (timePassed >= spawnRate)
             {
-                number = Constants.Randomizer.Next(1, 3);
+                number = Constants.Randomizer.Next(1, 4);
                 switch (number)
                 {
                     case 1:
@@ -41,6 +41,9 @@ namespace LightsOut2
                     case 2:
                         tempEnemy = new Charger(GeneratePosition(), Constants.CellSize);
                         break;
+                    case 3:
+                        tempEnemy = new Shooter(GeneratePosition(), Constants.CellSize);
+                        break;
                 }
                 enemyList.Add(tempEnemy);
                 timePassed = 0;
@@ -48,6 +51,11 @@ namespace LightsOut2
             else
             {
                 timePassed++;
+            }
+
+            foreach (Shooter tempShooter in enemyList.OfType<Shooter>())
+            {
+                tempShooter.CalculateDistance(playerPosition);
             }
 
             foreach (Enemy tempEnemy in enemyList)
