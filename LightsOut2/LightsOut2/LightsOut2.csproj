@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rager.cs" />
     <Compile Include="ScreenClear.cs" />
+    <Compile Include="Shooter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -82,6 +83,7 @@
     <Content Include="Content\Ground.png" />
     <Content Include="Content\playerTex.png" />
     <Content Include="Content\ScreenClear.png" />
+    <Content Include="Content\ShooterTex.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
