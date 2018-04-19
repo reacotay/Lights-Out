@@ -19,7 +19,8 @@ namespace LightsOut2
 
         public static int CellAmountX { get; private set; }
         public static int CellAmountY { get; private set; }
-        public static int CellSize { get; private set; }
+        public static int StandardSize { get; private set; }
+        public static int BigSize { get; private set; }
         public static int BulletSize { get; private set; }
 
         public static float HeatValue { get; set; }
@@ -43,7 +44,8 @@ namespace LightsOut2
 
             CellAmountX = 16;
             CellAmountY = 16;
-            CellSize = 25;
+            StandardSize = 25;
+            BigSize = 50;
             BulletSize = 5;
 
             GameWindow = new Rectangle(0, 0, WindowWidth, WindowHeight);

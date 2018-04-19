@@ -32,17 +32,21 @@ namespace LightsOut2
         {
             if (timePassed >= spawnRate)
             {
-                number = Constants.Randomizer.Next(1, 4);
+                //number = Constants.Randomizer.Next(1, 5);
+                number = 4;
                 switch (number)
                 {
                     case 1:
-                        tempEnemy = new Chaser(GeneratePosition(), Constants.CellSize);
+                        tempEnemy = new Chaser(GeneratePosition(), Constants.StandardSize);
                         break;
                     case 2:
-                        tempEnemy = new Charger(GeneratePosition(), Constants.CellSize);
+                        tempEnemy = new Charger(GeneratePosition(), Constants.StandardSize);
                         break;
                     case 3:
-                        tempEnemy = new Shooter(GeneratePosition(), Constants.CellSize);
+                        tempEnemy = new Shooter(GeneratePosition(), Constants.StandardSize);
+                        break;
+                    case 4:
+                        tempEnemy = new Rager(GeneratePosition(), Constants.BigSize);
                         break;
                 }
                 enemyList.Add(tempEnemy);

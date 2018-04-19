@@ -26,6 +26,7 @@ namespace LightsOut2
         public Shooter(Vector2 position, int size)
             : base(position, size)
         {
+            hitpoints = 1;
             movementSpeed = 2f;
             shootCooldown = 20;
             firing = 0;

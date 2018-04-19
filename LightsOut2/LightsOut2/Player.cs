@@ -111,7 +111,7 @@ namespace LightsOut2
 
         public void TakeDamage()
         {
-            screenClear = new ScreenClear(position, Constants.CellSize);
+            screenClear = new ScreenClear(position, Constants.StandardSize);
             lives--;
             tempDead = true;
         }
