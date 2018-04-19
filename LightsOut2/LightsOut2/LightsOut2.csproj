@@ -59,6 +59,8 @@
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Highscore\NameEntry.cs" />
     <Compile Include="Gameplay\Player.cs" />
+    <Compile Include="Particle Effects\Particle.cs" />
+    <Compile Include="Particle Effects\ParticleEngine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enemy\Rager.cs" />
