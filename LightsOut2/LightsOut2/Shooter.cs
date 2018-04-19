@@ -11,14 +11,12 @@ namespace LightsOut2
 {
     class Shooter : Enemy
     {
-        int shootCooldown;
-        int firing;
-        bool inRange;
+        int fireRate;
+        int frame;
         bool shooting;
         bool fleeing;
-
-        Vector2 range;
-        Vector2 distance;
+        double range;
+        double distance;
         
         List<Bullet> enemyBulletList;
         List<Bullet> enemyRemoveList;
@@ -28,9 +26,9 @@ namespace LightsOut2
         {
             hitpoints = 1;
             movementSpeed = 2f;
-            shootCooldown = 20;
-            firing = 0;
-            range = new Vector2(200, 200);
+            fireRate = 20;
+            frame = 0;
+            range = 200;
             texture = ContentManager.Get<Texture2D>("shooterTex");
             enemyBulletList = new List<Bullet>();
             enemyRemoveList = new List<Bullet>();
@@ -41,10 +39,12 @@ namespace LightsOut2
             if (fleeing)
             {
                 position -= direction * movementSpeed;
+                shooting = true;
             }
             else if (!fleeing)
             {
                 position += direction * movementSpeed;
+                shooting = false;
             }
             BulletManagement();
             EnemyAngle();
@@ -53,28 +53,37 @@ namespace LightsOut2
 
         public void CalculateDistance(Vector2 playerPosition)
         {
-            distance = playerPosition - position;
+            Vector2 vectorDistance = playerPosition - position;
+            distance = Math.Sqrt((Math.Pow(vectorDistance.X, 2) + Math.Pow(vectorDistance.Y, 2)));
 
-            if (distance.X < range.X || distance.Y < range.Y)
+            if (distance < range)
             {
                 fleeing = true;
             }
-            else if (distance.X > range.X || distance.Y > range.Y)
+            else if (distance > range)
             {
                 fleeing = false;
-               
             }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (Bullet tempBullet in enemyBulletList)
+            {
+                tempBullet.Draw(spriteBatch);
+            }
+            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
         }
 
         void BulletManagement()
         {
-            if (!fleeing)
+            if (shooting)
             {
-                if (firing <= shootCooldown)
+                if (frame == fireRate)
                 {
                     CreateBullet();
                 }
-                firing++;
+                frame++;
             }
 
             foreach (Bullet tempBullet in enemyBulletList)
@@ -92,7 +101,7 @@ namespace LightsOut2
         {
             Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
             enemyBulletList.Add(tempBullet);
-            
+            frame = 0;
         }
     }
 }
