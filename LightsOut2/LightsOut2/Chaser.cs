@@ -14,6 +14,7 @@ namespace LightsOut2
         public Chaser(Vector2 position, int size)
             : base (position, size)
         {
+            hitpoints = 1;
             movementSpeed = 3f;
 
             texture = ContentManager.Get<Texture2D>("chaserTex");

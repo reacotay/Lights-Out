@@ -85,9 +85,14 @@ namespace LightsOut2
                 {
                     if (tempEnemy.destinationRectangle.Intersects(tempBullet.destinationRectangle))
                     {
-                        enemyManager.removeList.Add(tempEnemy);
-                        player.removeList.Add(tempBullet);
-                        score += 100;
+                        bool dead = tempEnemy.TakeDamage();
+
+                        if (dead)
+                        {
+                            enemyManager.removeList.Add(tempEnemy);
+                            player.removeList.Add(tempBullet);
+                            score += 100;
+                        }
                     }
                 }
 

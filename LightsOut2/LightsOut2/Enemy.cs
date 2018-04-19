@@ -11,7 +11,8 @@ namespace LightsOut2
 {
     class Enemy : GameObject
     {
-        float angle;
+        protected int hitpoints;
+        protected float angle;
         protected float movementSpeed;
 
         protected Vector2 direction;
@@ -20,13 +21,6 @@ namespace LightsOut2
             : base (position, size)
         {
 
-        }
-
-        public override void Update()
-        {
-            
-
-            base.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -45,6 +39,16 @@ namespace LightsOut2
         protected void EnemyAngle()
         {
             angle = Convert.ToSingle(Math.Atan2(direction.X, -direction.Y));
+        }
+
+        public virtual bool TakeDamage()
+        {
+            hitpoints--;
+
+            if (hitpoints == 0)
+                return true;
+            else
+                return false;
         }
     }
 }

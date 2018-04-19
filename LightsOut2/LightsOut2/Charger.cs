@@ -19,6 +19,7 @@ namespace LightsOut2
         public Charger(Vector2 position, int size)
             : base(position, size)
         {
+            hitpoints = 1;
             movementSpeed = 7f;
 
             texture = ContentManager.Get<Texture2D>("chargerTex");

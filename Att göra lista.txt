@@ -1,0 +1,14 @@
+FIXES:
+Ge kameran en position för GamePad-support. (Känns spastiskt när man använder spaken för att sikta)
+Fixa så att spelaren inte dör instantly om han står kvar på sin starting position och tar skada.
+
+MÅSTE GÖRAS:
+Programmera så att man ska starta om spelet
+Implementera fler fiender
+Implementera player 
+Implementera knapparna i menyn
+
+BORDE GÖRAS:
+Implementera ljudeffekter
+Implementera skuggor
+Implementera Partikeleffekter
