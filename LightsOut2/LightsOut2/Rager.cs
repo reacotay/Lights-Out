@@ -49,7 +49,7 @@ namespace LightsOut2
             if (!rage)
             {
                 rage = true;
-                movementSpeed = 10;
+                movementSpeed = 3;
             }
 
             if (hitpoints == 0)
