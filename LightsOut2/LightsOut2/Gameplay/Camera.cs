@@ -12,6 +12,7 @@ namespace LightsOut2
     {
         private Matrix transform;
         public Vector2 position;
+        private Vector2 tempPosition;
         private Viewport view;
 
         public Camera(Viewport view)
@@ -25,8 +26,10 @@ namespace LightsOut2
 
             if (Constants.gamePadState.IsConnected)
             {
-                transform = Matrix.CreateTranslation(-position.X + view.Width / 2 - Constants.tempDirection.X * 200,
-                    -position.Y + view.Width / 2 - Constants.tempDirection.Y * 150, 0);
+                Boundaries();
+                tempPosition += Constants.tempDirection * 8;
+                transform = Matrix.CreateTranslation(-position.X + view.Width / 2 - tempPosition.X,
+                    -position.Y + view.Width / 2 - tempPosition.Y, 0);
             }
             else
             {
@@ -44,6 +47,23 @@ namespace LightsOut2
         public Matrix GetTransform()
         {
             return transform;
+        }
+
+        public void Boundaries()
+        {
+            int boundaryValue = 150;
+            if (tempPosition.X >= boundaryValue)
+                tempPosition.X = boundaryValue;
+
+            if (tempPosition.X <= -boundaryValue)
+                tempPosition.X = -boundaryValue;
+
+            if (tempPosition.Y >= boundaryValue)
+                tempPosition.Y = boundaryValue;
+
+            if (tempPosition.Y <= -boundaryValue)
+                tempPosition.Y = -boundaryValue;
+
         }
     }
 }
