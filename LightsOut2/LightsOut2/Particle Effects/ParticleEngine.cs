@@ -23,7 +23,7 @@ namespace LightsOut2
         {
             EmitterLocation = new Vector2(/*playerposition*/);
             
-            /*if (spelaren springer)
+            /*if (player.Sprint)
             {
                 particles.Add(GenerateNewParticle());
             }
