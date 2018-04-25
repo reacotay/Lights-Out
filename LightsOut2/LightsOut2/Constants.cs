@@ -17,12 +17,11 @@ namespace LightsOut2
         public static int PlatfromWidth { get; private set; }
         public static int PlatformHeight { get; private set; }
 
-        public static int CellAmountX { get; private set; }
-        public static int CellAmountY { get; private set; }
         public static int StandardSize { get; private set; }
         public static int BigSize { get; private set; }
         public static int BulletSize { get; private set; }
 
+        public static int ShadowOffset { get; private set; }
         public static float HeatValue { get; set; }
 
         public static Rectangle GameWindow { get; private set; }
@@ -42,11 +41,11 @@ namespace LightsOut2
             PlatfromWidth = 1600;
             PlatformHeight = 1600;
 
-            CellAmountX = 16;
-            CellAmountY = 16;
             StandardSize = 25;
             BigSize = 50;
             BulletSize = 5;
+
+            ShadowOffset = 2;
 
             GameWindow = new Rectangle(0, 0, WindowWidth, WindowHeight);
             Randomizer = new Random();

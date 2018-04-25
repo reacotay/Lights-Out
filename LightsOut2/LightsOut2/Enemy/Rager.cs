@@ -34,10 +34,12 @@ namespace LightsOut2
         {
             if (!rage)
             {
+                spriteBatch.Draw(texture, new Vector2(position.X, position.Y - Constants.ShadowOffset), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, angle, new Vector2(texture.Width / 2, texture.Height / 2), 2.2f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 2f, SpriteEffects.None, 0f);
             }
             else if (rage)
             {
+                spriteBatch.Draw(texture, new Vector2(position.X, position.Y - Constants.ShadowOffset), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, angle, new Vector2(texture.Width / 2, texture.Height / 2), 2.2f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.Red, angle, new Vector2(texture.Width / 2, texture.Height / 2), 2f, SpriteEffects.None, 0f);
             }
         }
