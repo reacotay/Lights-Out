@@ -116,6 +116,24 @@ namespace LightsOut2
                     }
                 }
             }
+            foreach (Shooter tempShooter in enemyManager.enemyList.OfType<Shooter>())
+            {
+                foreach (Bullet tempEnemyBullet in tempShooter.enemyBulletList)
+                {
+                    if (tempEnemyBullet.destinationRectangle.Intersects(player.destinationRectangle))
+                    {
+                        player.TakeDamage();
+                        tempShooter.enemyRemoveList.Add(tempEnemyBullet);
+                    }
+                    if (player.screenClear != null)
+                    {
+                        if (tempEnemyBullet.destinationRectangle.Intersects(player.screenClear.destinationRectangle))
+                        {
+                            tempShooter.enemyRemoveList.Add(tempEnemyBullet);
+                        }
+                    }
+                }
+            }
         }
     }
 }

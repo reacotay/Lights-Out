@@ -18,8 +18,8 @@ namespace LightsOut2
         double range;
         double distance;
         
-        List<Bullet> enemyBulletList;
-        List<Bullet> enemyRemoveList;
+        public List<Bullet> enemyBulletList;
+        public List<Bullet> enemyRemoveList;
 
         public Shooter(Vector2 position, int size)
             : base(position, size)
