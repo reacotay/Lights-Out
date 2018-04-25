@@ -110,6 +110,7 @@ namespace LightsOut2
                     if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
                     {
                         mainMenu.Initialize();
+                        gameManager = new GameManager();
                         currentState = GameState.MainMenu;
                     }
                     break;

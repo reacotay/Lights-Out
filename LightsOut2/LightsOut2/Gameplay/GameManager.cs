@@ -116,6 +116,7 @@ namespace LightsOut2
                     }
                 }
             }
+
             foreach (Shooter tempShooter in enemyManager.enemyList.OfType<Shooter>())
             {
                 foreach (Bullet tempEnemyBullet in tempShooter.enemyBulletList)
