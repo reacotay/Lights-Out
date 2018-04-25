@@ -18,6 +18,7 @@ namespace LightsOut2
         HeatBar heatBar;
         EnemyManager enemyManager;
         public static Camera camera;
+        ParticleEngine particleEngine;
 
         public GameManager()
         {
@@ -30,6 +31,7 @@ namespace LightsOut2
             heatBar = new HeatBar(camera.GetPosition(), 1);
             enemyManager = new EnemyManager();
             Game1.penumbra.AmbientColor = Color.Black;
+            particleEngine = new ParticleEngine();
         }
 
         public void Initialize()
@@ -46,6 +48,7 @@ namespace LightsOut2
 
         public void Update()
         {
+            particleEngine.Update(player.sprinting, player.position);
             player.Update();
             heatBar.Update();
             enemyManager.Update(player.position);
@@ -62,6 +65,7 @@ namespace LightsOut2
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
                 spriteBatch.Draw(ContentManager.Get<Texture2D>("tempBackground"), Vector2.Zero, Color.White);
+                particleEngine.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
             spriteBatch.End();

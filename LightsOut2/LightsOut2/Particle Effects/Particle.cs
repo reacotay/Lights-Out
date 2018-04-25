@@ -9,20 +9,20 @@ namespace LightsOut2
         public Vector2 Position { get; set; }
         public Color Color { get; set; }
         public float Size { get; set; }
-        public int TTL { get; set; }
+        public int LifeSpan { get; set; }
 
-        public Particle(Texture2D texture, Vector2 position, Color color, float size, int ttl)
+        public Particle(Texture2D texture, Vector2 position, Color color, float size, int lifeSpan)
         {
             Texture = texture;
             Position = position;
             Color = color;
             Size = size;
-            TTL = ttl;
+            LifeSpan = lifeSpan;
         }
 
         public void Update()
         {
-            TTL--;
+            LifeSpan--;
         }
 
         public void Draw(SpriteBatch spriteBatch)

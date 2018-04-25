@@ -13,45 +13,25 @@ namespace LightsOut2
 
         public ParticleEngine()
         {
-            texture = ContentManager.Get<Texture2D>("circle");
+            texture = ContentManager.Get<Texture2D>("particle");
 
             particles = new List<Particle>();
         }
 
-        // Creates new paritcles, removes old ones and updates current particles
-        public void Update()
+        public void Update(bool playerSprint, Vector2 playerPosition)
         {
-            EmitterLocation = new Vector2(/*playerposition*/);
+            PlayerUpdate(playerSprint, playerPosition);
+            EnemyUpdate();
             
-            /*if (player.Sprint)
-            {
-                particles.Add(GenerateNewParticle());
-            }
-            */
             for (int particle = 0; particle < particles.Count; particle++)
             {
                 particles[particle].Update();
-                if (particles[particle].TTL <= 0)
+                if (particles[particle].LifeSpan <= 0)
                 {
                     particles.RemoveAt(particle);
                     particle--;
                 }
             }
-        }
-
-        // Creates a new particle containing information like color, angle, speed, and size
-        private Particle GenerateNewParticle()
-        {
-            Texture2D tempTex = texture;
-            Vector2 position = EmitterLocation;
-
-            float shade = (float)Constants.Randomizer.NextDouble();
-            Color color = new Color(shade, 0, 0);
-
-            float size = (float)Constants.Randomizer.NextDouble();
-            int ttl = 20 + Constants.Randomizer.Next(40);
-
-            return new Particle(tempTex, position, color, size, ttl);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -62,11 +42,47 @@ namespace LightsOut2
             }
         }
 
-        // Recieves the amount of lives remaining to generate the correct amount of particles
-        public void TransferLife(int life)
-        {
-            
+        //----------------------------------------------------------------------------------------------------
 
+        private void PlayerUpdate(bool playerSprint, Vector2 playerPosition)
+        {
+            EmitterLocation = playerPosition;
+            if (playerSprint)
+            {
+                particles.Add(GenerateNewParticle("sprintEffect"));
+            }
+        }
+
+        private void EnemyUpdate()
+        {
+            /*
+            EmitterLocation = new Vector2(enemyposition);
+            if (enemy.Dead)
+            {
+                particles.Add(GenerateNewParticle(type));
+            }
+            */
+        }
+
+        private Particle GenerateNewParticle(string type)
+        {
+            Texture2D tempTex = texture;
+            Vector2 position = EmitterLocation;
+            int ttl = 10 + Constants.Randomizer.Next(10);
+            float shade = 0f;
+            Color color = new Color();
+            float size = 0f;
+
+            switch (type)
+            {
+                case "sprintEffect":
+                    shade = (float)Constants.Randomizer.NextDouble();
+                    color = new Color(shade, shade, shade);
+                    size = 5 + 5 * (float)Constants.Randomizer.NextDouble();
+                    break;
+            }
+
+            return new Particle(tempTex, position, color, size, ttl);
         }
     }
 }
