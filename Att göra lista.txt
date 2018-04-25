@@ -4,12 +4,12 @@ Fixa så att spelaren inte dör instantly om han står kvar på sin starting positio
 Där är en offset på hitboxen eftersom vi ritar ut texturerna med en origin, hitboxen eller utritningen av texturerna måste flyttas.
 
 MÅSTE GÖRAS:
-Programmera så att man ska starta om spelet
-Implementera fler fiender
 Implementera player powerups
 Implementera knapparna i menyn
 
+VILL GÖRAS:
+Implementera fler fiender
+
 BORDE GÖRAS:
 Implementera ljudeffekter
-Implementera skuggor
 Implementera Partikeleffekter
