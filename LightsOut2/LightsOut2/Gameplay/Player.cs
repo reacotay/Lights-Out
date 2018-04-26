@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 using Penumbra;
+using Microsoft.Xna.Framework.Audio;
 
 namespace LightsOut2
 {
@@ -20,6 +22,7 @@ namespace LightsOut2
         bool overheated;
         int fireRate;
 
+        SoundEffect sfx;
         Vector2 direction;
         public ScreenClear screenClear;
         public List<Bullet> bulletList;
@@ -37,6 +40,7 @@ namespace LightsOut2
             
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
+            sfx = ContentManager.Get<SoundEffect>("Lights-Out-Original-Death-Sound");
             screenClear = null;
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
@@ -116,6 +120,7 @@ namespace LightsOut2
 
         public void TakeDamage()
         {
+            sfx.Play();
             screenClear = new ScreenClear(position, Constants.StandardSize);
             lives--;
             tempDead = true;

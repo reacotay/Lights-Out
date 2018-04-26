@@ -71,6 +71,7 @@ namespace LightsOut2
             {
                 enemyList.Remove(tempEnemy);
             }
+            removeList.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch)

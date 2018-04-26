@@ -159,3 +159,9 @@
 /processorParam:TextureFormat=Color
 /build:brickBackground.png
 
+#begin Lights-Out-Original-Death-Sound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Lights-Out-Original-Death-Sound.wav
+
