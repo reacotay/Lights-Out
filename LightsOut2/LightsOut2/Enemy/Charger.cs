@@ -11,10 +11,10 @@ namespace LightsOut2
 {
     class Charger : Enemy
     {
-        int chargeDelay;
-        int count;
-        bool charging;
-        Vector2 chargeDirection;
+        private int chargeDelay;
+        private int count;
+        private bool charging;
+        private Vector2 chargeDirection;
 
         public Charger(Vector2 position, int size)
             : base(position, size)

@@ -11,9 +11,9 @@ namespace LightsOut2
 {
     class EnemyManager
     {
-        int timePassed;
-        float spawnRate;
-        int number;
+        private int timePassed;
+        private float spawnRate;
+        private int number;
 
         Enemy tempEnemy;
         public List<Enemy> enemyList;

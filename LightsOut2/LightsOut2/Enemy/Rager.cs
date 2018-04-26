@@ -11,7 +11,7 @@ namespace LightsOut2
 {
     class Rager : Enemy
     {
-        bool rage;
+        private bool rage;
 
         public Rager(Vector2 position, int size)
             : base (position, size)

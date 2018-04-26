@@ -11,12 +11,12 @@ namespace LightsOut2
 {
     class Shooter : Enemy
     {
-        int fireRate;
-        int frame;
-        bool shooting;
-        bool fleeing;
-        double range;
-        double distance;
+        private int fireRate;
+        private int frame;
+        private bool shooting;
+        private bool fleeing;
+        private double range;
+        private double distance;
         
         public List<Bullet> enemyBulletList;
         public List<Bullet> enemyRemoveList;
