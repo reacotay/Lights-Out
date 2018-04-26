@@ -100,13 +100,17 @@ namespace LightsOut2
 
         public void MoveToStartPosition()
         {
-            Vector2 tempDirection = new Vector2(800, 800) - position; tempDirection.Normalize();
-            position += tempDirection * movementSpeed;
-            destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
 
             if (position.X >= 750 && position.X <= 850 && position.Y >= 750 && position.Y <= 850)
             {
                 tempDead = false;
+            }
+
+            if (tempDead)
+            {
+                Vector2 tempDirection = new Vector2(800, 800) - position; tempDirection.Normalize();
+                position += tempDirection * movementSpeed;
+                destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
             }
         }
 
