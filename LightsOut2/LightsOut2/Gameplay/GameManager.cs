@@ -87,7 +87,7 @@ namespace LightsOut2
             {
                 foreach (Bullet tempBullet in player.bulletList)
                 {
-                    if (tempEnemy.destinationRectangle.Intersects(tempBullet.destinationRectangle))
+                    if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
                     {
                         bool dead = tempEnemy.TakeDamage();
                         player.removeList.Add(tempBullet);
@@ -102,14 +102,14 @@ namespace LightsOut2
 
                 if (player.screenClear != null)
                 {
-                    if (tempEnemy.destinationRectangle.Intersects(player.screenClear.destinationRectangle))
+                    if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
                     {
                         enemyManager.removeList.Add(tempEnemy);
                         score += 100;
                     }
                 }
 
-                if (tempEnemy.destinationRectangle.Intersects(player.destinationRectangle))
+                if (tempEnemy.hitbox.Intersects(player.hitbox))
                 {
                     enemyManager.removeList.Add(tempEnemy);
                     if (player.lives >= 0)
@@ -125,14 +125,14 @@ namespace LightsOut2
             {
                 foreach (Bullet tempEnemyBullet in tempShooter.enemyBulletList)
                 {
-                    if (tempEnemyBullet.destinationRectangle.Intersects(player.destinationRectangle))
+                    if (tempEnemyBullet.hitbox.Intersects(player.hitbox))
                     {
                         player.TakeDamage();
                         tempShooter.enemyRemoveList.Add(tempEnemyBullet);
                     }
                     if (player.screenClear != null)
                     {
-                        if (tempEnemyBullet.destinationRectangle.Intersects(player.screenClear.destinationRectangle))
+                        if (tempEnemyBullet.hitbox.Intersects(player.screenClear.destinationRectangle))
                         {
                             tempShooter.enemyRemoveList.Add(tempEnemyBullet);
                         }

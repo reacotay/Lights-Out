@@ -17,6 +17,7 @@ namespace LightsOut2
         public Vector2 position;
         public Vector2 centerPosition;
         public Rectangle destinationRectangle;
+        public Rectangle hitbox;
 
         public GameObject(Vector2 position, int size)
         {
@@ -24,11 +25,13 @@ namespace LightsOut2
 
             this.position = position;
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
+            hitbox = new Rectangle((int)position.X - size / 2, (int)position.Y - size / 2, size, size);
         }
 
         public virtual void Update()
         {
             destinationRectangle = new Rectangle((int)position.X, (int)position.Y, size, size);
+            hitbox = new Rectangle((int)position.X - size / 2, (int)position.Y - size / 2, size, size);
             centerPosition = new Vector2(position.X + (size / 2), position.Y + (size / 2));
         }
 
