@@ -80,6 +80,7 @@
   <ItemGroup>
     <Content Include="Content\barTex.png" />
     <Content Include="Content\brickBackground.png" />
+    <Content Include="Content\brickSeamlessBackground.png" />
     <Content Include="Content\bulletTex.png" />
     <Content Include="Content\chargerTex.png" />
     <Content Include="Content\chaserTex.png" />

@@ -1,7 +1,5 @@
 FIXES:
 Ge kameran en position för GamePad-support. (Känns spastiskt när man använder spaken för att sikta)
-Fixa så att spelaren inte dör instantly om han står kvar på sin starting position och tar skada.
-Där är en offset på hitboxen eftersom vi ritar ut texturerna med en origin, hitboxen eller utritningen av texturerna måste flyttas.
 
 MÅSTE GÖRAS:
 Implementera player powerups
