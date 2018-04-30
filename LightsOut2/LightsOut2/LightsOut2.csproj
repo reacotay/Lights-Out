@@ -85,6 +85,7 @@
     <Content Include="Content\chargerTex.png" />
     <Content Include="Content\chaserTex.png" />
     <Content Include="Content\Ground.png" />
+    <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
     <Content Include="Content\playerTex.png" />
     <Content Include="Content\ScreenClear.png" />
     <Content Include="Content\ShooterTex.png" />

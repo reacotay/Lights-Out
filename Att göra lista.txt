@@ -4,6 +4,7 @@ Ge kameran en position för GamePad-support. (Känns spastiskt när man använder sp
 MÅSTE GÖRAS:
 Implementera player powerups
 Implementera knapparna i menyn
+Göra en algoritm för EnemyManager som spawnar fienderna. (Balansering)
 
 VILL GÖRAS:
 Implementera fler fiender.
