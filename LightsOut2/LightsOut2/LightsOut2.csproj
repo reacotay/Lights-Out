@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Gameplay\Bullet.cs" />
+    <Compile Include="Gameplay\Sfx.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Gameplay\Camera.cs" />
     <Compile Include="Enemy\Charger.cs" />
