@@ -64,7 +64,7 @@ namespace LightsOut2
             Game1.penumbra.Transform = camera.GetTransform();
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
-                spriteBatch.Draw(ContentManager.Get<Texture2D>("brickBackground"), Vector2.Zero, Color.White);
+                spriteBatch.Draw(ContentManager.Get<Texture2D>("tempBackground"), Vector2.Zero, Color.White);
                 particleEngine.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
