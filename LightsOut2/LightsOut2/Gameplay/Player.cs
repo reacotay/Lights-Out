@@ -20,7 +20,7 @@ namespace LightsOut2
         bool overheated;
         int fireRate;
 
-        Vector2 direction;
+        private Vector2 direction;
         public ScreenClear screenClear;
         public List<Bullet> bulletList;
         public List<Bullet> removeList;

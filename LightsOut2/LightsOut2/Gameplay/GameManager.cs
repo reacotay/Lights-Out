@@ -81,7 +81,7 @@ namespace LightsOut2
 
         //----------------------------------------------------------------------------------------------------
 
-        void CheckCollision()
+        public void CheckCollision()
         {
             foreach (Enemy tempEnemy in enemyManager.enemyList)
             {
@@ -95,6 +95,7 @@ namespace LightsOut2
                         if (dead)
                         {
                             enemyManager.removeList.Add(tempEnemy);
+                            particleEngine.CreateBloodSplatter(tempEnemy.position);
                             score += 100;
                         }
                     }
@@ -105,6 +106,7 @@ namespace LightsOut2
                     if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
                     {
                         enemyManager.removeList.Add(tempEnemy);
+                        particleEngine.CreateBloodSplatter(tempEnemy.position);
                         score += 100;
                     }
                 }

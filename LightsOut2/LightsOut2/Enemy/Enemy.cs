@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LightsOut2
 {
-    class Enemy : GameObject
+    public class Enemy : GameObject
     {
         protected int hitpoints;
         protected float angle;
