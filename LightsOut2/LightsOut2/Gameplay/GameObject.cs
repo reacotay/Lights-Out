@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LightsOut2
 {
-    abstract class GameObject
+    public abstract class GameObject
     {
         protected int size;
         

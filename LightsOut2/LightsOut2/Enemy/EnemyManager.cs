@@ -14,8 +14,7 @@ namespace LightsOut2
         private int timePassed;
         private float spawnRate;
         private int number;
-
-        Enemy tempEnemy;
+        public Enemy tempEnemy;
         public List<Enemy> enemyList;
         public List<Enemy> removeList;
 

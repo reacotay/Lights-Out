@@ -64,7 +64,7 @@ namespace LightsOut2
             Game1.penumbra.Transform = camera.GetTransform();
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
-                spriteBatch.Draw(ContentManager.Get<Texture2D>("tempBackground"), Vector2.Zero, Color.White);
+                spriteBatch.Draw(ContentManager.Get<Texture2D>("brickSeamlessBackground"), Vector2.Zero, Color.White);
                 particleEngine.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
@@ -81,7 +81,7 @@ namespace LightsOut2
 
         //----------------------------------------------------------------------------------------------------
 
-        void CheckCollision()
+        public void CheckCollision()
         {
             foreach (Enemy tempEnemy in enemyManager.enemyList)
             {
@@ -95,6 +95,7 @@ namespace LightsOut2
                         if (dead)
                         {
                             enemyManager.removeList.Add(tempEnemy);
+                            particleEngine.CreateBloodSplatter(tempEnemy.position);
                             score += 100;
                         }
                     }
@@ -105,6 +106,7 @@ namespace LightsOut2
                     if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
                     {
                         enemyManager.removeList.Add(tempEnemy);
+                        particleEngine.CreateBloodSplatter(tempEnemy.position);
                         score += 100;
                     }
                 }
