@@ -41,6 +41,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enemy\CrawlerPiece.cs" />
+    <Compile Include="Enemy\Crawler.cs" />
     <Compile Include="Gameplay\Bullet.cs" />
     <Compile Include="Gameplay\Sfx.cs" />
     <Compile Include="Menu\Button.cs" />
@@ -85,6 +87,10 @@
     <Content Include="Content\bulletTex.png" />
     <Content Include="Content\chargerTex.png" />
     <Content Include="Content\chaserTex.png" />
+    <Content Include="Content\crawlerHeadTex.png" />
+    <Content Include="Content\crawlerPointTex.png" />
+    <Content Include="Content\crawlerTailTex.png" />
+    <Content Include="Content\crawlerVertebraTex.png" />
     <Content Include="Content\Ground.png" />
     <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
     <Content Include="Content\playerTex.png" />
