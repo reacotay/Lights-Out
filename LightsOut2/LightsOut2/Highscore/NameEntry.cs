@@ -57,24 +57,24 @@ namespace LightsOut2
 
         static bool Choice(int i)
         {
-            if (Constants.keyState.IsKeyDown(Keys.W) && Constants.oldKeyState.IsKeyUp(Keys.W))
+            if ((Constants.keyState.IsKeyDown(Keys.W) && Constants.oldKeyState.IsKeyUp(Keys.W)) || (Constants.gamePadState.IsButtonDown(Buttons.DPadUp) && Constants.oldGamePadState.IsButtonUp(Buttons.DPadUp)))
             {
                 if (selected < 33)
                     selected++;
             }
 
-            if (Constants.keyState.IsKeyDown(Keys.S) && Constants.oldKeyState.IsKeyUp(Keys.S))
+            if (Constants.keyState.IsKeyDown(Keys.S) && Constants.oldKeyState.IsKeyUp(Keys.S) || (Constants.gamePadState.IsButtonDown(Buttons.DPadDown) && Constants.oldGamePadState.IsButtonUp(Buttons.DPadDown)))
             {
                 if (selected > 0)
                     selected--;
             }
 
-            if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
+            if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter) || (Constants.gamePadState.IsButtonDown(Buttons.A) && Constants.oldGamePadState.IsButtonUp(Buttons.A)))
             {
                 return true;
             }
 
-            if (Constants.keyState.IsKeyDown(Keys.Back) && Constants.oldKeyState.IsKeyUp(Keys.Back))
+            if (Constants.keyState.IsKeyDown(Keys.Back) && Constants.oldKeyState.IsKeyUp(Keys.Back) || (Constants.gamePadState.IsButtonDown(Buttons.B) && Constants.oldGamePadState.IsButtonUp(Buttons.B)))
             {
                 if (currentLetter != Letter.X)
                     currentLetter = currentLetter - 1;

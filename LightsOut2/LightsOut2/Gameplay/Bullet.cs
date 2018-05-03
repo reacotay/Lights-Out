@@ -11,7 +11,7 @@ namespace LightsOut2
 {
     class Bullet : GameObject
     {
-        int bulletSpeed;
+        private int bulletSpeed;
 
         Vector2 direction;
 

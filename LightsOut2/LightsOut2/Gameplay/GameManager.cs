@@ -49,7 +49,7 @@ namespace LightsOut2
 
         public void Update()
         {
-            particleEngine.Update(player.sprinting, player.position);
+            particleEngine.Update(player.position);
             player.Update();
             heatBar.Update();
             enemyManager.Update(player.position);

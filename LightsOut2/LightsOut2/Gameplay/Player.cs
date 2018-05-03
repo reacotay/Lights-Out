@@ -13,12 +13,11 @@ namespace LightsOut2
     class Player : GameObject
     {
         public int lives;
-        bool tempDead;
-        float angle;
-        float movementSpeed;
-        public bool sprinting;
-        bool overheated;
-        int fireRate;
+        private bool tempDead;
+        private float angle;
+        private float movementSpeed;
+        private bool overheated;
+        private int fireRate;
 
         private Vector2 direction;
         public ScreenClear screenClear;
@@ -32,7 +31,7 @@ namespace LightsOut2
         {
             lives = 3;
             tempDead = false;
-            movementSpeed = 3f;
+            movementSpeed = 5f;
             fireRate = 10;
             
             direction = new Vector2(1, 0);
@@ -132,7 +131,7 @@ namespace LightsOut2
                     direction.Normalize();
                 }
 
-                if (Constants.gamePadState.Triggers.Right >= 0.7f)
+                if (Constants.gamePadState.Triggers.Right >= 0.7f && overheated == false)
                 {
                     CreateBullet();
                 }
@@ -164,21 +163,6 @@ namespace LightsOut2
 
         void PlayerMovement()
         {
-            if (Constants.gamePadState.IsConnected)
-            {
-                if (Constants.gamePadState.IsButtonDown(Buttons.LeftShoulder))
-                    sprinting = true;
-                else
-                    sprinting = false;
-            }
-            else
-            {
-                if (Constants.keyState.IsKeyDown(Keys.LeftShift))
-                    sprinting = true;
-                else
-                    sprinting = false;
-            }
-
             PlayerMovementX();
             PlayerMovementY();
             PlayerAngle();
@@ -196,18 +180,12 @@ namespace LightsOut2
             {
                 if (Constants.keyState.IsKeyDown(Keys.W) && Constants.keyState.IsKeyUp(Keys.S))
                 {
-                    if (sprinting)
-                        tempDestination.Y -= (int)(movementSpeed * 1.5f);
-                    else
-                        tempDestination.Y -= (int)movementSpeed;
+                    tempDestination.Y -= (int)movementSpeed;
                 }
 
                 if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
                 {
-                    if (sprinting)
-                        tempDestination.Y += (int)(movementSpeed * 1.5f);
-                    else
-                        tempDestination.Y += (int)movementSpeed;
+                    tempDestination.Y += (int)movementSpeed;
                 }
             }
 
@@ -226,18 +204,12 @@ namespace LightsOut2
             {
                 if (Constants.keyState.IsKeyDown(Keys.A) && Constants.keyState.IsKeyUp(Keys.D))
                 {
-                    if (sprinting)
-                        tempDestination.X -= (int)(movementSpeed * 1.5f);
-                    else
-                        tempDestination.X -= (int)movementSpeed;
+                    tempDestination.X -= (int)movementSpeed;
                 }
 
                 if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
                 {
-                    if (sprinting)
-                        tempDestination.X += (int)(movementSpeed * 1.5f);
-                    else
-                        tempDestination.X += (int)movementSpeed;
+                    tempDestination.X += (int)movementSpeed;
                 }
             }
 

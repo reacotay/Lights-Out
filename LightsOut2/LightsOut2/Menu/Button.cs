@@ -11,7 +11,7 @@ namespace LightsOut2
 {
     class Button : GameObject
     {
-        string text;
+        private string text;
 
         public Button(Vector2 position, int size, string text)
             : base(position, size)
