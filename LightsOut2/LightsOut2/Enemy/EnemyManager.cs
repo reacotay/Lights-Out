@@ -32,7 +32,6 @@ namespace LightsOut2
             if (timePassed >= spawnRate)
             {
                 number = Constants.Randomizer.Next(1, 6);
-                number = 5;
                 switch (number)
                 {
                     case 1:

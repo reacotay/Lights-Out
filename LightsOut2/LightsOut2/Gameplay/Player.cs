@@ -115,10 +115,13 @@ namespace LightsOut2
 
         public void TakeDamage()
         {
-            Sfx.Play.PlayerDeath();
-            screenClear = new ScreenClear(position, Constants.StandardSize);
-            lives--;
-            tempDead = true;
+            if (!tempDead)
+            {
+                Sfx.Play.PlayerDeath();
+                screenClear = new ScreenClear(position, Constants.StandardSize);
+                lives--;
+                tempDead = true;
+            }
         }
 
         void BulletManagment()
