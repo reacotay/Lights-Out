@@ -18,10 +18,8 @@ namespace LightsOut2
             particles = new List<Particle>();
         }
 
-        public void Update(bool playerSprint, Vector2 playerPosition)
+        public void Update(Vector2 playerPosition)
         {
-            PlayerUpdate(playerSprint, playerPosition);
-            
             for (int particle = 0; particle < particles.Count; particle++)
             {
                 particles[particle].Update();
@@ -42,15 +40,6 @@ namespace LightsOut2
         }
 
         //----------------------------------------------------------------------------------------------------
-
-        private void PlayerUpdate(bool playerSprint, Vector2 playerPosition)
-        {
-            EmitterLocation = playerPosition;
-            if (playerSprint)
-            {
-                particles.Add(GenerateNewParticle("sprintEffect"));
-            }
-        }
 
         public void CreateBloodSplatter(Vector2 enemyPosition)
         {
@@ -76,7 +65,7 @@ namespace LightsOut2
                     break;
                 case "enemyDeathEffect":
                     shade = (float)Constants.Randomizer.NextDouble();
-                    color = new Color(shade, 0, 0);
+                    color = new Color(shade, 0, 0   );
                     size = 5 + 5 * (float)Constants.Randomizer.NextDouble();
                     break;
             }

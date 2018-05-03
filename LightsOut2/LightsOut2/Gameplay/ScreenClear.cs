@@ -27,8 +27,8 @@ namespace LightsOut2
         {
             if (size < maxSize)
             {
-                position -= new Vector2(5, 5);
-                size += 10;
+                position -= new Vector2(10, 10);
+                size += 20;
             }
             else
                 remove = true;
