@@ -11,19 +11,24 @@ namespace LightsOut2
 {
     class CrawlerPiece : Enemy
     {
+        public int piecehitpoints { get; private set; }
         public CrawlerPiece(Vector2 position, int size, Texture2D texture)
             : base (position, size)
         {
             hitpoints = 1;
+            piecehitpoints = 1;
             movementSpeed = 3f;
             this.texture = texture;
         }
 
-        public override void Update()
+        public void Update(Vector2 targetPosition)
         {
-            position += direction * movementSpeed;
+            piecehitpoints = hitpoints;
+            SetDirection(targetPosition);
+            position = targetPosition - direction * 20;
             EnemyAngle();
             base.Update();
         }
+        
     }
 }

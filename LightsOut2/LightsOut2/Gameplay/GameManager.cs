@@ -44,6 +44,7 @@ namespace LightsOut2
             Game1.penumbra.Lights.Add(player.viscinity);
             Game1.penumbra.Lights.Add(player.view);
             Game1.penumbra.Initialize();
+            Sfx.Play.BGMStart();
         }
 
         public void Update()
@@ -87,16 +88,42 @@ namespace LightsOut2
             {
                 foreach (Bullet tempBullet in player.bulletList)
                 {
-                    if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
+                    if (tempEnemy.GetType() == typeof(Crawler))
                     {
-                        bool dead = tempEnemy.TakeDamage();
-                        player.removeList.Add(tempBullet);
-
+                        bool dead = false;
+                        Crawler tempCrawler = (Crawler)tempEnemy;
+                        foreach(CrawlerPiece x in tempCrawler.bodyPieces)
+                        {
+                            if (x.piecehitpoints > 0)
+                            {
+                                if (x.hitbox.Intersects(tempBullet.hitbox))
+                                {
+                                    x.TakeDamage();
+                                    dead = tempCrawler.TakeDamage();
+                                    player.removeList.Add(tempBullet);
+                                }
+                            }
+                        }
                         if (dead)
                         {
                             enemyManager.removeList.Add(tempEnemy);
                             particleEngine.CreateBloodSplatter(tempEnemy.position);
                             score += 100;
+                        }
+                    }
+                    else
+                    {
+                        if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
+                        {
+                            bool dead = tempEnemy.TakeDamage();
+                            player.removeList.Add(tempBullet);
+
+                            if (dead)
+                            {
+                                enemyManager.removeList.Add(tempEnemy);
+                                particleEngine.CreateBloodSplatter(tempEnemy.position);
+                                score += 100;
+                            }
                         }
                     }
                 }
@@ -105,13 +132,30 @@ namespace LightsOut2
                 {
                     if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
                     {
-                        enemyManager.removeList.Add(tempEnemy);
-                        particleEngine.CreateBloodSplatter(tempEnemy.position);
-                        score += 100;
+                            enemyManager.removeList.Add(tempEnemy);
+                            particleEngine.CreateBloodSplatter(tempEnemy.position);
+                            score += 100;
                     }
                 }
 
-                if (tempEnemy.hitbox.Intersects(player.hitbox))
+                if (tempEnemy.GetType() == typeof(Crawler))
+                {
+                    Crawler tempCrawler = (Crawler)tempEnemy;
+                    foreach (CrawlerPiece x in tempCrawler.bodyPieces)
+                    {
+                        if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
+                        {
+                            enemyManager.removeList.Add(tempEnemy);
+                            if (player.lives >= 0)
+                                player.TakeDamage();
+                            else
+                            {
+                                gameOver = true;
+                            }
+                        }
+                    }
+                }
+                else if(tempEnemy.hitbox.Intersects(player.hitbox))
                 {
                     enemyManager.removeList.Add(tempEnemy);
                     if (player.lives >= 0)

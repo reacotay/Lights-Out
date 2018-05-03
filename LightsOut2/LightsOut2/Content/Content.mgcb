@@ -225,3 +225,9 @@
 /processorParam:TextureFormat=Color
 /build:crawlerPointTex.png
 
+#begin Lights-Out-No-Farts.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Lights-Out-No-Farts.mp3
+
