@@ -11,7 +11,7 @@ namespace LightsOut2
 {
     class ScreenClear : GameObject
     {
-        int maxSize;
+        private int maxSize;
         public bool remove;
 
         public ScreenClear(Vector2 position, int size)

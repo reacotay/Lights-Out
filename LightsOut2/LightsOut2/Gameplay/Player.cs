@@ -13,12 +13,12 @@ namespace LightsOut2
     class Player : GameObject
     {
         public int lives;
-        bool tempDead;
-        float angle;
-        float movementSpeed;
+        private bool tempDead;
+        private float angle;
+        private float movementSpeed;
         public bool sprinting;
-        bool overheated;
-        int fireRate;
+        private bool overheated;
+        private int fireRate;
 
         private Vector2 direction;
         public ScreenClear screenClear;
