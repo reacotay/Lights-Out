@@ -29,7 +29,7 @@ namespace LightsOut2
             gameOver = false;
 
             lavaBackground = ContentManager.Get<Texture2D>("lavaBackground");
-            brickBackground = ContentManager.Get<Texture2D>("brickSeamlessBackground");
+            brickBackground = ContentManager.Get<Texture2D>("brickLavaSeamlessBackground");
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
