@@ -112,6 +112,7 @@ namespace LightsOut2
                                 {
                                     x.TakeDamage();
                                     dead = tempCrawler.TakeDamage();
+                                    particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
                                     player.removeList.Add(tempBullet);
                                 }
                             }
