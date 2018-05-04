@@ -104,7 +104,7 @@ namespace LightsOut2
                     {
                         bool dead = false;
                         Crawler tempCrawler = (Crawler)tempEnemy;
-                        foreach(CrawlerPiece x in tempCrawler.bodyPieces)
+                        foreach(CrawlerPiece x in tempCrawler.BodyPieces)
                         {
                             if (x.piecehitpoints > 0)
                             {
@@ -128,6 +128,9 @@ namespace LightsOut2
                         if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
                         {
                             bool dead = tempEnemy.TakeDamage();
+                            Vector2 direction = tempEnemy.position - player.position;
+                            direction.Normalize();
+                            particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
                             player.removeList.Add(tempBullet);
 
                             if (dead)
@@ -155,7 +158,7 @@ namespace LightsOut2
                 if (tempEnemy.GetType() == typeof(Crawler))
                 {
                     Crawler tempCrawler = (Crawler)tempEnemy;
-                    foreach (CrawlerPiece x in tempCrawler.bodyPieces)
+                    foreach (CrawlerPiece x in tempCrawler.BodyPieces)
                     {
                         if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
                         {

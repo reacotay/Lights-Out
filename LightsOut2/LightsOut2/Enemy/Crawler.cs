@@ -17,7 +17,7 @@ namespace LightsOut2
         int bodyLength;
         float angleModifier;
         bool angleSwitch;
-        public List<CrawlerPiece> bodyPieces { get; } = new List<CrawlerPiece>();
+        public List<CrawlerPiece> BodyPieces { get; } = new List<CrawlerPiece>();
 
         public Crawler(Vector2 position, int size)
             : base (position, size)
@@ -35,11 +35,11 @@ namespace LightsOut2
             for (int i = 0; i <= bodyLength; i++)
             {
                 if (i == 0)
-                    bodyPieces.Add(new CrawlerPiece(position - new Vector2(0, 20), Constants.StandardSize, bodyTex));
+                    BodyPieces.Add(new CrawlerPiece(position - new Vector2(0, 20), Constants.StandardSize, bodyTex));
                 else if (i == bodyLength)
-                    bodyPieces.Add(new CrawlerPiece(bodyPieces[i - 1].position - new Vector2(0, 30), Constants.StandardSize, tailTex));
+                    BodyPieces.Add(new CrawlerPiece(BodyPieces[i - 1].position - new Vector2(0, 30), Constants.StandardSize, tailTex));
                 else
-                    bodyPieces.Add(new CrawlerPiece(bodyPieces[i - 1].position - new Vector2(0, 20), Constants.StandardSize, bodyTex));
+                    BodyPieces.Add(new CrawlerPiece(BodyPieces[i - 1].position - new Vector2(0, 20), Constants.StandardSize, bodyTex));
             }
         }
 
@@ -48,9 +48,9 @@ namespace LightsOut2
             for (int i = bodyLength; i >= 0; i--)
             {
                 if (i > 0)
-                    bodyPieces[i].Update(bodyPieces[i - 1].position);
+                    BodyPieces[i].Update(BodyPieces[i - 1].position);
                 else
-                    bodyPieces[i].Update(position);
+                    BodyPieces[i].Update(position);
             }
             ModifyAngle();
             Vector2 angleModVector = new Vector2((float)Math.Sin(angle + angleModifier),-(float)Math.Cos(angle + angleModifier));
@@ -63,9 +63,9 @@ namespace LightsOut2
         {
             for (int i = bodyLength; i >= 0; i--)
             {
-                bodyPieces[i].Draw(spriteBatch);
-                if(bodyPieces[i].piecehitpoints > 0)
-                    spriteBatch.Draw(pointTex, new Vector2(bodyPieces[i].hitbox.X + pointTex.Width / 2, bodyPieces[i].hitbox.Y + pointTex.Height / 2), Color.White);
+                BodyPieces[i].Draw(spriteBatch);
+                if(BodyPieces[i].piecehitpoints > 0)
+                    spriteBatch.Draw(pointTex, new Vector2(BodyPieces[i].hitbox.X + pointTex.Width / 2, BodyPieces[i].hitbox.Y + pointTex.Height / 2), Color.White);
             }
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y - Constants.ShadowOffset), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, angle+angleModifier, new Vector2(texture.Width / 2, texture.Height / 2), 1.1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle+angleModifier, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
