@@ -11,6 +11,7 @@ namespace LightsOut2
 {
     class EnemyManager
     {
+        private int crawlerCounter;
         private int timePassed;
         private float spawnRate;
         private int number;
@@ -31,27 +32,35 @@ namespace LightsOut2
         {
             if (timePassed >= spawnRate)
             {
-                number = Constants.Randomizer.Next(1, 6);
-                switch (number)
+                if (crawlerCounter < 50)
                 {
-                    case 1:
-                        tempEnemy = new Chaser(GeneratePosition(), Constants.StandardSize);
-                        break;
-                    case 2:
-                        tempEnemy = new Charger(GeneratePosition(), Constants.StandardSize);
-                        break;
-                    case 3:
-                        tempEnemy = new Shooter(GeneratePosition(), Constants.StandardSize);
-                        break;
-                    case 4:
-                        tempEnemy = new Rager(GeneratePosition(), Constants.BigSize);
-                        break;
-                    case 5:
-                        tempEnemy = new Crawler(GeneratePosition(), Constants.BigSize);
-                        break;
+                    number = Constants.Randomizer.Next(1, 5);
+                    switch (number)
+                    {
+                        case 1:
+                            tempEnemy = new Chaser(GeneratePosition(), Constants.StandardSize);
+                            break;
+                        case 2:
+                            tempEnemy = new Charger(GeneratePosition(), Constants.StandardSize);
+                            break;
+                        case 3:
+                            tempEnemy = new Shooter(GeneratePosition(), Constants.StandardSize);
+                            break;
+                        case 4:
+                            tempEnemy = new Rager(GeneratePosition(), Constants.BigSize);
+                            break;
+                    }
+                    enemyList.Add(tempEnemy);
+                    timePassed = 0;
+                    crawlerCounter++;
                 }
-                enemyList.Add(tempEnemy);
-                timePassed = 0;
+                else
+                {
+                    tempEnemy = new Crawler(GeneratePosition(), Constants.BigSize);
+                    enemyList.Add(tempEnemy);
+                    crawlerCounter = 0;
+                    timePassed = 0;
+                }
             }
             else
             {
