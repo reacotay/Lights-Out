@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="Content\barTex.png" />
     <Content Include="Content\brickBackground.png" />
+    <Content Include="Content\brickLavaSeamlessBackground.png" />
     <Content Include="Content\brickSeamlessBackground.png" />
     <Content Include="Content\bulletTex.png" />
     <Content Include="Content\chargerTex.png" />
@@ -95,7 +96,9 @@
     <Content Include="Content\lavaBackground.png" />
     <Content Include="Content\Lights-Out-No-Farts.mp3" />
     <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
+    <Content Include="Content\newGameTex.png" />
     <Content Include="Content\playerTex.png" />
+    <Content Include="Content\quitGameTex.png" />
     <Content Include="Content\ScreenClear.png" />
     <Content Include="Content\ShooterTex.png" />
     <Content Include="Content\tempBackground.png" />
