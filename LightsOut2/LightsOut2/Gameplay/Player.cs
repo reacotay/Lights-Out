@@ -17,7 +17,9 @@ namespace LightsOut2
         private float angle;
         private float movementSpeed;
         private bool overheated;
+        public bool moving;
         private int fireRate;
+        
 
         private Vector2 direction;
         public ScreenClear screenClear;
@@ -48,6 +50,8 @@ namespace LightsOut2
 
         public override void Update()
         {
+            moving = false;
+
             if (!tempDead)
             {
                 PlayerMovement();
@@ -74,7 +78,6 @@ namespace LightsOut2
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
-
             base.Update();
         }
 
@@ -178,17 +181,20 @@ namespace LightsOut2
             if (Constants.gamePadState.IsConnected)
             {
                 tempDestination.Y -= (int)(Constants.gamePadState.ThumbSticks.Left.Y * movementSpeed);
+                
             }
             else
             {
                 if (Constants.keyState.IsKeyDown(Keys.W) && Constants.keyState.IsKeyUp(Keys.S))
                 {
                     tempDestination.Y -= (int)movementSpeed;
+                    moving = true;
                 }
 
                 if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
                 {
                     tempDestination.Y += (int)movementSpeed;
+                    moving = true;
                 }
             }
 
@@ -203,17 +209,20 @@ namespace LightsOut2
             if (Constants.gamePadState.IsConnected)
             {
                 tempDestination.X += (int)(Constants.gamePadState.ThumbSticks.Left.X * movementSpeed);
+                moving = true;
             }
             else
             {
                 if (Constants.keyState.IsKeyDown(Keys.A) && Constants.keyState.IsKeyUp(Keys.D))
                 {
                     tempDestination.X -= (int)movementSpeed;
+                    moving = true;
                 }
 
                 if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
                 {
                     tempDestination.X += (int)movementSpeed;
+                    moving = true;
                 }
             }
 

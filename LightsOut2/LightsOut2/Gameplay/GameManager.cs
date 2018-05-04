@@ -55,8 +55,9 @@ namespace LightsOut2
 
         public void Update()
         {
-            particleEngine.Update(player.position);
+            particleEngine.Update();
             player.Update();
+            CheckMoving();
             heatBar.Update();
             enemyManager.Update(player.position);
             CheckCollision();
@@ -118,7 +119,7 @@ namespace LightsOut2
                         if (dead)
                         {
                             enemyManager.removeList.Add(tempEnemy);
-                            particleEngine.CreateBloodSplatter(tempEnemy.position);
+                            particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
                             score += 100;
                         }
                     }
@@ -132,7 +133,7 @@ namespace LightsOut2
                             if (dead)
                             {
                                 enemyManager.removeList.Add(tempEnemy);
-                                particleEngine.CreateBloodSplatter(tempEnemy.position);
+                                particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
                                 score += 100;
                             }
                         }
@@ -143,9 +144,11 @@ namespace LightsOut2
                 {
                     if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
                     {
-                            enemyManager.removeList.Add(tempEnemy);
-                            particleEngine.CreateBloodSplatter(tempEnemy.position);
-                            score += 100;
+                        enemyManager.removeList.Add(tempEnemy);
+                        Vector2 direction = tempEnemy.position - player.position;
+                        direction.Normalize();
+                        particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
+                        score += 100;
                     }
                 }
 
@@ -196,6 +199,12 @@ namespace LightsOut2
                     }
                 }
             }
+        }
+
+        private void CheckMoving()
+        {
+            if (player.moving)
+            particleEngine.CreateRunParticle(player.position);
         }
     }
 }

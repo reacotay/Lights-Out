@@ -2,15 +2,14 @@ FIXES:
 
 
 MÅSTE GÖRAS:
-Implementera knapparna i menyn.
+
 
 BORDE GÖRAS:
-Göra en algoritm för EnemyManager som spawnar fienderna. (Balansering)
 På något sätt förklara kontrollerna så spelaren förstår hur man spelar.
 Rita en liten platform där spelaren spawnar så man lättare förstår att man förs tillbaka till startpositionen när man dör.
 Förstora HUD/UI så man ser informationen för spelaren när man spelar.
 Implementera ljudeffekter.
-Implementera Partikeleffekter.
+
 
 VILL GÖRAS:
 Implementera fler fiender.
