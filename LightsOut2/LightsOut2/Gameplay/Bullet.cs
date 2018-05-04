@@ -13,7 +13,7 @@ namespace LightsOut2
     {
         private int bulletSpeed;
 
-        Vector2 direction;
+        public Vector2 direction;
 
         public Bullet(Vector2 position, int size, Vector2 direction)
             : base(position, size)

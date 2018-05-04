@@ -97,6 +97,7 @@
     <Content Include="Content\Lights-Out-No-Farts.mp3" />
     <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
     <Content Include="Content\newGameTex.png" />
+    <Content Include="Content\particle.png" />
     <Content Include="Content\playerTex.png" />
     <Content Include="Content\quitGameTex.png" />
     <Content Include="Content\ScreenClear.png" />
