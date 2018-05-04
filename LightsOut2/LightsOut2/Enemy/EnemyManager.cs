@@ -21,9 +21,6 @@ namespace LightsOut2
 
         public EnemyManager()
         {
-            timePassed = 0;
-            spawnRate = 60;
-
             enemyList = new List<Enemy>();
             removeList = new List<Enemy>();
         }
@@ -53,6 +50,7 @@ namespace LightsOut2
                     enemyList.Add(tempEnemy);
                     timePassed = 0;
                     crawlerCounter++;
+                    spawnRate = Constants.Randomizer.Next(45, 120);
                 }
                 else
                 {
