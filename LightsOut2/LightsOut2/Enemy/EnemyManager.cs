@@ -94,19 +94,19 @@ namespace LightsOut2
             switch (value)
             {
                 case 1:
-                    tempPosition = new Vector2(0, Constants.Randomizer.Next(0, Constants.PlatformHeight));
+                    tempPosition = new Vector2(-800, Constants.Randomizer.Next(0, Constants.PlatformHeight));
                     break;
 
                 case 2:
-                    tempPosition = new Vector2(1600, Constants.Randomizer.Next(0, Constants.PlatformHeight));
+                    tempPosition = new Vector2(2400, Constants.Randomizer.Next(0, Constants.PlatformHeight));
                     break;
 
                 case 3:
-                    tempPosition = new Vector2(Constants.Randomizer.Next(0, Constants.PlatfromWidth), 0);
+                    tempPosition = new Vector2(Constants.Randomizer.Next(0, Constants.PlatfromWidth), -800);
                     break;
 
                 case 4:
-                    tempPosition = new Vector2(Constants.Randomizer.Next(0, Constants.PlatfromWidth), 1600);
+                    tempPosition = new Vector2(Constants.Randomizer.Next(0, Constants.PlatfromWidth), 2400);
                     break;
             }
 
