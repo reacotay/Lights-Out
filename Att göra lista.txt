@@ -1,22 +1,27 @@
 FIXES:
-Ge kameran en position för GamePad-support. (Känns spastiskt när man använder spaken för att sikta)
+
 
 MÅSTE GÖRAS:
-Implementera player powerups
-Implementera knapparna i menyn
+Implementera knapparna i menyn.
+
+BORDE GÖRAS:
 Göra en algoritm för EnemyManager som spawnar fienderna. (Balansering)
+På något sätt förklara kontrollerna så spelaren förstår hur man spelar.
+Rita en liten platform där spelaren spawnar så man lättare förstår att man förs tillbaka till startpositionen när man dör.
+Förstora HUD/UI så man ser informationen för spelaren när man spelar.
+Implementera ljudeffekter.
+Implementera Partikeleffekter.
 
 VILL GÖRAS:
 Implementera fler fiender.
+Implementera player powerups.
 
-BORDE GÖRAS:
-Implementera ljudeffekter
-Implementera Partikeleffekter
 
 IDÉER:
-Slå samman Rage och Charge fiender. Rage fienden ska vara stor och långsam tills du provocerar honom, då börjar han charge'a dig. I samband med Rage kan han charge'a in i andra fiender och döda dem.
 Spitter, fungerar som shooter med avstånd, men när han är in-range så spottar han "gegga" på din nuvarande position. Slowar/Skadar.
+
 Support klass? AoE Movementspeedbuff?
+
 Splitter, en fiende dör och blir 2 mindre.
 
 Player powerups ska inte vara pickups, utan slumpas fram som en bonus för en killingspree. Varar så länge killingspreen håller, (Man måste döda en ny fiende inom en viss tid.) Olika milestones i killingspreen för fler bonusar (10, 25, 50, 100).

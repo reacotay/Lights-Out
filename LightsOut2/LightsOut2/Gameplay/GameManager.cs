@@ -14,6 +14,9 @@ namespace LightsOut2
         public int score;
         public bool gameOver;
 
+        Texture2D lavaBackground;
+        Texture2D brickBackground;
+
         public Player player;
         HeatBar heatBar;
         EnemyManager enemyManager;
@@ -24,6 +27,9 @@ namespace LightsOut2
         {
             score = 0;
             gameOver = false;
+
+            lavaBackground = ContentManager.Get<Texture2D>("lavaBackground");
+            brickBackground = ContentManager.Get<Texture2D>("brickSeamlessBackground");
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
@@ -36,7 +42,7 @@ namespace LightsOut2
 
         public void Initialize()
         {
-            player.lives = 3;
+            player.extraLife = 3;
             enemyManager.enemyList.Clear();
             enemyManager.removeList.Clear();
             Game1.penumbra.Lights.Clear();
@@ -65,7 +71,8 @@ namespace LightsOut2
             Game1.penumbra.Transform = camera.GetTransform();
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
-                spriteBatch.Draw(ContentManager.Get<Texture2D>("brickSeamlessBackground"), Vector2.Zero, Color.White);
+                spriteBatch.Draw(lavaBackground, new Vector2(-800, -800), Color.White);
+                spriteBatch.Draw(brickBackground, Vector2.Zero, Color.White);
                 particleEngine.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
@@ -76,7 +83,11 @@ namespace LightsOut2
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
                 heatBar.Draw(spriteBatch);
-                spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(50, 100), Color.White);
+            for (int i = 0; i < player.extraLife; i++)
+            {
+                spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
+            }
+                spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(10, 100), Color.White);
             spriteBatch.End();
         }
 
@@ -146,7 +157,7 @@ namespace LightsOut2
                         if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
                         {
                             enemyManager.removeList.Add(tempEnemy);
-                            if (player.lives >= 0)
+                            if (player.extraLife >= 0)
                                 player.TakeDamage();
                             else
                             {
@@ -158,7 +169,7 @@ namespace LightsOut2
                 else if(tempEnemy.hitbox.Intersects(player.hitbox))
                 {
                     enemyManager.removeList.Add(tempEnemy);
-                    if (player.lives >= 0)
+                    if (player.extraLife >= 0)
                         player.TakeDamage();
                     else
                     {

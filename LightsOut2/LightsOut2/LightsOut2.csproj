@@ -92,6 +92,7 @@
     <Content Include="Content\crawlerTailTex.png" />
     <Content Include="Content\crawlerVertebraTex.png" />
     <Content Include="Content\Ground.png" />
+    <Content Include="Content\lavaBackground.png" />
     <Content Include="Content\Lights-Out-No-Farts.mp3" />
     <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
     <Content Include="Content\playerTex.png" />

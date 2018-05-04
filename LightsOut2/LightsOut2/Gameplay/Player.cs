@@ -12,7 +12,7 @@ namespace LightsOut2
 {
     class Player : GameObject
     {
-        public int lives;
+        public int extraLife;
         private bool tempDead;
         private float angle;
         private float movementSpeed;
@@ -29,7 +29,7 @@ namespace LightsOut2
         public Player(Vector2 position, int size)
             : base(position, size)
         {
-            lives = 3;
+            extraLife = 3;
             tempDead = false;
             movementSpeed = 5f;
             fireRate = 10;
@@ -41,7 +41,7 @@ namespace LightsOut2
             removeList = new List<Bullet>();
             viscinity = new PointLight();
             view = new Spotlight();
-            viscinity.Scale = new Vector2(800, 800);
+            viscinity.Scale = new Vector2(1000, 1000);
             view.Scale = new Vector2(1600, 1600);
             view.Intensity = 2f;
         }
@@ -119,7 +119,7 @@ namespace LightsOut2
             {
                 Sfx.Play.PlayerDeath();
                 screenClear = new ScreenClear(position, Constants.StandardSize);
-                lives--;
+                extraLife--;
                 tempDead = true;
             }
         }
@@ -192,7 +192,8 @@ namespace LightsOut2
                 }
             }
 
-            position.Y = tempDestination.Y;
+            if (tempDestination.Y >= 0 && tempDestination.Y <= 1600)
+                position.Y = tempDestination.Y;
         }
 
         void PlayerMovementX()
@@ -216,7 +217,8 @@ namespace LightsOut2
                 }
             }
 
-            position.X = tempDestination.X;
+            if (tempDestination.X >= 0 && tempDestination.X <= 1600)
+                position.X = tempDestination.X;
         }
 
         void PlayerAngle()
