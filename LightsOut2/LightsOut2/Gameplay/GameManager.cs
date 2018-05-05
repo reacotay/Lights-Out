@@ -28,7 +28,7 @@ namespace LightsOut2
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
             player = new Player(new Vector2(800, 800), Constants.StandardSize);
-            heatBar = new HeatBar(camera.GetPosition(), 1);
+            heatBar = new HeatBar(new Vector2(Constants.GameWindow.Width / 2 - 100, Constants.GameWindow.Height - 44), 1);
             enemyManager = new EnemyManager();
             Game1.penumbra.AmbientColor = Color.Black;
             particleEngine = new ParticleEngine();
@@ -68,6 +68,7 @@ namespace LightsOut2
                 spriteBatch.Draw(ContentManager.Get<Texture2D>("brickSeamlessBackground"), Vector2.Zero, Color.White);
                 particleEngine.Draw(spriteBatch);
                 player.Draw(spriteBatch);
+                
                 enemyManager.Draw(spriteBatch);
             spriteBatch.End();
 
@@ -76,7 +77,8 @@ namespace LightsOut2
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
                 heatBar.Draw(spriteBatch);
-                spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(50, 100), Color.White);
+            player.DrawCrossHair(spriteBatch);
+            spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(50, 100), Color.White);
             spriteBatch.End();
         }
 

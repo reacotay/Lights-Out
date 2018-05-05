@@ -39,8 +39,6 @@ namespace LightsOut2
 
         protected override void Initialize()
         {
-            IsMouseVisible = true;
-
             Constants.LoadContent();
 
             graphics.PreferredBackBufferWidth = Constants.WindowWidth;
