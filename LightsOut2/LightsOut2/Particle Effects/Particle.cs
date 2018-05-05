@@ -7,21 +7,26 @@ namespace LightsOut2
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
+        public Vector2 Direction { get; set; }
         public Color Color { get; set; }
         public float Size { get; set; }
+        public int TempSpeed { get; set; }
         public int LifeSpan { get; set; }
 
-        public Particle(Texture2D texture, Vector2 position, Color color, float size, int lifeSpan)
+        public Particle(Texture2D texture, Vector2 position, Vector2 direction, Color color, float size, int tempSpeed, int lifeSpan)
         {
             Texture = texture;
-            Position = position;
+            Direction = direction;
             Color = color;
             Size = size;
+            TempSpeed = tempSpeed;
             LifeSpan = lifeSpan;
+            Position = new Vector2(position.X - size / 2, position.Y - size / 2);
         }
 
         public void Update()
         {
+            Position += Direction * TempSpeed;
             LifeSpan--;
         }
 

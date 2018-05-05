@@ -18,7 +18,7 @@ namespace LightsOut2
             particles = new List<Particle>();
         }
 
-        public void Update(Vector2 playerPosition)
+        public void Update()
         {
             for (int particle = 0; particle < particles.Count; particle++)
             {
@@ -41,16 +41,28 @@ namespace LightsOut2
 
         //----------------------------------------------------------------------------------------------------
 
-        public void CreateBloodSplatter(Vector2 enemyPosition)
+        public void CreateBloodSplatter(Vector2 enemyPosition, Vector2 direction)
         {
             EmitterLocation = enemyPosition;
-            particles.Add(GenerateNewParticle("enemyDeathEffect"));
+
+            for (int i = 0; i < 30; i++)
+            {
+                particles.Add(GenerateNewParticle("enemyDeathEffect", direction));
+            }
         }
 
-        private Particle GenerateNewParticle(string type)
+        public void CreateRunParticle(Vector2 playerPosition)
+        {
+            EmitterLocation = playerPosition;
+            particles.Add(GenerateNewParticle("sprintEffect", Vector2.Zero));
+        }
+
+        private Particle GenerateNewParticle(string type, Vector2 direction)
         {
             Texture2D tempTex = texture;
+            Vector2 tempDirection = direction;
             Vector2 position = EmitterLocation;
+            int tempSpeed = 0;
             int ttl = 10 + Constants.Randomizer.Next(10);
             float shade = 0f;
             Color color = new Color();
@@ -62,15 +74,17 @@ namespace LightsOut2
                     shade = (float)Constants.Randomizer.NextDouble();
                     color = new Color(shade, shade, shade);
                     size = 5 + 5 * (float)Constants.Randomizer.NextDouble();
+                    tempSpeed = 1;
                     break;
                 case "enemyDeathEffect":
                     shade = (float)Constants.Randomizer.NextDouble();
-                    color = new Color(shade, 0, 0   );
+                    color = new Color(shade, 0, 0);
                     size = 5 + 5 * (float)Constants.Randomizer.NextDouble();
+                    tempSpeed = Constants.Randomizer.Next(1, 5);
                     break;
             }
 
-            return new Particle(tempTex, position, color, size, ttl);
+            return new Particle(tempTex, position, direction, color, size, tempSpeed, ttl);
         }
     }
 }

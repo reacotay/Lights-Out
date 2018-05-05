@@ -12,13 +12,17 @@ namespace LightsOut2
 {
     class Player : GameObject
     {
-        public int lives;
+        public int extraLife;
         private bool tempDead;
         private float angle;
         private float movementSpeed;
         private bool overheated;
+        public bool moving;
         private int fireRate;
+
         private Texture2D crossHairTex;
+
+        
         private Vector2 direction;
         public ScreenClear screenClear;
         public List<Bullet> bulletList;
@@ -29,7 +33,7 @@ namespace LightsOut2
         public Player(Vector2 position, int size)
             : base(position, size)
         {
-            lives = 3;
+            extraLife = 3;
             tempDead = false;
             movementSpeed = 5f;
             fireRate = 10;
@@ -42,13 +46,15 @@ namespace LightsOut2
             removeList = new List<Bullet>();
             viscinity = new PointLight();
             view = new Spotlight();
-            viscinity.Scale = new Vector2(800, 800);
+            viscinity.Scale = new Vector2(1000, 1000);
             view.Scale = new Vector2(1600, 1600);
             view.Intensity = 2f;
         }
 
         public override void Update()
         {
+            moving = false;
+
             if (!tempDead)
             {
                 PlayerMovement();
@@ -75,7 +81,6 @@ namespace LightsOut2
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
-
             base.Update();
         }
 
@@ -117,10 +122,13 @@ namespace LightsOut2
 
         public void TakeDamage()
         {
-            Sfx.Play.PlayerDeath();
-            screenClear = new ScreenClear(position, Constants.StandardSize);
-            lives--;
-            tempDead = true;
+            if (!tempDead)
+            {
+                Sfx.Play.PlayerDeath();
+                screenClear = new ScreenClear(position, Constants.StandardSize);
+                extraLife--;
+                tempDead = true;
+            }
         }
 
         void BulletManagment()
@@ -177,21 +185,25 @@ namespace LightsOut2
             if (Constants.gamePadState.IsConnected)
             {
                 tempDestination.Y -= (int)(Constants.gamePadState.ThumbSticks.Left.Y * movementSpeed);
+                
             }
             else
             {
                 if (Constants.keyState.IsKeyDown(Keys.W) && Constants.keyState.IsKeyUp(Keys.S))
                 {
                     tempDestination.Y -= (int)movementSpeed;
+                    moving = true;
                 }
 
                 if (Constants.keyState.IsKeyDown(Keys.S) && Constants.keyState.IsKeyUp(Keys.W))
                 {
                     tempDestination.Y += (int)movementSpeed;
+                    moving = true;
                 }
             }
 
-            position.Y = tempDestination.Y;
+            if (tempDestination.Y >= 0 && tempDestination.Y <= 1600)
+                position.Y = tempDestination.Y;
         }
 
         void PlayerMovementX()
@@ -201,21 +213,25 @@ namespace LightsOut2
             if (Constants.gamePadState.IsConnected)
             {
                 tempDestination.X += (int)(Constants.gamePadState.ThumbSticks.Left.X * movementSpeed);
+                moving = true;
             }
             else
             {
                 if (Constants.keyState.IsKeyDown(Keys.A) && Constants.keyState.IsKeyUp(Keys.D))
                 {
                     tempDestination.X -= (int)movementSpeed;
+                    moving = true;
                 }
 
                 if (Constants.keyState.IsKeyDown(Keys.D) && Constants.keyState.IsKeyUp(Keys.A))
                 {
                     tempDestination.X += (int)movementSpeed;
+                    moving = true;
                 }
             }
 
-            position.X = tempDestination.X;
+            if (tempDestination.X >= 0 && tempDestination.X <= 1600)
+                position.X = tempDestination.X;
         }
 
         void PlayerAngle()

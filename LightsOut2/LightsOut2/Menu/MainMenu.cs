@@ -16,6 +16,9 @@ namespace LightsOut2
         Texture2D groundTex;
         SpriteFont titleFont;
         SpriteFont spriteFont;
+        public Button newGameButton;
+        public Button newQuitButton;
+        
 
         public MainMenu()
         {
@@ -25,6 +28,8 @@ namespace LightsOut2
             groundTex = ContentManager.Get<Texture2D>("Ground");
             titleFont = ContentManager.Get<SpriteFont>("titleFont");
             spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
+            newGameButton = new Button(new Vector2(283, 500), Constants.StandardSize, "newGameTex");
+            newQuitButton = new Button(new Vector2(312, 600), Constants.StandardSize, "quitGameTex");
         }
 
         public void Initialize()
@@ -49,11 +54,13 @@ namespace LightsOut2
                 spriteBatch.Draw(groundTex, Vector2.Zero, Color.White);
                 spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(100,200), Color.Black, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
                 spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(103, 203), Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            
             spriteBatch.End();
             Game1.penumbra.Draw(gameTime);
 
             spriteBatch.Begin();
-            spriteBatch.DrawString(spriteFont, "Press Enter to start the game!", Vector2.Zero, Color.White);
+            newGameButton.Draw(spriteBatch);
+            newQuitButton.Draw(spriteBatch);
             spriteBatch.Draw(groundTex, new Rectangle((int)lamp.bulb.Position.X, (int)lamp.bulb.Position.Y-20, 140, 35),new Rectangle(0,0,groundTex.Width,groundTex.Height), Color.Black, lamp.bulb.Rotation, new Vector2(800,0), SpriteEffects.None, 0f);
             spriteBatch.End();
         }

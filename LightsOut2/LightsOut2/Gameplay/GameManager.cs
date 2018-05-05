@@ -14,6 +14,9 @@ namespace LightsOut2
         public int score;
         public bool gameOver;
 
+        Texture2D lavaBackground;
+        Texture2D brickBackground;
+
         public Player player;
         HeatBar heatBar;
         EnemyManager enemyManager;
@@ -24,6 +27,9 @@ namespace LightsOut2
         {
             score = 0;
             gameOver = false;
+
+            lavaBackground = ContentManager.Get<Texture2D>("lavaBackground");
+            brickBackground = ContentManager.Get<Texture2D>("brickSeamlessBackground");
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
@@ -36,7 +42,7 @@ namespace LightsOut2
 
         public void Initialize()
         {
-            player.lives = 3;
+            player.extraLife = 3;
             enemyManager.enemyList.Clear();
             enemyManager.removeList.Clear();
             Game1.penumbra.Lights.Clear();
@@ -49,8 +55,9 @@ namespace LightsOut2
 
         public void Update()
         {
-            particleEngine.Update(player.position);
+            particleEngine.Update();
             player.Update();
+            CheckMoving();
             heatBar.Update();
             enemyManager.Update(player.position);
             CheckCollision();
@@ -65,7 +72,8 @@ namespace LightsOut2
             Game1.penumbra.Transform = camera.GetTransform();
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, camera.GetTransform());
-                spriteBatch.Draw(ContentManager.Get<Texture2D>("brickSeamlessBackground"), Vector2.Zero, Color.White);
+                spriteBatch.Draw(lavaBackground, new Vector2(-800, -800), Color.White);
+                spriteBatch.Draw(brickBackground, Vector2.Zero, Color.White);
                 particleEngine.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 
@@ -79,6 +87,11 @@ namespace LightsOut2
                 heatBar.Draw(spriteBatch);
             player.DrawCrossHair(spriteBatch);
             spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(50, 100), Color.White);
+            for (int i = 0; i < player.extraLife; i++)
+            {
+                spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
+            }
+                spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(10, 100), Color.White);
             spriteBatch.End();
         }
 
@@ -94,7 +107,7 @@ namespace LightsOut2
                     {
                         bool dead = false;
                         Crawler tempCrawler = (Crawler)tempEnemy;
-                        foreach(CrawlerPiece x in tempCrawler.bodyPieces)
+                        foreach(CrawlerPiece x in tempCrawler.BodyPieces)
                         {
                             if (x.piecehitpoints > 0)
                             {
@@ -102,6 +115,7 @@ namespace LightsOut2
                                 {
                                     x.TakeDamage();
                                     dead = tempCrawler.TakeDamage();
+                                    particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
                                     player.removeList.Add(tempBullet);
                                 }
                             }
@@ -109,7 +123,7 @@ namespace LightsOut2
                         if (dead)
                         {
                             enemyManager.removeList.Add(tempEnemy);
-                            particleEngine.CreateBloodSplatter(tempEnemy.position);
+                            particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
                             score += 100;
                         }
                     }
@@ -118,12 +132,15 @@ namespace LightsOut2
                         if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
                         {
                             bool dead = tempEnemy.TakeDamage();
+                            Vector2 direction = tempEnemy.position - player.position;
+                            direction.Normalize();
+                            particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
                             player.removeList.Add(tempBullet);
 
                             if (dead)
                             {
                                 enemyManager.removeList.Add(tempEnemy);
-                                particleEngine.CreateBloodSplatter(tempEnemy.position);
+                                particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
                                 score += 100;
                             }
                         }
@@ -134,21 +151,23 @@ namespace LightsOut2
                 {
                     if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
                     {
-                            enemyManager.removeList.Add(tempEnemy);
-                            particleEngine.CreateBloodSplatter(tempEnemy.position);
-                            score += 100;
+                        enemyManager.removeList.Add(tempEnemy);
+                        Vector2 direction = tempEnemy.position - player.position;
+                        direction.Normalize();
+                        particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
+                        score += 100;
                     }
                 }
 
                 if (tempEnemy.GetType() == typeof(Crawler))
                 {
                     Crawler tempCrawler = (Crawler)tempEnemy;
-                    foreach (CrawlerPiece x in tempCrawler.bodyPieces)
+                    foreach (CrawlerPiece x in tempCrawler.BodyPieces)
                     {
                         if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
                         {
                             enemyManager.removeList.Add(tempEnemy);
-                            if (player.lives >= 0)
+                            if (player.extraLife >= 0)
                                 player.TakeDamage();
                             else
                             {
@@ -160,7 +179,7 @@ namespace LightsOut2
                 else if(tempEnemy.hitbox.Intersects(player.hitbox))
                 {
                     enemyManager.removeList.Add(tempEnemy);
-                    if (player.lives >= 0)
+                    if (player.extraLife >= 0)
                         player.TakeDamage();
                     else
                     {
@@ -187,6 +206,12 @@ namespace LightsOut2
                     }
                 }
             }
+        }
+
+        private void CheckMoving()
+        {
+            if (player.moving)
+            particleEngine.CreateRunParticle(player.position);
         }
     }
 }
