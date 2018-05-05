@@ -19,6 +19,7 @@ namespace LightsOut2
 
         public Player player;
         HeatBar heatBar;
+        Crosshair crosshair;
         EnemyManager enemyManager;
         public static Camera camera;
         ParticleEngine particleEngine;
@@ -34,6 +35,7 @@ namespace LightsOut2
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
             player = new Player(new Vector2(800, 800), Constants.StandardSize);
+            crosshair = new Crosshair(new Vector2(Constants.mouseState.X, Constants.mouseState.Y), 1);
             heatBar = new HeatBar(new Vector2(Constants.GameWindow.Width / 2 - 100, Constants.GameWindow.Height - 44), 1);
             enemyManager = new EnemyManager();
             Game1.penumbra.AmbientColor = Color.Black;
@@ -58,6 +60,7 @@ namespace LightsOut2
             particleEngine.Update();
             player.Update();
             CheckMoving();
+            crosshair.Update();
             heatBar.Update();
             enemyManager.Update(player.position);
             CheckCollision();
@@ -85,7 +88,7 @@ namespace LightsOut2
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
                 heatBar.Draw(spriteBatch);
-            player.DrawCrossHair(spriteBatch);
+            crosshair.Draw(spriteBatch);
             spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(50, 100), Color.White);
             for (int i = 0; i < player.extraLife; i++)
             {

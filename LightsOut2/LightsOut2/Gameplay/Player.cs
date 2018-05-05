@@ -20,8 +20,6 @@ namespace LightsOut2
         public bool moving;
         private int fireRate;
 
-        private Texture2D crossHairTex;
-
         
         private Vector2 direction;
         public ScreenClear screenClear;
@@ -40,7 +38,7 @@ namespace LightsOut2
             
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
-            crossHairTex = ContentManager.Get<Texture2D>("Crosshair");
+
             screenClear = null;
             bulletList = new List<Bullet>();
             removeList = new List<Bullet>();
@@ -249,11 +247,6 @@ namespace LightsOut2
                 bulletList.Add(tempBullet);
                 fireRate = 10;
             }
-        }
-
-        public void DrawCrossHair(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(crossHairTex, new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), new Rectangle(0, 0, crossHairTex.Width, crossHairTex.Height), Color.White, 0, new Vector2(Constants.StandardSize / 2, Constants.StandardSize / 2), 1f, SpriteEffects.None, 0f);
         }
     }
 }

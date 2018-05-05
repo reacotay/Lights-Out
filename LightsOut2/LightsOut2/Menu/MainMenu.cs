@@ -16,6 +16,7 @@ namespace LightsOut2
         Texture2D groundTex;
         SpriteFont titleFont;
         SpriteFont spriteFont;
+        Crosshair crosshair;
         public Button newGameButton;
         public Button newQuitButton;
         
@@ -28,6 +29,7 @@ namespace LightsOut2
             groundTex = ContentManager.Get<Texture2D>("Ground");
             titleFont = ContentManager.Get<SpriteFont>("titleFont");
             spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
+            crosshair = new Crosshair(new Vector2(Constants.mouseState.X, Constants.mouseState.Y), 1);
             newGameButton = new Button(new Vector2(283, 500), Constants.StandardSize, "newGameTex");
             newQuitButton = new Button(new Vector2(312, 600), Constants.StandardSize, "quitGameTex");
         }
@@ -44,6 +46,7 @@ namespace LightsOut2
 
         public void Update(GameTime gameTime)
         {
+            crosshair.Update();
             lamp.Update(gameTime);
         }
 
@@ -61,6 +64,7 @@ namespace LightsOut2
             spriteBatch.Begin();
             newGameButton.Draw(spriteBatch);
             newQuitButton.Draw(spriteBatch);
+            crosshair.Draw(spriteBatch);
             spriteBatch.Draw(groundTex, new Rectangle((int)lamp.bulb.Position.X, (int)lamp.bulb.Position.Y-20, 140, 35),new Rectangle(0,0,groundTex.Width,groundTex.Height), Color.Black, lamp.bulb.Rotation, new Vector2(800,0), SpriteEffects.None, 0f);
             spriteBatch.End();
         }
