@@ -64,7 +64,9 @@ namespace LightsOut2
             spriteBatch.Begin();
             newGameButton.Draw(spriteBatch);
             newQuitButton.Draw(spriteBatch);
-            crosshair.Draw(spriteBatch);
+            if (!Constants.gamePadState.IsConnected)
+                crosshair.Draw(spriteBatch);
+
             spriteBatch.Draw(groundTex, new Rectangle((int)lamp.bulb.Position.X, (int)lamp.bulb.Position.Y-20, 140, 35),new Rectangle(0,0,groundTex.Width,groundTex.Height), Color.Black, lamp.bulb.Rotation, new Vector2(800,0), SpriteEffects.None, 0f);
             spriteBatch.End();
         }
