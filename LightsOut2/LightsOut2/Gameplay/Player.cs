@@ -87,9 +87,9 @@ namespace LightsOut2
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (Constants.gamePadState.IsConnected)
-                spriteBatch.Draw(crosshairTex, position + (aimingDirection * 300), Color.White);
+                spriteBatch.Draw(crosshairTex, new Vector2(position.X - size / 2, position.Y - size / 2) + (aimingDirection * 300), Color.White);
             else
-                spriteBatch.Draw(crosshairTex, Constants.WorldMousePosition(), Color.White);
+                spriteBatch.Draw(crosshairTex, new Vector2(Constants.WorldMousePosition().X-size / 2, Constants.WorldMousePosition().Y - size / 2), Color.White);
 
             foreach (Bullet tempBullet in bulletList)
             {
