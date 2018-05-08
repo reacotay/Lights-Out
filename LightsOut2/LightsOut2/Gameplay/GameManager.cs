@@ -22,6 +22,7 @@ namespace LightsOut2
         EnemyManager enemyManager;
         public static Camera camera;
         ParticleEngine particleEngine;
+        
 
         public GameManager()
         {
@@ -114,6 +115,7 @@ namespace LightsOut2
                                     x.TakeDamage();
                                     dead = tempCrawler.TakeDamage();
                                     particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
+                                    Sfx.Play.EnemyDamage();
                                     player.removeList.Add(tempBullet);
                                 }
                             }
@@ -133,6 +135,7 @@ namespace LightsOut2
                             Vector2 direction = tempEnemy.position - player.position;
                             direction.Normalize();
                             particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
+                            Sfx.Play.EnemyDamage();
                             player.removeList.Add(tempBullet);
 
                             if (dead)
