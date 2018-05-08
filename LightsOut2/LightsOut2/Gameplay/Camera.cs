@@ -27,7 +27,7 @@ namespace LightsOut2
             if (Constants.gamePadState.IsConnected)
             {
                 Boundaries();
-                tempPosition += Constants.tempDirection * 10;
+                tempPosition += Constants.tempDirection * 8;
                 transform = Matrix.CreateTranslation(-position.X + view.Width / 2 - tempPosition.X,
                     -position.Y + view.Width / 2 - tempPosition.Y, 0);
             }
@@ -51,7 +51,7 @@ namespace LightsOut2
 
         public void Boundaries()
         {
-            int boundaryValue = 175;
+            int boundaryValue = 150;
             if (tempPosition.X >= boundaryValue)
                 tempPosition.X = boundaryValue;
 

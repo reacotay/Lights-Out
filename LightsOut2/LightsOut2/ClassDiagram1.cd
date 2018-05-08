@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LightsOut2.Constants" Collapsed="true">
+    <Position X="29.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBQCgEgAAgECIAEAAAAAAQACAAAAAAASAAgKgABCAAQ=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.ContentManager" Collapsed="true">
+    <Position X="31.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAADAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContentManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Charger" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Enemy\Charger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Chaser" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\Chaser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Crawler" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAgAAAAAgAgAAAIAAAAAAIAAAAAAQAAAAIAAAABA=</HashCode>
+      <FileName>Enemy\Crawler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.CrawlerPiece" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy\CrawlerPiece.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Enemy" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIgAAAIAAAAAAAAAAAAAMAACAgABAAAA=</HashCode>
+      <FileName>Enemy\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.EnemyManager" Collapsed="true">
+    <Position X="33" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAASgAAAAAAAAAABAgAAAAAgAAQAAAAAAA=</HashCode>
+      <FileName>Enemy\EnemyManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Rager" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Enemy\Rager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Shooter" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhQAAAAIAAIAAgIAAAAIABAAAEAAAAABAAAAAQIAAAA=</HashCode>
+      <FileName>Enemy\Shooter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Game1" Collapsed="true">
+    <Position X="27.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAEEAAAAAAAwAAICAAAAAAAAAAEAgAAEAAQAAAAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Bullet" Collapsed="true">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Camera" Collapsed="true">
+    <Position X="27.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAAAAAAhAIAAAAAAEAgAAAQAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Crosshair" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\Crosshair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.GameManager" Collapsed="true">
+    <Position X="29.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAoAACwAFAAgIAAAAIAAAAACBAAAAAAAAgIA=</HashCode>
+      <FileName>Gameplay\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.GameObject" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAAAEgAAQIAAIAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.HeatBar" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgAAAAAAAAAAAAAAAACAgAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\HeatBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Player" Collapsed="true">
+    <Position X="25.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEUgAAAgACIAIgAAAAAAAAAAAAgBAAAJBQAIkABAEAA=</HashCode>
+      <FileName>Gameplay\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.ScreenClear" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gameplay\ScreenClear.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Sfx" Collapsed="true">
+    <Position X="29.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Gameplay\Sfx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Highscore" Collapsed="true">
+    <Position X="31.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAgkAACACAAAAAAAAAgEAAIEAigAABAA=</HashCode>
+      <FileName>Highscore\Highscore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.NameEntry" Collapsed="true">
+    <Position X="29.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAgAAACAAAAAAAAAACEAAAAgAAoAAAAA=</HashCode>
+      <FileName>Highscore\NameEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Button" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Lamp" Collapsed="true">
+    <Position X="33" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAICEAAAAAAEEBAAAAAAAAAAAQAAARhAEBAAAA=</HashCode>
+      <FileName>Menu\Lamp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.MainMenu" Collapsed="true">
+    <Position X="27.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAAAAACwAAACACAAAAAABAACAAAAAAAAAgAAA=</HashCode>
+      <FileName>Menu\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Particle" Collapsed="true">
+    <Position X="31.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAAggAgACAAAAAAAAAAAAAABAIAgAAAAAA=</HashCode>
+      <FileName>Particle Effects\Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.ParticleEngine" Collapsed="true">
+    <Position X="33" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAgBABAAAAAEAgAAAAAAACAAAAA=</HashCode>
+      <FileName>Particle Effects\ParticleEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightsOut2.Program" Collapsed="true">
+    <Position X="27.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
