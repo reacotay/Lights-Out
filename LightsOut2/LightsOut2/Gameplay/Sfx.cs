@@ -11,7 +11,7 @@ namespace LightsOut2
     static class Sfx
     {
         static SoundEffect playerDeath = ContentManager.Get<SoundEffect>("Lights-Out-Original-Death-Sound");
-        static Song bgMusic = ContentManager.Get<Song>("Lights-Out-No-Farts");
+        static Song bgMusic = ContentManager.Get<Song>("BackgroundMusic");
         public static class Play
         {
             public static void PlayerDeath()

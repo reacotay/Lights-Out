@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BackgroundMusic.mp3" />
     <Content Include="Content\barTex.png" />
     <Content Include="Content\brickBackground.png" />
     <Content Include="Content\brickLavaSeamlessBackground.png" />
@@ -97,7 +98,6 @@
     <Content Include="Content\lavaBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Lights-Out-No-Farts.mp3" />
     <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
     <Content Include="Content\newGameTex.png" />
     <Content Include="Content\particle.png" />

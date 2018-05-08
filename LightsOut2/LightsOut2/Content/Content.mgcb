@@ -225,12 +225,6 @@
 /processorParam:TextureFormat=Color
 /build:crawlerPointTex.png
 
-#begin Lights-Out-No-Farts.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Lights-Out-No-Farts.mp3
-
 #begin Crosshair.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -326,4 +320,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:titleTex2.png
+
+#begin BackgroundMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:BackgroundMusic.mp3
 
