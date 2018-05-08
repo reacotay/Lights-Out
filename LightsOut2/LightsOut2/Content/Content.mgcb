@@ -327,3 +327,9 @@
 /processorParam:Quality=Best
 /build:BackgroundMusic.mp3
 
+#begin enemyDamageSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:enemyDamageSound.wav
+
