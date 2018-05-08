@@ -20,8 +20,9 @@ namespace LightsOut2
         public bool moving;
         private int fireRate;
 
-        
+        private Texture2D crosshairTex;
         private Vector2 direction;
+        private Vector2 aimingDirection;
         public ScreenClear screenClear;
         public List<Bullet> bulletList;
         public List<Bullet> removeList;
@@ -38,6 +39,7 @@ namespace LightsOut2
             
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
+            crosshairTex = ContentManager.Get<Texture2D>("Crosshair");
 
             screenClear = null;
             bulletList = new List<Bullet>();
@@ -84,6 +86,11 @@ namespace LightsOut2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (Constants.gamePadState.IsConnected)
+                spriteBatch.Draw(crosshairTex, position + (aimingDirection * 300), Color.White);
+            else
+                spriteBatch.Draw(crosshairTex, Constants.WorldMousePosition(), Color.White);
+
             foreach (Bullet tempBullet in bulletList)
             {
                 tempBullet.Draw(spriteBatch);
@@ -94,7 +101,6 @@ namespace LightsOut2
                 screenClear.Draw(spriteBatch);
             }
 
-            
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y - Constants.ShadowOffset), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1.1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
         }
@@ -104,7 +110,6 @@ namespace LightsOut2
 
         public void MoveToStartPosition()
         {
-
             if (position.X >= 750 && position.X <= 850 && position.Y >= 750 && position.Y <= 850)
             {
                 tempDead = false;
@@ -146,7 +151,7 @@ namespace LightsOut2
             }
             else
             {
-                Vector2 worldMousePosition = Vector2.Transform(new Vector2(Constants.mouseState.Position.X, Constants.mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+                Vector2 worldMousePosition = Constants.WorldMousePosition();
 
                 direction = worldMousePosition - position;
                 direction.Normalize();
@@ -175,7 +180,7 @@ namespace LightsOut2
             PlayerMovementY();
 
             if (Constants.gamePadState.IsConnected)
-                PlayerControllerAngle();
+                PlayerControllerDirection();
             else
                 PlayerAngle();
         }
@@ -241,10 +246,8 @@ namespace LightsOut2
             angle = Convert.ToSingle(Math.Atan2(direction.X, -direction.Y));
         }
 
-        private void PlayerControllerAngle()
+        private void PlayerControllerDirection()
         {
-            Vector2 aimingDirection = Vector2.Zero;
-
             if (new Vector2(Constants.gamePadState.ThumbSticks.Right.X,
                             Constants.gamePadState.ThumbSticks.Right.Y) != Vector2.Zero)
             {

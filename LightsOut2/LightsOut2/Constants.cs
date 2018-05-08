@@ -66,6 +66,11 @@ namespace LightsOut2
 
         //----------------------------------------------------------------------------------------------------
 
+        public static Vector2 WorldMousePosition()
+        {
+            return Vector2.Transform(new Vector2(mouseState.Position.X, mouseState.Position.Y), Matrix.Invert(GameManager.camera.GetTransform()));
+        }
+        
         public static bool KeyPressed(Keys key)
         {
             return keyState.IsKeyDown(key) && oldKeyState.IsKeyUp(key);

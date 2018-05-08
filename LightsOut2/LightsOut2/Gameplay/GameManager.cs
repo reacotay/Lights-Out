@@ -19,7 +19,6 @@ namespace LightsOut2
 
         public Player player;
         HeatBar heatBar;
-        Crosshair crosshair;
         EnemyManager enemyManager;
         public static Camera camera;
         ParticleEngine particleEngine;
@@ -35,7 +34,6 @@ namespace LightsOut2
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
             player = new Player(new Vector2(800, 800), Constants.StandardSize);
-            crosshair = new Crosshair(player.position, 1);
             heatBar = new HeatBar(new Vector2(Constants.GameWindow.Width / 2 - 100, Constants.GameWindow.Height - 44), 1);
             enemyManager = new EnemyManager();
             Game1.penumbra.AmbientColor = Color.Black;
@@ -59,9 +57,7 @@ namespace LightsOut2
         {
             particleEngine.Update();
             player.Update();
-            crosshair.TransferPlayerPosition(player.position);
             CheckMoving();
-            crosshair.Update();
             heatBar.Update();
             enemyManager.Update(player.position);
             CheckCollision();
@@ -79,13 +75,8 @@ namespace LightsOut2
                 spriteBatch.Draw(lavaBackground, new Vector2(-800, -800), Color.White);
                 spriteBatch.Draw(brickBackground, Vector2.Zero, Color.White);
                 particleEngine.Draw(spriteBatch);
-                player.Draw(spriteBatch);
-            if (Constants.gamePadState.IsConnected)
-            {
-                crosshair.Draw(spriteBatch);
-            }
-                
                 enemyManager.Draw(spriteBatch);
+                player.Draw(spriteBatch);
             spriteBatch.End();
 
             Game1.penumbra.Draw(gameTime);
@@ -93,12 +84,11 @@ namespace LightsOut2
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
                 heatBar.Draw(spriteBatch);
-            if(!Constants.gamePadState.IsConnected)
-                crosshair.Draw(spriteBatch);
-                for (int i = 0; i < player.extraLife; i++)
-                {
-                    spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
-                }
+                if(!Constants.gamePadState.IsConnected)
+                    for (int i = 0; i < player.extraLife; i++)
+                    {
+                        spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
+                    }
                 spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(10, 100), Color.White);
             spriteBatch.End();
         }
