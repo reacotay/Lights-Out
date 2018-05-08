@@ -173,7 +173,11 @@ namespace LightsOut2
         {
             PlayerMovementX();
             PlayerMovementY();
-            PlayerAngle();
+
+            if (Constants.gamePadState.IsConnected)
+                PlayerControllerAngle();
+            else
+                PlayerAngle();
         }
 
         void PlayerMovementY()
@@ -232,9 +236,24 @@ namespace LightsOut2
                 position.X = tempDestination.X;
         }
 
-        void PlayerAngle()
+        private void PlayerAngle()
         {
             angle = Convert.ToSingle(Math.Atan2(direction.X, -direction.Y));
+        }
+
+        private void PlayerControllerAngle()
+        {
+            Vector2 aimingDirection = Vector2.Zero;
+
+            if (new Vector2(Constants.gamePadState.ThumbSticks.Right.X,
+                            Constants.gamePadState.ThumbSticks.Right.Y) != Vector2.Zero)
+            {
+                aimingDirection = new Vector2(Constants.gamePadState.ThumbSticks.Right.X,
+                                          -Constants.gamePadState.ThumbSticks.Right.Y);
+                aimingDirection.Normalize();
+            }
+
+            angle = Convert.ToSingle(Math.Atan2(aimingDirection.X, -aimingDirection.Y));
         }
 
         private void CreateBullet()
