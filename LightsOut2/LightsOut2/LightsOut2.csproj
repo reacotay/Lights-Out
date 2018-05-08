@@ -44,7 +44,6 @@
     <Compile Include="Enemy\CrawlerPiece.cs" />
     <Compile Include="Enemy\Crawler.cs" />
     <Compile Include="Gameplay\Bullet.cs" />
-    <Compile Include="Gameplay\Crosshair.cs" />
     <Compile Include="Gameplay\Sfx.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Gameplay\Camera.cs" />
