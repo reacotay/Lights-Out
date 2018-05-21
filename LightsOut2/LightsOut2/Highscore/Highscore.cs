@@ -13,23 +13,25 @@ namespace LightsOut2
 {
     static class Highscore
     {
-        static string[,] Scores { get; set; } = new string[2, 9];
-        static string[,] ResortList = new string[2, 9];
+        private static string[,] Scores { get; set; } = new string[2, 9];
+        private static string[,] ResortList = new string[2, 9];
         public static int Index { get; private set; }
+        private static string path = "Content/Highscore.txt";
 
-        static StreamReader sr;
-        static StreamWriter sw;
-        static FileStream fs;
-        static string path = "Content/Highscore.txt";
-        static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
+        private static StreamReader sr;
+        private static StreamWriter sw;
+        private static FileStream fs;
+        private static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
 
         static void GetScore()
         {
             CheckForFile();
+
             sr = new StreamReader(path);
             string[] lines;
             lines = Regex.Split(sr.ReadToEnd(),"\r\n| ");
             sr.Close();
+
             Scores[0, 0] = "Name";
             Scores[1, 0] = "Score";
             int i = 0;
@@ -43,13 +45,16 @@ namespace LightsOut2
                 }
             }
         }
+
         private static void CheckForFile()
         {
             if (!File.Exists(path))
             { 
                 fs = new FileStream(path, FileMode.Create);
                 fs.Close();
+
                 string[] template = new string[] {"REC 10000", "REC 8000", "REC 5000", "REC 3000", "REC 2000", "REC 1000", "REC 500", "REC 100" };
+
                 sw = new StreamWriter(path);
                 for (int i = 0; i < 8; i++)
                 {
@@ -58,6 +63,7 @@ namespace LightsOut2
                 sw.Close();
             }
         }
+
         public static void Record(string name)
         {
             Scores[0, Index] = name;
@@ -67,6 +73,7 @@ namespace LightsOut2
             {
                 sw.WriteLine(Scores[0, y]+" "+ Scores[1, y]);
             }
+
             sw.Close();
         }
 
@@ -95,7 +102,9 @@ namespace LightsOut2
                     ResortList[x, y] = Scores[x, y];
                 }
             }
+
             Scores[1, i] = score.ToString();
+
             for (int y = i+1; y < 8; y++)
             {
                 for (int x = 0; x < 2; x++)

@@ -12,24 +12,23 @@ namespace LightsOut2
 {
     class MainMenu
     {
-        Lamp lamp;
-        Texture2D groundTex;
-        Texture2D crosshairTex;
-        SpriteFont titleFont;
-        SpriteFont spriteFont;
+        private Lamp lamp;
+        private Texture2D groundTex;
+        private Texture2D crosshairTex;
+        private SpriteFont titleFont;
+        private SpriteFont spriteFont;
         public Button newGameButton;
         public Button newQuitButton;
         
-
         public MainMenu()
         {
             lamp = new Lamp();
-            //Game1.penumbra.Enabled = true;
-            //Game1.penumbra.Visible = true;
+
             groundTex = ContentManager.Get<Texture2D>("Ground");
             crosshairTex = ContentManager.Get<Texture2D>("Crosshair");
             titleFont = ContentManager.Get<SpriteFont>("titleFont");
             spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
+
             newGameButton = new Button(new Vector2(283, 500), Constants.StandardSize, "newGameTex");
             newQuitButton = new Button(new Vector2(312, 600), Constants.StandardSize, "quitGameTex");
         }
@@ -37,6 +36,7 @@ namespace LightsOut2
         public void Initialize()
         {
             Matrix screen = Matrix.CreateTranslation(0, 0, 0);
+
             Game1.penumbra.Transform = screen;
             Game1.penumbra.Lights.Clear();
             Game1.penumbra.Lights.Add(lamp.bulb);

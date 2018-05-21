@@ -24,6 +24,7 @@ namespace LightsOut2
         {
             position += direction * movementSpeed;
             EnemyAngle();
+
             base.Update();
         }
     }

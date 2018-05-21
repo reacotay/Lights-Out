@@ -11,10 +11,10 @@ namespace LightsOut2
 {
     class HeatBar : GameObject
     {
-        float colorAmount;
+        private float colorAmount;
 
-        Color color;
-        SpriteFont font;
+        private Color color;
+        private SpriteFont font;
 
         public HeatBar(Vector2 position, int size) : base(position, size)
         {
@@ -23,6 +23,7 @@ namespace LightsOut2
             this.position = position;
             Constants.HeatValue = 0;    
         }
+
         public override void Update()
         {
             colorAmount = Constants.HeatValue / 100;

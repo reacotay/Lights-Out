@@ -81,6 +81,7 @@ namespace LightsOut2
             viscinity.Position = position;
             view.Position = position;
             view.Rotation = angle - MathHelper.ToRadians(90f);
+
             base.Update();
         }
 

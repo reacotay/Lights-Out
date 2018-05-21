@@ -15,6 +15,7 @@ namespace LightsOut2
         private int timePassed;
         private float spawnRate;
         private int number;
+
         public Enemy tempEnemy;
         public List<Enemy> enemyList;
         public List<Enemy> removeList;
@@ -50,6 +51,7 @@ namespace LightsOut2
                             tempEnemy = new Crawler(GeneratePosition(), Constants.StandardSize);
                             break;
                     }
+
                     enemyList.Add(tempEnemy);
                     timePassed = 0;
                     crawlerCounter++;
@@ -83,6 +85,7 @@ namespace LightsOut2
             {
                 enemyList.Remove(tempEnemy);
             }
+
             removeList.Clear();
         }
 

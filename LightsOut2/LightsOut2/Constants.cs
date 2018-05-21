@@ -35,8 +35,8 @@ namespace LightsOut2
 
         public static void LoadContent()
         {
-            WindowWidth = 800;
-            WindowHeight = 800;
+            WindowWidth = 1600;
+            WindowHeight = 900;
 
             PlatfromWidth = 1600;
             PlatformHeight = 1600;
