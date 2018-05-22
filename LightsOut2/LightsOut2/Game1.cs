@@ -1,24 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Penumbra;
 
 namespace LightsOut2
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        SpriteFont spriteFont;
-        ContentManager contentManager;
-        GameManager gameManager;
-        MainMenu mainMenu;
-
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private SpriteFont spriteFont;
+        private ContentManager contentManager;
+        private GameManager gameManager;
+        private MainMenu mainMenu;
         static public PenumbraComponent penumbra;
 
         enum GameState
@@ -43,6 +37,7 @@ namespace LightsOut2
 
             graphics.PreferredBackBufferWidth = Constants.WindowWidth;
             graphics.PreferredBackBufferHeight = Constants.WindowHeight;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
             base.Initialize();
@@ -53,18 +48,14 @@ namespace LightsOut2
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = Content.Load<SpriteFont>("spriteFont");
             contentManager = new ContentManager(this);
+
             penumbra = new PenumbraComponent(this);
             penumbra.AmbientColor = Color.Black;
+
             gameManager = new GameManager();
             mainMenu = new MainMenu();
             mainMenu.Initialize();
-
             currentState = GameState.MainMenu;
-        }
-
-        protected override void UnloadContent()
-        {
-
         }
 
         protected override void Update(GameTime gameTime)
@@ -82,11 +73,6 @@ namespace LightsOut2
                     {
                         gameManager.Initialize();
                         currentState = GameState.MainGame;
-                    }
-                    if (Constants.keyState.IsKeyDown(Keys.H) && Constants.oldKeyState.IsKeyUp(Keys.H))
-                    {
-                        Highscore.CheckScore(0);
-                        currentState = GameState.HighScore;
                     }
                     if (mainMenu.newQuitButton.CheckClicked())
                     {

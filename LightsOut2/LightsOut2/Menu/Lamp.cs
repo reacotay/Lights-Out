@@ -18,6 +18,7 @@ namespace LightsOut2
         private double angle = Math.PI / 5, acceleration, velocity = 0, dt = 0.15;
         private int flicks, flickerTimer = 0;
         private bool lightOut, ttFlicker;
+
         public Light bulb;
         public Hull shade;
         private Vector2 originPosition = new Vector2(400, 0);
@@ -41,14 +42,17 @@ namespace LightsOut2
         {
             x = Convert.ToSingle(Math.Sin(-angle)) * radius + originPosition.X;
             y = Convert.ToSingle(Math.Cos(-angle)) * radius + originPosition.Y;
+
             bulb.Position = new Vector2(x, y);
             bulb.Rotation = Convert.ToSingle(angle);
+
             shade.Rotation = Convert.ToSingle(angle);
             shade.Position = new Vector2(x, y - 15);
 
             acceleration = -9.81 / length * Math.Sin(angle);
             velocity += acceleration * dt;
             angle += velocity * dt;
+
             if(flickerTimer <= 0 && !ttFlicker)
             {
                 if (flicks > 0)
@@ -65,6 +69,7 @@ namespace LightsOut2
             {
                 flickerTimer--;
             }
+
             if(ttFlicker)
             {
                 if (flicks > 0)
@@ -80,8 +85,10 @@ namespace LightsOut2
                 bulb.Intensity -= 0.5f;
             else if (bulb.Intensity < 1f && lightOut)
                 bulb.Intensity += 0.5f;
+
             if (bulb.Intensity <= 1E-05f)
                 lightOut = true;
+
             if (bulb.Intensity >= 1f)
             {
                 lightOut = false;

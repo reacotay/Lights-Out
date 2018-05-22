@@ -14,6 +14,7 @@ namespace LightsOut2
         private int chargeDelay;
         private int count;
         private bool charging;
+
         private Vector2 chargeDirection;
 
         public Charger(Vector2 position, int size)
@@ -31,6 +32,7 @@ namespace LightsOut2
             {
                 EnemyAngle();
                 chargeDirection = direction;
+
                 if (chargeDelay == 100)
                 {
                     charging = true;
@@ -45,12 +47,14 @@ namespace LightsOut2
             {
                 position += chargeDirection * movementSpeed;
                 count++;
+
                 if(count == 50)
                 {
                     charging = false;
                     chargeDelay = 0;
                 }
             }
+
             base.Update();
         }
     }

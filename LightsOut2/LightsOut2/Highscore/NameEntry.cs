@@ -13,11 +13,11 @@ namespace LightsOut2
 {
     static class NameEntry
     {
-        static string[] alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-        static string[] letter = new string[] { "_", "_", "_" };
-        static int selected = 0;
+        private static string[] alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        private static string[] letter = new string[] { "_", "_", "_" };
+        private static int selected = 0;
 
-        static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
+        private static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
 
         enum Letter
         {
@@ -26,7 +26,7 @@ namespace LightsOut2
             Z = 2,
             Done
         }
-        static Letter currentLetter;
+        private static Letter currentLetter;
 
         public static bool Entry()
         {
@@ -52,6 +52,7 @@ namespace LightsOut2
                     Highscore.Record(name);
                     return true;
             }
+
             return false;
         }
 
@@ -83,6 +84,7 @@ namespace LightsOut2
             letter[i] = alphabet[selected];
             return false;
         }
+
         public static void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();

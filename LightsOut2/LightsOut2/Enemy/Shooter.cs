@@ -29,6 +29,7 @@ namespace LightsOut2
             fireRate = 20;
             frame = 0;
             range = 200;
+
             texture = ContentManager.Get<Texture2D>("shooterTex");
             enemyBulletList = new List<Bullet>();
             enemyRemoveList = new List<Bullet>();
@@ -46,8 +47,10 @@ namespace LightsOut2
                 position += direction * movementSpeed;
                 shooting = false;
             }
+
             BulletManagement();
             EnemyAngle();
+
             base.Update();
         }
 

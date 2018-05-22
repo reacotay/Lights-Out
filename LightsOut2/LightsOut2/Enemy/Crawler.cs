@@ -11,12 +11,13 @@ namespace LightsOut2
 {
     class Crawler : Enemy
     {
-        Texture2D bodyTex;
-        Texture2D tailTex;
-        Texture2D pointTex;
-        int bodyLength;
-        float angleModifier;
-        bool angleSwitch;
+        private int bodyLength;
+        private float angleModifier;
+        private bool angleSwitch;
+
+        private Texture2D bodyTex;
+        private Texture2D tailTex;
+        private Texture2D pointTex;
         public List<CrawlerPiece> BodyPieces { get; } = new List<CrawlerPiece>();
 
         public Crawler(Vector2 position, int size)
@@ -52,10 +53,12 @@ namespace LightsOut2
                 else
                     BodyPieces[i].Update(position);
             }
+
             ModifyAngle();
             Vector2 angleModVector = new Vector2((float)Math.Sin(angle + angleModifier),-(float)Math.Cos(angle + angleModifier));
             position += angleModVector * movementSpeed;
             EnemyAngle();
+
             base.Update();
         }
 
@@ -64,14 +67,15 @@ namespace LightsOut2
             for (int i = bodyLength; i >= 0; i--)
             {
                 BodyPieces[i].Draw(spriteBatch);
-                if(BodyPieces[i].piecehitpoints > 0)
+                if(BodyPieces[i].PieceHitpoints > 0)
                     spriteBatch.Draw(pointTex, new Vector2(BodyPieces[i].hitbox.X + pointTex.Width / 2, BodyPieces[i].hitbox.Y + pointTex.Height / 2), Color.White);
             }
+
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y - Constants.ShadowOffset), new Rectangle(0, 0, texture.Width, texture.Height), Color.Black, angle+angleModifier, new Vector2(texture.Width / 2, texture.Height / 2), 1.1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, angle+angleModifier, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
         }
 
-        // -----
+        //----------------------------------------------------------------------------------------------------
 
         private void ModifyAngle()
         {
@@ -87,6 +91,7 @@ namespace LightsOut2
                 if (angleModifier < -0.7f)
                     angleSwitch = true;
             }
+
             angle += angleModifier;
         }
     }

@@ -10,9 +10,9 @@ namespace LightsOut2
 {
     static class Sfx
     {
-        static SoundEffect playerDeath = ContentManager.Get<SoundEffect>("Lights-Out-Original-Death-Sound");
-        static Song bgMusic = ContentManager.Get<Song>("BackgroundMusic");
-        static SoundEffect enemyDamageSound = ContentManager.Get<SoundEffect>("enemyDamageSound");
+        private static SoundEffect playerDeath = ContentManager.Get<SoundEffect>("Lights-Out-Original-Death-Sound");
+        private static Song bgMusic = ContentManager.Get<Song>("BackgroundMusic");
+        private static SoundEffect enemyDamageSound = ContentManager.Get<SoundEffect>("enemyDamageSound");
 
         public static class Play
         {
@@ -20,15 +20,18 @@ namespace LightsOut2
             {
                 playerDeath.Play();
             }
+
             public static void EnemyDamage()
             {
                 enemyDamageSound.Play();
             }
+
             public static void BGMStart()
             {
                 MediaPlayer.Play(bgMusic);
                 MediaPlayer.IsRepeating = true;
             }
+
             public static void BGMStop()
             {
                 MediaPlayer.Stop();

@@ -63,7 +63,6 @@ namespace LightsOut2
 
             if (tempPosition.Y <= -boundaryValue)
                 tempPosition.Y = -boundaryValue;
-
         }
     }
 }

@@ -14,16 +14,15 @@ namespace LightsOut2
         public int score;
         public bool gameOver;
 
-        Texture2D lavaBackground;
-        Texture2D brickBackground;
+        private Texture2D lavaBackground;
+        private Texture2D brickBackground;
 
         public Player player;
-        HeatBar heatBar;
-        EnemyManager enemyManager;
+        private HeatBar heatBar;
+        private EnemyManager enemyManager;
         public static Camera camera;
-        ParticleEngine particleEngine;
+        private ParticleEngine particleEngine;
         
-
         public GameManager()
         {
             score = 0;
@@ -46,6 +45,7 @@ namespace LightsOut2
             player.extraLife = 3;
             enemyManager.enemyList.Clear();
             enemyManager.removeList.Clear();
+
             Game1.penumbra.Lights.Clear();
             Game1.penumbra.Hulls.Clear();
             Game1.penumbra.Lights.Add(player.viscinity);
@@ -67,7 +67,6 @@ namespace LightsOut2
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-
             //Ritar ut objekt som skall följa med kameran/skärmen
             Game1.penumbra.BeginDraw();
             Game1.penumbra.Transform = camera.GetTransform();
@@ -108,7 +107,7 @@ namespace LightsOut2
                         Crawler tempCrawler = (Crawler)tempEnemy;
                         foreach(CrawlerPiece x in tempCrawler.BodyPieces)
                         {
-                            if (x.piecehitpoints > 0)
+                            if (x.PieceHitpoints > 0)
                             {
                                 if (x.hitbox.Intersects(tempBullet.hitbox))
                                 {
