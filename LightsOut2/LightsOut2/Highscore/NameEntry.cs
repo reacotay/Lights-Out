@@ -50,6 +50,7 @@ namespace LightsOut2
                 case Letter.Done:
                     string name = string.Join("", letter);
                     Highscore.Record(name);
+                    currentLetter = Letter.X;
                     return true;
             }
 

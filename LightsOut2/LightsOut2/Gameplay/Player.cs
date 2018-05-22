@@ -46,8 +46,8 @@ namespace LightsOut2
             removeList = new List<Bullet>();
             viscinity = new PointLight();
             view = new Spotlight();
-            viscinity.Scale = new Vector2(1000, 1000);
-            view.Scale = new Vector2(1600, 1600);
+            viscinity.Scale = new Vector2(500, 500);
+            view.Scale = new Vector2(1000, 1000);
             view.Intensity = 2f;
         }
 
