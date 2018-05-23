@@ -38,11 +38,11 @@ namespace LightsOut2
             var finalColor = new Color(255, 0, 0);
             color = Color.Lerp(startColor, finalColor, colorAmount);
 
-            spriteBatch.Draw(backgroundTexture, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * ((double)Constants.HeatValue / 100)), 44), new Rectangle(0, 45, texture.Width, texture.Height), color);
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, texture.Width, 44), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
+            spriteBatch.Draw(backgroundTexture, new Rectangle((int)position.X - 100, (int)position.Y, texture.Width, texture.Height), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
+            spriteBatch.Draw(texture, new Rectangle((int)position.X - 100, (int)position.Y, (int)(texture.Width * ((double)Constants.HeatValue / 100)), 44), new Rectangle(0, 45, texture.Width, texture.Height), color);
+            spriteBatch.Draw(texture, new Rectangle((int)position.X - 100, (int)position.Y, texture.Width, 44), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
             
-            spriteBatch.DrawString(font, "Heat-Meter", new Vector2(position.X + 5, position.Y - 17), Color.White);
+            spriteBatch.DrawString(font, "Heat-Meter", new Vector2(position.X -95, position.Y - 17), Color.White);
         }
     }
 }
