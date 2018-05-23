@@ -106,6 +106,7 @@ namespace LightsOut2
                     {
                         bool dead = false;
                         Crawler tempCrawler = (Crawler)tempEnemy;
+
                         foreach(CrawlerPiece x in tempCrawler.BodyPieces)
                         {
                             if (x.PieceHitpoints > 0)
@@ -120,6 +121,7 @@ namespace LightsOut2
                                 }
                             }
                         }
+
                         if (dead)
                         {
                             enemyManager.removeList.Add(tempEnemy);
@@ -163,11 +165,13 @@ namespace LightsOut2
                 if (tempEnemy.GetType() == typeof(Crawler))
                 {
                     Crawler tempCrawler = (Crawler)tempEnemy;
+
                     foreach (CrawlerPiece x in tempCrawler.BodyPieces)
                     {
                         if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
                         {
                             enemyManager.removeList.Add(tempEnemy);
+
                             if (player.extraLife >= 0)
                                 player.TakeDamage();
                             else
@@ -180,6 +184,7 @@ namespace LightsOut2
                 else if(tempEnemy.hitbox.Intersects(player.hitbox))
                 {
                     enemyManager.removeList.Add(tempEnemy);
+
                     if (player.extraLife > 0)
                         player.TakeDamage();
                     else
@@ -198,6 +203,7 @@ namespace LightsOut2
                         player.TakeDamage();
                         tempShooter.enemyRemoveList.Add(tempEnemyBullet);
                     }
+
                     if (player.screenClear != null)
                     {
                         if (tempEnemyBullet.hitbox.Intersects(player.screenClear.destinationRectangle))
@@ -212,7 +218,7 @@ namespace LightsOut2
         private void CheckMoving()
         {
             if (player.moving)
-            particleEngine.CreateRunParticle(player.position);
+                particleEngine.CreateRunParticle(player.position);
         }
     }
 }
