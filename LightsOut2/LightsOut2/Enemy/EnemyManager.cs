@@ -32,7 +32,7 @@ namespace LightsOut2
             {
                 if (crawlerCounter < 50)
                 {
-                    number = Constants.Randomizer.Next(1, 6);
+                    number = Constants.Randomizer.Next(1, 5);
                     switch (number)
                     {
                         case 1:
@@ -46,9 +46,6 @@ namespace LightsOut2
                             break;
                         case 4:
                             tempEnemy = new Rager(GeneratePosition(), Constants.BigSize);
-                            break;
-                        case 5:
-                            tempEnemy = new Crawler(GeneratePosition(), Constants.StandardSize);
                             break;
                     }
 
