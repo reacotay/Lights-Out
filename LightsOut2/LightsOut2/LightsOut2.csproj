@@ -102,6 +102,7 @@
     </Content>
     <Content Include="Content\Lights-Out-Original-Death-Sound.wav" />
     <Content Include="Content\newGameTex.png" />
+    <Content Include="Content\overheatTex.png" />
     <Content Include="Content\particle.png" />
     <Content Include="Content\playerTex.png" />
     <Content Include="Content\quitGameTex.png" />
