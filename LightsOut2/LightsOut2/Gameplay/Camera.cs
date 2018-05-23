@@ -28,8 +28,9 @@ namespace LightsOut2
             {
                 Boundaries();
                 tempPosition += Constants.tempDirection * 8;
-                transform = Matrix.CreateTranslation(-position.X + view.Width / 2 - tempPosition.X,
-                    -position.Y + view.Width / 2 - tempPosition.Y, 0);
+                transform = Matrix.CreateTranslation
+                    (-position.X + view.Width / 2 - tempPosition.X,
+                    -position.Y + view.Height / 2 - tempPosition.Y, 0);
             }
             else
             {
