@@ -46,7 +46,7 @@ namespace LightsOut2
         {
             hitpoints--;
 
-            if (hitpoints == 0)
+            if (hitpoints <= 0)
                 return true;
             else
                 return false;
