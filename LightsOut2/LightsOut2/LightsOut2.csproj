@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BackgroundMusic.mp3" />
+    <Content Include="Content\barBackgroundTex.png" />
     <Content Include="Content\barTex.png" />
     <Content Include="Content\brickBackground.png" />
     <Content Include="Content\brickLavaSeamlessBackground.png" />

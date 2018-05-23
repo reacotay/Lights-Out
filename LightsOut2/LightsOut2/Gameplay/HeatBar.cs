@@ -12,13 +12,14 @@ namespace LightsOut2
     class HeatBar : GameObject
     {
         private float colorAmount;
-
+        private Texture2D backgroundTexture;
         private Color color;
         private SpriteFont font;
 
         public HeatBar(Vector2 position, int size) : base(position, size)
         {
             texture = ContentManager.Get<Texture2D>("barTex");
+            backgroundTexture = ContentManager.Get<Texture2D>("barBackgroundTex");
             font = ContentManager.Get<SpriteFont>("spriteFont");
             this.position = position;
             Constants.HeatValue = 0;    
@@ -37,10 +38,11 @@ namespace LightsOut2
             var finalColor = new Color(255, 0, 0);
             color = Color.Lerp(startColor, finalColor, colorAmount);
 
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, texture.Width, 44), new Rectangle(0, 0, texture.Width, 44), Color.Gray);
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * ((double)Constants.HeatValue / 100)), 44), new Rectangle(0, 45, texture.Width, 44), color);
-            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, texture.Width, 44), new Rectangle(0, 0, texture.Width, 44), Color.White);
-            spriteBatch.DrawString(font, "Heat-Meter", new Vector2(position.X + 5, position.Y + 22), Color.Black);
+            spriteBatch.Draw(backgroundTexture, new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
+            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * ((double)Constants.HeatValue / 100)), 44), new Rectangle(0, 45, texture.Width, texture.Height), color);
+            spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, texture.Width, 44), new Rectangle(0, 0, texture.Width, texture.Height), Color.White);
+            
+            spriteBatch.DrawString(font, "Heat-Meter", new Vector2(position.X + 5, position.Y - 17), Color.White);
         }
     }
 }
