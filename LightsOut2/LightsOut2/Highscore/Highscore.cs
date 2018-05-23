@@ -122,8 +122,17 @@ namespace LightsOut2
             {
                 for (int x = 0; x < 2; x++)
                 {
-                    spriteBatch.DrawString(spriteFont, Scores[x, y], new Vector2(200 + x * 200, y * 80), Color.White);
+                    spriteBatch.DrawString(spriteFont, Scores[x, y], new Vector2(600 + x * 200, y * 80), Color.White);
                 }
+            }
+
+            if (Constants.gamePadState.IsConnected)
+            {
+                spriteBatch.DrawString(spriteFont, "PRESS 'START' TO RETURN TO THE MAIN MENU", new Vector2(400, 800), Color.DimGray);
+            }
+            else
+            {
+                spriteBatch.DrawString(spriteFont, "PRESS 'ENTER' TO RETURN TO THE MAIN MENU", new Vector2(400, 800), Color.DimGray);
             }
 
             spriteBatch.End();

@@ -37,7 +37,7 @@ namespace LightsOut2
 
             graphics.PreferredBackBufferWidth = Constants.WindowWidth;
             graphics.PreferredBackBufferHeight = Constants.WindowHeight;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
 
             base.Initialize();
@@ -69,7 +69,7 @@ namespace LightsOut2
             {
                 case GameState.MainMenu:
                     mainMenu.Update(gameTime);
-                    if (mainMenu.newGameButton.CheckClicked() || Constants.gamePadState.IsButtonDown(Buttons.Start))
+                    if (mainMenu.newGameButton.CheckClicked() || Constants.gamePadState.IsButtonDown(Buttons.Start) && Constants.oldGamePadState.IsButtonUp(Buttons.Start))
                     {
                         gameManager.Initialize();
                         currentState = GameState.MainGame;

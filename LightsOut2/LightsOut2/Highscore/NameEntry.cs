@@ -89,13 +89,13 @@ namespace LightsOut2
         public static void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(spriteFont, "Woupsie! You DIED.\r\nBut you got a new \r\nHighscore, so enter \r\nyour initials:", new Vector2(0, 0), Color.Green);
+            spriteBatch.DrawString(spriteFont, "Woupsie! You DIED.\r\nBut you got a new \r\nHighscore, so enter \r\nyour initials:", new Vector2(500, 0), Color.Green);
             for (int i = 0; i < 3; i++)
             {
                 if (i == (int)currentLetter)
-                    spriteBatch.DrawString(spriteFont, letter[i], new Vector2(100 + i * 50, 500), Color.Red);
+                    spriteBatch.DrawString(spriteFont, letter[i], new Vector2(700 + i * 50, 500), Color.Red);
                 else
-                    spriteBatch.DrawString(spriteFont, letter[i], new Vector2(100 + i * 50, 500), Color.White);
+                    spriteBatch.DrawString(spriteFont, letter[i], new Vector2(700 + i * 50, 500), Color.White);
             }
 
             spriteBatch.End();

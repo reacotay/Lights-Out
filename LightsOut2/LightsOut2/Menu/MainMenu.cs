@@ -60,8 +60,16 @@ namespace LightsOut2
             Game1.penumbra.Draw(gameTime);
 
             spriteBatch.Begin();
-            newGameButton.Draw(spriteBatch);
-            newQuitButton.Draw(spriteBatch);
+            if (Constants.gamePadState.IsConnected)
+            {
+                spriteBatch.DrawString(spriteFont, "'START' TO START THE GAME", new Vector2(600, 600), Color.DimGray, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(spriteFont, "'SELECT' TO QUIT THE GAME", new Vector2(600, 650), Color.DimGray, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
+            }
+            else
+            {
+                newGameButton.Draw(spriteBatch);
+                newQuitButton.Draw(spriteBatch);
+            }
             if (!Constants.gamePadState.IsConnected)
                 spriteBatch.Draw(crosshairTex, Constants.mouseState.Position.ToVector2(), Color.White);
             spriteBatch.Draw(groundTex, new Rectangle((int)lamp.bulb.Position.X, (int)lamp.bulb.Position.Y-20, 140, 35),new Rectangle(0,0,groundTex.Width,groundTex.Height), Color.Black, lamp.bulb.Rotation, new Vector2(800,0), SpriteEffects.None, 0f);
