@@ -18,7 +18,7 @@ namespace LightsOut2
         private float movementSpeed;
         private bool overheated;
         public bool moving;
-        private int fireRate;
+        private double fireRate;
 
         private Texture2D crosshairTex;
         private Vector2 direction;
@@ -35,7 +35,7 @@ namespace LightsOut2
             extraLife = 3;
             tempDead = false;
             movementSpeed = 5f;
-            fireRate = 10;
+            fireRate = 15;
             
             direction = new Vector2(1, 0);
             texture = ContentManager.Get<Texture2D>("playerTex");
@@ -46,7 +46,7 @@ namespace LightsOut2
             removeList = new List<Bullet>();
             viscinity = new PointLight();
             view = new Spotlight();
-            viscinity.Scale = new Vector2(500, 500);
+            viscinity.Scale = new Vector2(750, 750);
             view.Scale = new Vector2(1000, 1000);
             view.Intensity = 2f;
         }
@@ -69,6 +69,9 @@ namespace LightsOut2
                 overheated = true;
             else if (Constants.HeatValue <= 0)
                 overheated = false;
+
+            if (overheated)
+                Constants.HeatValue -= 0.4f;
 
             if (screenClear != null)
             {
@@ -185,7 +188,7 @@ namespace LightsOut2
                 bulletList.Remove(tempBullet);
             }
 
-            fireRate--;
+            fireRate--; ;
         }
 
         void PlayerMovement()
@@ -275,13 +278,13 @@ namespace LightsOut2
 
         private void CreateBullet()
         {
-            Constants.HeatValue += 0.6f;
+            Constants.HeatValue += 0.2f;
 
             if (fireRate <= 0)
             {
                 Bullet tempBullet = new Bullet(position, Constants.BulletSize, direction);
                 bulletList.Add(tempBullet);
-                fireRate = 10;
+                fireRate = 15 - (10 * (Constants.HeatValue * 0.01));
             }
         }
     }

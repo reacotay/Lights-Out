@@ -16,6 +16,7 @@ namespace LightsOut2
 
         private Texture2D lavaBackground;
         private Texture2D brickBackground;
+        private SpriteFont spriteFont;
 
         public Player player;
         private HeatBar heatBar;
@@ -30,6 +31,7 @@ namespace LightsOut2
 
             lavaBackground = ContentManager.Get<Texture2D>("lavaBackground");
             brickBackground = ContentManager.Get<Texture2D>("brickSeamlessBackground");
+            spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
             camera = new Camera(view);
@@ -54,13 +56,13 @@ namespace LightsOut2
             Sfx.Play.BGMStart();
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             particleEngine.Update();
             player.Update();
             CheckMoving();
             heatBar.Update();
-            enemyManager.Update(player.position);
+            enemyManager.Update(gameTime, player.position);
             CheckCollision();
             camera.SetPosition(player.position);
         }
@@ -90,7 +92,7 @@ namespace LightsOut2
                     spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
                 }
 
-                spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(10, 100), Color.White);
+                spriteBatch.DrawString(spriteFont, "Score: " + score, new Vector2(10, 100), Color.White);
             spriteBatch.End();
         }
 
@@ -200,8 +202,14 @@ namespace LightsOut2
                 {
                     if (tempEnemyBullet.hitbox.Intersects(player.hitbox))
                     {
-                        player.TakeDamage();
                         tempShooter.enemyRemoveList.Add(tempEnemyBullet);
+
+                        if (player.extraLife > 0)
+                            player.TakeDamage();
+                        else
+                        {
+                            gameOver = true;
+                        }
                     }
 
                     if (player.screenClear != null)

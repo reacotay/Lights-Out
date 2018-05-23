@@ -28,7 +28,7 @@ namespace LightsOut2
         public override void Update()
         {
             colorAmount = Constants.HeatValue / 100;
-            Constants.HeatValue -= 0.3f;
+            Constants.HeatValue -= 0.1f;
             Constants.HeatValue = MathHelper.Clamp(Constants.HeatValue, 0, 100);
         }
 

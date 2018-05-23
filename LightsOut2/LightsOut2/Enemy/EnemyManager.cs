@@ -12,8 +12,9 @@ namespace LightsOut2
     class EnemyManager
     {
         private int crawlerCounter;
-        private int timePassed;
-        private float spawnRate;
+        private int crawlerSpawnRate;
+        private double timePassed;
+        private double spawnRate;
         private int number;
 
         public Enemy tempEnemy;
@@ -22,15 +23,20 @@ namespace LightsOut2
 
         public EnemyManager()
         {
+            spawnRate = 1;
+            crawlerSpawnRate = Constants.Randomizer.Next(25, 50);
+
             enemyList = new List<Enemy>();
             removeList = new List<Enemy>();
         }
 
-        public void Update(Vector2 playerPosition)
+        public void Update(GameTime gameTime, Vector2 playerPosition)
         {
+            timePassed += gameTime.ElapsedGameTime.TotalSeconds;
+
             if (timePassed >= spawnRate)
             {
-                if (crawlerCounter < 50)
+                if (crawlerCounter < crawlerSpawnRate)
                 {
                     number = Constants.Randomizer.Next(1, 5);
                     switch (number)
@@ -52,7 +58,8 @@ namespace LightsOut2
                     enemyList.Add(tempEnemy);
                     timePassed = 0;
                     crawlerCounter++;
-                    spawnRate = Constants.Randomizer.Next(45, 120);
+                    spawnRate = spawnRate - (spawnRate * 0.001f);
+                    Console.WriteLine(spawnRate);
                 }
                 else
                 {
@@ -61,10 +68,6 @@ namespace LightsOut2
                     crawlerCounter = 0;
                     timePassed = 0;
                 }
-            }
-            else
-            {
-                timePassed++;
             }
 
             foreach (Shooter tempShooter in enemyList.OfType<Shooter>())

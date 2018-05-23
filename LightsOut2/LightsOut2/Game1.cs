@@ -38,7 +38,7 @@ namespace LightsOut2
 
             graphics.PreferredBackBufferWidth = Constants.WindowWidth;
             graphics.PreferredBackBufferHeight = Constants.WindowHeight;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
             base.Initialize();
@@ -83,7 +83,7 @@ namespace LightsOut2
                         break;
 
                 case GameState.MainGame:
-                    gameManager.Update();
+                    gameManager.Update(gameTime);
 
                     if (gameManager.gameOver)
                         currentState = GameState.GameOver;
