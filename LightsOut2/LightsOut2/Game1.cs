@@ -55,6 +55,7 @@ namespace LightsOut2
             gameManager = new GameManager();
             mainMenu = new MainMenu();
             mainMenu.Initialize();
+            Highscore.GetScore();
             currentState = GameState.MainMenu;
         }
 

@@ -23,7 +23,7 @@ namespace LightsOut2
         private static FileStream fs;
         private static SpriteFont spriteFont = ContentManager.Get<SpriteFont>("titleFont");
 
-        static void GetScore()
+        public static void GetScore()
         {
             CheckForFile();
 
