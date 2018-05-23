@@ -14,14 +14,14 @@ namespace LightsOut2
     class Lamp
     {
         private int radius = 100, length = 500;
-        private float x = 400, y = 0;
+        private float x = 800, y = 0;
         private double angle = Math.PI / 5, acceleration, velocity = 0, dt = 0.15;
         private int flicks, flickerTimer = 0;
         private bool lightOut, ttFlicker;
 
         public Light bulb;
         public Hull shade;
-        private Vector2 originPosition = new Vector2(400, 0);
+        private Vector2 originPosition = new Vector2(800, 0);
 
         public Lamp()
         {

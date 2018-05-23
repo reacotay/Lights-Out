@@ -55,6 +55,7 @@ namespace LightsOut2
             gameManager = new GameManager();
             mainMenu = new MainMenu();
             mainMenu.Initialize();
+            Highscore.GetScore();
             currentState = GameState.MainMenu;
         }
 
@@ -94,7 +95,7 @@ namespace LightsOut2
                     break;
 
                 case GameState.HighScore:
-                    if (Constants.keyState.IsKeyDown(Keys.Enter) && Constants.oldKeyState.IsKeyUp(Keys.Enter))
+                    if (Constants.keyState.IsKeyDown(Keys.Enter) || Constants.gamePadState.IsButtonDown(Buttons.Start))
                     {
                         mainMenu.Initialize();
                         gameManager = new GameManager();

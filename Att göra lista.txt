@@ -1,5 +1,7 @@
 FIXES:
-
+Liven visas inte om man startar spelet med kontrollen
+menyerna måste nu centreras efter fullscreen lagt till
+Gå mellan highscore och main menu med kontrollen
 
 MÅSTE GÖRAS:
 
