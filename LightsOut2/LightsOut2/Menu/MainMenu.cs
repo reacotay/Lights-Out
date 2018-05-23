@@ -29,8 +29,8 @@ namespace LightsOut2
             titleFont = ContentManager.Get<SpriteFont>("titleFont");
             spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
 
-            newGameButton = new Button(new Vector2(283, 500), Constants.StandardSize, "newGameTex");
-            newQuitButton = new Button(new Vector2(312, 600), Constants.StandardSize, "quitGameTex");
+            newGameButton = new Button(new Vector2(683, 500), Constants.StandardSize, "newGameTex");
+            newQuitButton = new Button(new Vector2(712, 600), Constants.StandardSize, "quitGameTex");
         }
 
         public void Initialize()
@@ -54,8 +54,8 @@ namespace LightsOut2
             spriteBatch.Begin();
             Game1.penumbra.BeginDraw();
                 spriteBatch.Draw(groundTex, Vector2.Zero, Color.White);
-                spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(100,200), Color.Black, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
-                spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(103, 203), Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(500,200), Color.Black, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(titleFont, "PROJECT: LIGHTS OUT", new Vector2(503, 203), Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             spriteBatch.End();
             Game1.penumbra.Draw(gameTime);
 

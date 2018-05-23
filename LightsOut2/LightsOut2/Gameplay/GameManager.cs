@@ -84,11 +84,12 @@ namespace LightsOut2
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
                 heatBar.Draw(spriteBatch);
-                if(!Constants.gamePadState.IsConnected)
-                    for (int i = 0; i < player.extraLife; i++)
-                    {
-                        spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
-                    }
+
+                for (int i = 0; i < player.extraLife; i++)
+                {
+                    spriteBatch.Draw(ContentManager.Get<Texture2D>("playerTex"), new Vector2(10 + (30 * i), 60), Color.White);
+                }
+
                 spriteBatch.DrawString(ContentManager.Get<SpriteFont>("spriteFont"), "Score: " + score, new Vector2(10, 100), Color.White);
             spriteBatch.End();
         }
