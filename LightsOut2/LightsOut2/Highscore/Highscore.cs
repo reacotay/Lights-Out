@@ -128,11 +128,11 @@ namespace LightsOut2
 
             if (Constants.gamePadState.IsConnected)
             {
-                spriteBatch.DrawString(spriteFont, "PRESS 'START' TO RETURN TO THE MAIN MENU", new Vector2(400, 800), Color.DimGray);
+                spriteBatch.DrawString(spriteFont, "PRESS 'START' TO RETURN TO THE MAIN MENU", new Vector2(200, 700), Color.DimGray);
             }
             else
             {
-                spriteBatch.DrawString(spriteFont, "PRESS 'ENTER' TO RETURN TO THE MAIN MENU", new Vector2(400, 800), Color.DimGray);
+                spriteBatch.DrawString(spriteFont, "PRESS 'ENTER' TO RETURN TO THE MAIN MENU", new Vector2(200, 700), Color.DimGray);
             }
 
             spriteBatch.End();

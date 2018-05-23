@@ -61,7 +61,7 @@ namespace LightsOut2
         {
             if ((Constants.keyState.IsKeyDown(Keys.W) && Constants.oldKeyState.IsKeyUp(Keys.W)) || (Constants.gamePadState.IsButtonDown(Buttons.DPadUp) && Constants.oldGamePadState.IsButtonUp(Buttons.DPadUp)))
             {
-                if (selected < 33)
+                if (selected < 35)
                     selected++;
             }
 

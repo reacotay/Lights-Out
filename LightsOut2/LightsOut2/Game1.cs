@@ -19,6 +19,7 @@ namespace LightsOut2
         {
             MainMenu,
             MainGame,
+            GamePause,
             GameOver,
             NameEntry,
             HighScore
@@ -61,8 +62,8 @@ namespace LightsOut2
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
             Constants.UpdateKeyMouseReader();
 
@@ -75,7 +76,7 @@ namespace LightsOut2
                         gameManager.Initialize();
                         currentState = GameState.MainGame;
                     }
-                    if (mainMenu.newQuitButton.CheckClicked())
+                    if (mainMenu.newQuitButton.CheckClicked() || Constants.gamePadState.IsButtonDown(Buttons.Back) && Constants.oldGamePadState.IsButtonUp(Buttons.Back))
                     {
                         Exit();
                     }
@@ -83,8 +84,24 @@ namespace LightsOut2
 
                 case GameState.MainGame:
                     gameManager.Update();
+
                     if (gameManager.gameOver)
                         currentState = GameState.GameOver;
+
+                    if (Constants.keyState.IsKeyDown(Keys.P) && Constants.oldKeyState.IsKeyUp(Keys.P) || Constants.gamePadState.IsButtonDown(Buttons.Start) && Constants.oldGamePadState.IsButtonUp(Buttons.Start))
+                        currentState = GameState.GamePause;
+                    break;
+
+                case GameState.GamePause:
+                    if (Constants.keyState.IsKeyDown(Keys.P) && Constants.oldKeyState.IsKeyUp(Keys.P) || Constants.gamePadState.IsButtonDown(Buttons.Start) && Constants.oldGamePadState.IsButtonUp(Buttons.Start))
+                        currentState = GameState.MainGame;
+
+                    if (Constants.keyState.IsKeyDown(Keys.Escape) && Constants.oldKeyState.IsKeyUp(Keys.Escape) || Constants.gamePadState.IsButtonDown(Buttons.Back) && Constants.oldGamePadState.IsButtonUp(Buttons.Back))
+                    {
+                        mainMenu.Initialize();
+                        gameManager = new GameManager();
+                        currentState = GameState.MainMenu;
+                    }
                     break;
 
                 case GameState.GameOver:
@@ -124,6 +141,13 @@ namespace LightsOut2
 
                 case GameState.MainGame:
                     gameManager.Draw(spriteBatch, gameTime);
+                    break;
+
+                case GameState.GamePause:
+                    gameManager.Draw(spriteBatch, gameTime);
+                    spriteBatch.Begin();
+                        spriteBatch.DrawString(spriteFont, "GAME PAUSED", new Vector2(Constants.WindowWidth / 2, Constants.WindowHeight / 2), Color.White);
+                    spriteBatch.End();
                     break;
 
                 case GameState.GameOver:
