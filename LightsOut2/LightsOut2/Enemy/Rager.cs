@@ -20,7 +20,7 @@ namespace LightsOut2
             rage = false;
             movementSpeed = 1f;
 
-            texture = ContentManager.Get<Texture2D>("chaserTex");
+            texture = ContentManager.Get<Texture2D>("ragerTex");
         }
 
         public override void Update()
