@@ -97,6 +97,7 @@
     <Content Include="Content\Crosshair.png" />
     <Content Include="Content\enemyDamageSound.wav" />
     <Content Include="Content\Ground.png" />
+    <Content Include="Content\highscoreButtonTex.png" />
     <Content Include="Content\lavaBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

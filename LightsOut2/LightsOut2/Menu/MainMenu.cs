@@ -19,6 +19,7 @@ namespace LightsOut2
         private SpriteFont spriteFont;
         public Button newGameButton;
         public Button newQuitButton;
+        public Button newHighscoreButton;
         
         public MainMenu()
         {
@@ -30,7 +31,8 @@ namespace LightsOut2
             spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
 
             newGameButton = new Button(new Vector2(683, 500), Constants.StandardSize, "newGameTex");
-            newQuitButton = new Button(new Vector2(712, 600), Constants.StandardSize, "quitGameTex");
+            newQuitButton = new Button(new Vector2(712, 700), Constants.StandardSize, "quitGameTex");
+            newHighscoreButton = new Button(new Vector2(690, 600), Constants.StandardSize, "highscoreButtonTex");
         }
 
         public void Initialize()
@@ -63,11 +65,13 @@ namespace LightsOut2
             if (Constants.gamePadState.IsConnected)
             {
                 spriteBatch.DrawString(spriteFont, "'START' TO START THE GAME", new Vector2(600, 600), Color.DimGray, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
-                spriteBatch.DrawString(spriteFont, "'SELECT' TO QUIT THE GAME", new Vector2(600, 650), Color.DimGray, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(spriteFont, "'Y' TO CHECK THE HIGHSCORES", new Vector2(600, 650), Color.DimGray, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(spriteFont, "'SELECT' TO QUIT THE GAME", new Vector2(600, 700), Color.DimGray, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
             }
             else
             {
                 newGameButton.Draw(spriteBatch);
+                newHighscoreButton.Draw(spriteBatch);
                 newQuitButton.Draw(spriteBatch);
             }
             if (!Constants.gamePadState.IsConnected)
