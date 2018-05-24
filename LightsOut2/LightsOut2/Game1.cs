@@ -38,7 +38,7 @@ namespace LightsOut2
 
             graphics.PreferredBackBufferWidth = Constants.WindowWidth;
             graphics.PreferredBackBufferHeight = Constants.WindowHeight;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
 
             base.Initialize();
