@@ -106,96 +106,121 @@ namespace LightsOut2
                 {
                     if (tempEnemy.GetType() == typeof(Crawler))
                     {
-                        bool dead = false;
-                        Crawler tempCrawler = (Crawler)tempEnemy;
-
-                        foreach(CrawlerPiece x in tempCrawler.BodyPieces)
-                        {
-                            if (x.PieceHitpoints > 0)
-                            {
-                                if (x.hitbox.Intersects(tempBullet.hitbox))
-                                {
-                                    x.TakeDamage();
-                                    dead = tempCrawler.TakeDamage();
-                                    particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
-                                    Sfx.Play.EnemyDamage();
-                                    player.removeList.Add(tempBullet);
-                                }
-                            }
-                        }
-
-                        if (dead)
-                        {
-                            enemyManager.removeList.Add(tempEnemy);
-                            particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
-                            score += 100;
-                        }
+                        CrawlerCollision(tempEnemy, tempBullet);
                     }
                     else
                     {
-                        if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
-                        {
-                            bool dead = tempEnemy.TakeDamage();
-                            Vector2 direction = tempEnemy.position - player.position;
-                            direction.Normalize();
-                            particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
-                            Sfx.Play.EnemyDamage();
-                            player.removeList.Add(tempBullet);
-
-                            if (dead)
-                            {
-                                enemyManager.removeList.Add(tempEnemy);
-                                particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
-                                score += 100;
-                            }
-                        }
+                        EnemyCollision(tempEnemy, tempBullet);
                     }
                 }
 
                 if (player.screenClear != null)
                 {
-                    if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
-                    {
-                        enemyManager.removeList.Add(tempEnemy);
-                        Vector2 direction = tempEnemy.position - player.position;
-                        direction.Normalize();
-                        particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
-                        score += 100;
-                    }
+                    ScreenClearCollision(tempEnemy);
                 }
 
-                if (tempEnemy.GetType() == typeof(Crawler))
+                PlayerCollisionWithEnemy(tempEnemy);
+            }
+
+            PlayerCollisionWithBullet();
+        }
+
+        private void CrawlerCollision(Enemy tempEnemy, Bullet tempBullet)
+        {
+            bool dead = false;
+            Crawler tempCrawler = (Crawler)tempEnemy;
+
+            foreach (CrawlerPiece x in tempCrawler.BodyPieces)
+            {
+                if (x.PieceHitpoints > 0)
                 {
-                    Crawler tempCrawler = (Crawler)tempEnemy;
-
-                    foreach (CrawlerPiece x in tempCrawler.BodyPieces)
+                    if (x.hitbox.Intersects(tempBullet.hitbox))
                     {
-                        if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
-                        {
-                            enemyManager.removeList.Add(tempEnemy);
-
-                            if (player.extraLife >= 0)
-                                player.TakeDamage();
-                            else
-                            {
-                                gameOver = true;
-                            }
-                        }
-                    }
-                }
-                else if(tempEnemy.hitbox.Intersects(player.hitbox))
-                {
-                    enemyManager.removeList.Add(tempEnemy);
-
-                    if (player.extraLife > 0)
-                        player.TakeDamage();
-                    else
-                    {
-                        gameOver = true;
+                        x.TakeDamage();
+                        dead = tempCrawler.TakeDamage();
+                        particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
+                        Sfx.Play.EnemyDamage();
+                        player.removeList.Add(tempBullet);
                     }
                 }
             }
 
+            if (dead)
+            {
+                enemyManager.removeList.Add(tempEnemy);
+                particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
+                score += 100;
+            }
+        }
+
+        private void EnemyCollision(Enemy tempEnemy, Bullet tempBullet)
+        {
+            if (tempEnemy.hitbox.Intersects(tempBullet.hitbox))
+            {
+                bool dead = tempEnemy.TakeDamage();
+                Vector2 direction = tempEnemy.position - player.position;
+                direction.Normalize();
+                particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
+                Sfx.Play.EnemyDamage();
+                player.removeList.Add(tempBullet);
+
+                if (dead)
+                {
+                    enemyManager.removeList.Add(tempEnemy);
+                    particleEngine.CreateBloodSplatter(tempEnemy.position, tempBullet.direction);
+                    score += 100;
+                }
+            }
+        }
+
+        private void ScreenClearCollision(Enemy tempEnemy)
+        {
+            if (tempEnemy.hitbox.Intersects(player.screenClear.destinationRectangle))
+            {
+                enemyManager.removeList.Add(tempEnemy);
+                Vector2 direction = tempEnemy.position - player.position;
+                direction.Normalize();
+                particleEngine.CreateBloodSplatter(tempEnemy.position, direction);
+                score += 100;
+            }
+        }
+
+        private void PlayerCollisionWithEnemy(Enemy tempEnemy)
+        {
+            if (tempEnemy.GetType() == typeof(Crawler))
+            {
+                Crawler tempCrawler = (Crawler)tempEnemy;
+
+                foreach (CrawlerPiece x in tempCrawler.BodyPieces)
+                {
+                    if (x.hitbox.Intersects(player.hitbox) || tempEnemy.hitbox.Intersects(player.hitbox))
+                    {
+                        enemyManager.removeList.Add(tempEnemy);
+
+                        if (player.extraLife >= 0)
+                            player.TakeDamage();
+                        else
+                        {
+                            gameOver = true;
+                        }
+                    }
+                }
+            }
+            else if (tempEnemy.hitbox.Intersects(player.hitbox))
+            {
+                enemyManager.removeList.Add(tempEnemy);
+
+                if (player.extraLife > 0)
+                    player.TakeDamage();
+                else
+                {
+                    gameOver = true;
+                }
+            }
+        }
+
+        private void PlayerCollisionWithBullet()
+        {
             foreach (Shooter tempShooter in enemyManager.enemyList.OfType<Shooter>())
             {
                 foreach (Bullet tempEnemyBullet in tempShooter.enemyBulletList)
