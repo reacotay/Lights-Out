@@ -16,6 +16,7 @@ namespace LightsOut2
 
         private Texture2D lavaBackground;
         private Texture2D brickBackground;
+        private Texture2D overheatTexture;
         private SpriteFont spriteFont;
 
         public Player player;
@@ -31,6 +32,7 @@ namespace LightsOut2
 
             lavaBackground = ContentManager.Get<Texture2D>("lavaBackground");
             brickBackground = ContentManager.Get<Texture2D>("brickSeamlessBackground");
+            overheatTexture = ContentManager.Get<Texture2D>("overheatTex");
             spriteFont = ContentManager.Get<SpriteFont>("spriteFont");
 
             Viewport view = ContentManager.TransferGraphicsDevice().Viewport;
@@ -85,6 +87,9 @@ namespace LightsOut2
 
             //Måste ritas ut separat efter Penumbra för att synas genom skuggorna (Vår GUI, HUD)
             spriteBatch.Begin();
+            if (player.overheated)
+                spriteBatch.Draw(overheatTexture, Vector2.Zero, Color.White);    
+
                 heatBar.Draw(spriteBatch);
 
                 for (int i = 0; i < player.extraLife; i++)

@@ -16,7 +16,7 @@ namespace LightsOut2
         private bool tempDead;
         private float angle;
         private float movementSpeed;
-        private bool overheated;
+        public bool overheated;
         public bool moving;
         private double fireRate;
 
